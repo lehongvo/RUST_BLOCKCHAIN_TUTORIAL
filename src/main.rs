@@ -7,7 +7,6 @@
 //     print_str(my_str);
 // }
 
-
 // fn print_stg(s: &str) {
 //     println!("print: {}", s);
 // }
@@ -51,7 +50,6 @@
 /// string to a new variable called new_string.
 fn main() {
     let mut my_string: String = String::from("Hello, Rust!");
-    my_string.remove(1);
-    my_string.insert(1, 'E');
-    println!("my_string, {}", my_string);
+    let length_value: usize = my_string.len();
+    println!("Value length, {}", length_value);
 }

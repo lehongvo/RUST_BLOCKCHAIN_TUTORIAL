@@ -73,3 +73,13 @@ fn main() {
     println!("my_string, {}", my_string);
 }
 ```
+
+### usize using for length array
+
+```
+fn main() {
+    let mut my_string: String = String::from("Hello, Rust!");
+    let length_value: usize = my_string.len();
+    println!("Value length, {}", length_value);
+}
+```
