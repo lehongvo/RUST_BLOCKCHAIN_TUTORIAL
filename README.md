@@ -55,3 +55,13 @@ fn main() {
     println!("part_str {}", part_str)
 }
 ```
+
+### push_str is mean push new value to String data type
+```
+fn main() {
+    let mut my_string: String = String::from("Hello, Rust!");
+    my_string.push_str("Hello, Rust!");
+    println!("my_string, {}", my_string);
+}
+```
+

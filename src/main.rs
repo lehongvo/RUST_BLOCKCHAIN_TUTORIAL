@@ -35,8 +35,14 @@
 //     println!("current_str: {}", current_str)
 // }
 
+// fn main() {
+//     let full_str: &str = "Hello, Rust!";
+//     let part_str: &str = &full_str[5..8];
+//     println!("part_str: {}", part_str)
+// }
+
 fn main() {
-    let full_str: &str = "Hello, Rust!";
-    let part_str: &str = &full_str[0..6];
-    println!("part_str: {}", part_str)
+    let mut my_string: String = String::from("Hello, Rust!");
+    my_string.push_str("Hello, Rust!");
+    println!("my_string, {}", my_string);
 }
