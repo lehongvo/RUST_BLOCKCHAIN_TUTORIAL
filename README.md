@@ -83,3 +83,15 @@ fn main() {
     println!("Value length, {}", length_value);
 }
 ```
+
+### is_empty using for check is string or stg is empty or not
+```
+fn main() {
+    let is_empty_str: &str = "";
+    let is_empty_string: String = String::from("Hello, Rust!");
+    let is_right_str: bool = is_empty_str.is_empty();
+    let is_right_strong: bool = is_empty_string.is_empty();
+    println!("is_right_str: {}", is_right_str);
+    println!("is_right_str: {}", is_right_strong);
+}
+```

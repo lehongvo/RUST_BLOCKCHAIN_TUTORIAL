@@ -46,10 +46,20 @@
 //     println!("my_string, {}", my_string);
 // }
 
-/// The code removes the character at index 1 from the string "Hello, Rust!" and assigns the modified
-/// string to a new variable called new_string.
+// fn main() {
+//     let my_string: String = String::from("Hello, Rust!");
+//     let my_data: &str = "Hello, Rust!";
+//     let length_value: usize = my_string.len();
+//     let length_my_data: usize = my_data.len();
+//     println!("Value length: {}", length_value);
+//     println!("my_data length: {}", length_my_data);
+// }
+
 fn main() {
-    let mut my_string: String = String::from("Hello, Rust!");
-    let length_value: usize = my_string.len();
-    println!("Value length, {}", length_value);
+    let is_empty_str: &str = "";
+    let is_empty_string: String = String::from("Hello, Rust!");
+    let is_right_str: bool = is_empty_str.is_empty();
+    let is_right_strong: bool = is_empty_string.is_empty();
+    println!("is_right_str: {}", is_right_str);
+    println!("is_right_str: {}", is_right_strong);
 }
