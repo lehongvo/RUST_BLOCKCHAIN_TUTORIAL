@@ -95,3 +95,19 @@ fn main() {
     println!("is_right_str: {}", is_right_strong);
 }
 ```
+
+### contains in array, include to_uppercase on RUST
+```
+fn main() {
+    let is_contain_str: &str =  "Hello, world";
+    let is_contain_strong: String = String::from("Ok pro");
+    if 
+      is_contain_str.to_uppercase().contains(&("OK").to_uppercase()) && 
+      is_contain_strong.to_uppercase().contains(&("HELLO").to_uppercase())
+    {
+        println!("Yes {} is correctly contained", is_contain_str);
+    } else {
+        println!("No is not correctly contained");
+    }
+}
+```

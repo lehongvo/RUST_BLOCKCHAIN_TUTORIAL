@@ -55,11 +55,24 @@
 //     println!("my_data length: {}", length_my_data);
 // }
 
+// fn main() {
+//     let is_empty_str: &str = "";
+//     let is_empty_string: String = String::from("Hello, Rust!");
+//     let is_right_str: bool = is_empty_str.is_empty();
+//     let is_right_strong: bool = is_empty_string.is_empty();
+//     println!("is_right_str: {}", is_right_str);
+//     println!("is_right_str: {}", is_right_strong);
+// }
+
 fn main() {
-    let is_empty_str: &str = "";
-    let is_empty_string: String = String::from("Hello, Rust!");
-    let is_right_str: bool = is_empty_str.is_empty();
-    let is_right_strong: bool = is_empty_string.is_empty();
-    println!("is_right_str: {}", is_right_str);
-    println!("is_right_str: {}", is_right_strong);
+    let is_contain_str: &str =  "Hello, world";
+    let is_contain_strong: String = String::from("Ok pro");
+    if 
+      is_contain_str.to_uppercase().contains(&("OK").to_uppercase()) && 
+      is_contain_strong.to_uppercase().contains(&("HELLO").to_uppercase())
+    {
+        println!("Yes {} is correctly contained", is_contain_str);
+    } else {
+        println!("No is not correctly contained");
+    }
 }
