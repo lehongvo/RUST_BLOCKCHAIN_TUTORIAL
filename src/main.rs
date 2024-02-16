@@ -18,13 +18,19 @@
 //     println!("new_sth: {}", new_sth)
 // }
 
-fn return_stg(mut s: String) -> String {
-    s = s + "....OMG";
-    return s;
-}
+// fn return_stg(mut s: String) -> String {
+//     s = s + "....OMG";
+//     return s;
+// }
+
+// fn main() {
+//     let input_string = String::from("Initial String");
+//     let current_string = String::from(return_stg(input_string));
+//     println!("current_string: {}", current_string);
+// }
 
 fn main() {
-    let input_string = String::from("Initial String");
-    let current_string = String::from(return_stg(input_string));
-    println!("current_string: {}", current_string);
+    let my_str: &str = "Hello, Rust";
+    let current_str: &str =  &(my_str.to_owned() + "... Ok Pro");
+    println!("current_str: {}", current_str)
 }
