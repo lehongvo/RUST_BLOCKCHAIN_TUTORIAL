@@ -111,3 +111,12 @@ fn main() {
     }
 }
 ```
+
+### float 32 bit and 64 bit
+```
+fn main () {
+    let current_float: String = String::from("9.9999999999999911");
+    let value_float: f64 = current_float.parse().expect("Not a number float");
+    println!("value_float: {}", value_float)
+}
+```
