@@ -29,8 +29,14 @@
 //     println!("current_string: {}", current_string);
 // }
 
+// fn main() {
+//     let my_str: &str = "Hello, Rust";
+//     let current_str: &str =  &(my_str.to_owned() + "... Ok Pro");
+//     println!("current_str: {}", current_str)
+// }
+
 fn main() {
-    let my_str: &str = "Hello, Rust";
-    let current_str: &str =  &(my_str.to_owned() + "... Ok Pro");
-    println!("current_str: {}", current_str)
+    let full_str: &str = "Hello, Rust!";
+    let part_str: &str = &full_str[0..6];
+    println!("part_str: {}", part_str)
 }

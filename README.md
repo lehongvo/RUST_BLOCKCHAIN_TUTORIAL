@@ -47,3 +47,11 @@ fn main() {
 }
 ```
 
+### full_str is mean cut char form string
+```
+fn main() {
+    let full_str: &str = "Hello, Rust!";
+    let part_str: &str = &full_str[0..6];
+    println!("part_str {}", part_str)
+}
+```
