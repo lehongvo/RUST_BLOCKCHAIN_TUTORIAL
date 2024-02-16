@@ -130,3 +130,18 @@ fn main() {
     println!("string_new: {}", string_new);
 }
 ```
+
+### Reading input
+```
+use std::io;
+fn main() {
+    println!{"Guess the number!"};
+    println!("Please input your guess.");
+    let mut you_number: String = String::new();
+    io::stdin()
+        .read_line(&mut you_number)
+        .expect("Error reading");
+    println!("Please input your guess.");
+    println!("You guessed: {}", you_number)
+}
+```

@@ -83,9 +83,21 @@
 //     println!("value_float: {}", value_float)
 // }
 
+// fn main() {
+//     let mut string_new: String = String::new();
+//     string_new.push('O');
+//     string_new.push_str("LE HONG VO");
+//     println!("string_new: {}", string_new);
+// }
+
+use std::io;
 fn main() {
-    let mut string_new: String = String::new();
-    string_new.push('O');
-    string_new.push_str("LE HONG VO");
-    println!("string_new: {}", string_new);
+    println!{"Guess the number!"};
+    println!("Please input your guess.");
+    let mut you_number: String = String::new();
+    io::stdin()
+        .read_line(&mut you_number)
+        .expect("Error reading");
+    println!("Please input your guess.");
+    println!("You guessed: {}", you_number)
 }
