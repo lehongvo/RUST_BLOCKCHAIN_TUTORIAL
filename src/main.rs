@@ -41,8 +41,17 @@
 //     println!("part_str: {}", part_str)
 // }
 
+// fn main() {
+//     let mut my_string: String = String::from("Hello, Rust!");
+//     my_string.push_str("Hello, Rust!");
+//     println!("my_string, {}", my_string);
+// }
+
+/// The code removes the character at index 1 from the string "Hello, Rust!" and assigns the modified
+/// string to a new variable called new_string.
 fn main() {
     let mut my_string: String = String::from("Hello, Rust!");
-    my_string.push_str("Hello, Rust!");
+    my_string.remove(1);
+    my_string.insert(1, 'E');
     println!("my_string, {}", my_string);
 }

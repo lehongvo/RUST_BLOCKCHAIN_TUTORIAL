@@ -64,4 +64,12 @@ fn main() {
     println!("my_string, {}", my_string);
 }
 ```
-
+### remove + insert only one char in  a string type 
+```
+fn main() {
+    let mut my_string: String = String::from("Hello, Rust!");
+    my_string.remove(1);
+    my_string.insert(1, 'E');
+    println!("my_string, {}", my_string);
+}
+```
