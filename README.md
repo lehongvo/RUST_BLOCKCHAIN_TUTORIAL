@@ -120,3 +120,13 @@ fn main () {
     println!("value_float: {}", value_float)
 }
 ```
+
+### String::new ampty string
+```
+fn main() {
+    let mut string_new: String = String::new();
+    string_new.push('O');
+    string_new.push_str("LE HONG VO");
+    println!("string_new: {}", string_new);
+}
+```

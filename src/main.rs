@@ -77,8 +77,15 @@
 //     }
 // }
 
-fn main () {
-    let current_float: String = String::from("9.9999999999999911");
-    let value_float: f64 = current_float.parse().expect("Not a number float");
-    println!("value_float: {}", value_float)
+// fn main () {
+//     let current_float: String = String::from("9.9999999999999911");
+//     let value_float: f64 = current_float.parse().expect("Not a number float");
+//     println!("value_float: {}", value_float)
+// }
+
+fn main() {
+    let mut string_new: String = String::new();
+    string_new.push('O');
+    string_new.push_str("LE HONG VO");
+    println!("string_new: {}", string_new);
 }
