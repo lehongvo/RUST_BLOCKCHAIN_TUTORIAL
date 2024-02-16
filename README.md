@@ -34,4 +34,16 @@ fn main() {
     println!("binding: {}", binding);
 }
 ```
+### function in function 
+```
+fn print_stg(s: &str) {
+    println!("print: {}", s);
+}
+
+fn main() {
+    let my_str: &str = "Hello, Rust";
+    let new_sth = my_str.to_owned() + "....No";
+    println!("new_sth: {}", new_sth)
+}
+```
 
