@@ -169,39 +169,70 @@
 //     println!("total_value is: {}", total_value);
 // }
 
-use rand::Rng;
-use std::{cmp::Ordering, io};
-fn main() {;
-    loop {
-        println!("===========>PLease input your value<===========");
-        let max_size: u8 = 100;
-        let mut rng = rand::thread_rng();
-        let secret_number: u8 = rng.gen_range(1..=max_size);
-    
-        let mut guess = String::new();
-        io::stdin().read_line(&mut guess).expect("Error reading");
-        let guess: u8 = match guess.trim().parse() {
-            Ok(value) => {
-                if (value > max_size) {
-                    continue;
-                } else {
-                    value
-                }
-            }
-            Err(_) => {
-                println!("Invalid guess. Please input correct number");
-                continue;
-            }
-        };
-        println!("You guessed: {}", guess);
-        println!("You secrer number: {}", secret_number);
-        match guess.cmp(&secret_number) {
-            Ordering::Less => println!("Less then secret number"),
-            Ordering::Greater => println!("Great then secret number"),
-            Ordering::Equal => {
-                println!("You win!");
-                break;
-            }
-        }
-    }
+// use rand::Rng;
+// use std::{cmp::Ordering, io};
+// fn main() {;
+//     loop {
+//         println!("===========>PLease input your value<===========");
+//         let max_size: u8 = 100;
+//         let mut rng = rand::thread_rng();
+//         let secret_number: u8 = rng.gen_range(1..=max_size);
+
+//         let mut guess = String::new();
+//         io::stdin().read_line(&mut guess).expect("Error reading");
+//         let guess: u8 = match guess.trim().parse() {
+//             Ok(value) => {
+//                 if (value > max_size) {
+//                     continue;
+//                 } else {
+//                     value
+//                 }
+//             }
+//             Err(_) => {
+//                 println!("Invalid guess. Please input correct number");
+//                 continue;
+//             }
+//         };
+//         println!("You guessed: {}", guess);
+//         println!("You secrer number: {}", secret_number);
+//         match guess.cmp(&secret_number) {
+//             Ordering::Less => println!("Less then secret number"),
+//             Ordering::Greater => println!("Great then secret number"),
+//             Ordering::Equal => {
+//                 println!("You win!");
+//                 break;
+//             }
+//         }
+//     }
+// }
+
+// fn main() {
+//     let mut x: i32= 5;
+//     println!("The value of x is: {}", x);
+//     x = x + 1;
+//     println!("The value of x after chain is: {}", x);
+// }
+
+// fn main() {
+//     let x: i32 = 100;
+//     const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3;
+//     println!("THREE_HOURS_IN_SECONDS: {THREE_HOURS_IN_SECONDS}")
+// }
+
+//Shadowing 
+// fn main() {
+//     let x = 5;
+//     let x = x + 1;
+//     println!("The value of x is {}", x);
+//     {
+//         let x = x + 2;
+//         println!("The value of x in the inner scope is: {x}");
+//     }
+//     println!("The value of x under scope is {}", x);
+// }
+
+fn main() {
+    let spaces = "   ";
+    let spaces = spaces.len();
+    println!("Error: {}", spaces)
 }

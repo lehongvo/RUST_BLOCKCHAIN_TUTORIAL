@@ -225,3 +225,42 @@ fn main() {
 ```
 
 ### With one tiny final tweak, we will finish the guessing game. 
+```
+use rand::Rng;
+use std::{cmp::Ordering, io};
+fn main() {;
+    loop {
+        println!("===========>PLease input your value<===========");
+        let max_size: u8 = 100;
+        let mut rng = rand::thread_rng();
+        let secret_number: u8 = rng.gen_range(1..=max_size);
+    
+        let mut guess = String::new();
+        io::stdin().read_line(&mut guess).expect("Error reading");
+        let guess: u8 = match guess.trim().parse() {
+            Ok(value) => {
+                if (value > max_size) {
+                    continue;
+                } else {
+                    value
+                }
+            }
+            Err(_) => {
+                println!("Invalid guess. Please input correct number");
+                continue;
+            }
+        };
+        println!("You guessed: {}", guess);
+        println!("You secrer number: {}", secret_number);
+        match guess.cmp(&secret_number) {
+            Ordering::Less => println!("Less then secret number"),
+            Ordering::Greater => println!("Great then secret number"),
+            Ordering::Equal => {
+                println!("You win!");
+                break;
+            }
+        }
+    }
+}
+```
+// 3.1: Variables and Mutability
