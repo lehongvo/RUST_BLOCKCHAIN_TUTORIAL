@@ -145,3 +145,54 @@ fn main() {
     println!("You guessed: {}", you_number)
 }
 ```
+
+### Random number
+```
+use rand::Rng;
+fn main() {
+    let mut totalAmount: i128 = 0;
+    for n in 1..=100 {
+        let mut rng = rand::thread_rng();
+        let random_number:i128 = rng.gen_range(-1..100000000000999900000099999990);
+        println!("Random number: {}", random_number);
+        totalAmount += random_number * 99999;
+    }
+    println!("Total amount: {}", totalAmount);
+}
+```
+#### Get random number
+```
+use rand::Rng;
+use std::io;
+fn main() {
+    println!("PLease guess my number!!!\n");
+    println!("PLease input your number from(0 to u8)");
+
+    // Input number
+    let mut system_input: String = String::new();
+    io::stdin()
+        .read_line(&mut system_input)
+        .expect("Error reading");
+
+    // Read number
+    let system_value: u8 = match system_input.trim().parse() {
+        Ok(value) => value,
+        Err(_) => {
+            println!("Đầu vào không hợp lệ. Vui lòng nhập kiểu dữ u8");
+            return;
+        }
+    };
+
+    // Ramdon number
+    let mut count_time: u128 = 0;
+    for n in 0..=1000000 {
+        let mut rng = rand::thread_rng();
+        let random_number: u8 = rng.gen_range(0..127);
+        println!("Random number is: {}", random_number);
+        if (random_number == system_value) {
+            count_time += 1;
+        } 
+    }
+    println!("You win {} times", count_time);
+}
+```

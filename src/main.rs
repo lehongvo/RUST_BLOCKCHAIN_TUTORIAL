@@ -67,8 +67,8 @@
 // fn main() {
 //     let is_contain_str: &str =  "Hello, world";
 //     let is_contain_strong: String = String::from("Ok pro");
-//     if 
-//       is_contain_str.to_uppercase().contains(&("OK").to_uppercase()) && 
+//     if
+//       is_contain_str.to_uppercase().contains(&("OK").to_uppercase()) &&
 //       is_contain_strong.to_uppercase().contains(&("HELLO").to_uppercase())
 //     {
 //         println!("Yes {} is correctly contained", is_contain_str);
@@ -90,14 +90,48 @@
 //     println!("string_new: {}", string_new);
 // }
 
+// use std::io;
+// fn main() {
+//     println!{"Guess the number!"};
+//     println!("Please input your guess.");
+//     let mut you_number: String = String::new();
+//     io::stdin()
+//         .read_line(&mut you_number)
+//         .expect("Error reading");
+//     println!("Please input your guess.");
+//     println!("You guessed: {}", you_number)
+// }
+
+use rand::Rng;
 use std::io;
 fn main() {
-    println!{"Guess the number!"};
-    println!("Please input your guess.");
-    let mut you_number: String = String::new();
+    println!("PLease guess my number!!!\n");
+    println!("PLease input your number from(0 to u8)");
+
+    // Input number
+    let mut system_input: String = String::new();
     io::stdin()
-        .read_line(&mut you_number)
+        .read_line(&mut system_input)
         .expect("Error reading");
-    println!("Please input your guess.");
-    println!("You guessed: {}", you_number)
+
+    // Read number
+    let system_value: u8 = match system_input.trim().parse() {
+        Ok(value) => value,
+        Err(_) => {
+            println!("Đầu vào không hợp lệ. Vui lòng nhập kiểu dữ u8");
+            return;
+        }
+    };
+
+    // Ramdon number
+    let mut count_time: u128 = 0;
+    for n in 0..=1000000 {
+        let mut rng = rand::thread_rng();
+        let random_number: u8 = rng.gen_range(0..127);
+        println!("Random number is: {}", random_number);
+        if (random_number == system_value) {
+            count_time += 1;
+        } 
+    }
+    println!("You win {} times", count_time);
 }
