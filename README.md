@@ -147,6 +147,7 @@ fn main() {
 ```
 
 ### Random number
+##### let secret_number = rand::random::<u32>() % 100 + 1;
 ```
 use rand::Rng;
 fn main() {
@@ -222,3 +223,5 @@ fn main() {
 }
 
 ```
+
+### With one tiny final tweak, we will finish the guessing game. 

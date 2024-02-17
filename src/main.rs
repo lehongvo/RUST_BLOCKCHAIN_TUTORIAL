@@ -147,24 +147,61 @@
 //     print!("You data is: {}", string_value)
 // }
 
-use std::io;
-fn read_number(prompt: &str) -> u128 {
-    println!("Please enter {}", prompt);
-    let mut value: String = String::new();
-    io::stdin().read_line(&mut value).expect("Error reading");
-    let value_input: u128 = match value.trim().parse() {
-        Ok(value) => value,
-        Err(_) => {
-            println!("Invalis number");
-            std::process::exit(1)
-        }
-    };
-    return value_input;
-}
+// use std::io;
+// fn read_number(prompt: &str) -> u128 {
+//     println!("Please enter {}", prompt);
+//     let mut value: String = String::new();
+//     io::stdin().read_line(&mut value).expect("Error reading");
+//     let value_input: u128 = match value.trim().parse() {
+//         Ok(value) => value,
+//         Err(_) => {
+//             println!("Invalis number");
+//             std::process::exit(1)
+//         }
+//     };
+//     return value_input;
+// }
 
-fn main() {
-    let value_one: u128 = read_number("Value 1");
-    let value_two: u128 = read_number("Value 2");
-    let total_value: u128 = value_one + value_two;
-    println!("total_value is: {}", total_value);
+// fn main() {
+//     let value_one: u128 = read_number("Value 1");
+//     let value_two: u128 = read_number("Value 2");
+//     let total_value: u128 = value_one + value_two;
+//     println!("total_value is: {}", total_value);
+// }
+
+use rand::Rng;
+use std::{cmp::Ordering, io};
+fn main() {;
+    loop {
+        println!("===========>PLease input your value<===========");
+        let max_size: u8 = 100;
+        let mut rng = rand::thread_rng();
+        let secret_number: u8 = rng.gen_range(1..=max_size);
+    
+        let mut guess = String::new();
+        io::stdin().read_line(&mut guess).expect("Error reading");
+        let guess: u8 = match guess.trim().parse() {
+            Ok(value) => {
+                if (value > max_size) {
+                    continue;
+                } else {
+                    value
+                }
+            }
+            Err(_) => {
+                println!("Invalid guess. Please input correct number");
+                continue;
+            }
+        };
+        println!("You guessed: {}", guess);
+        println!("You secrer number: {}", secret_number);
+        match guess.cmp(&secret_number) {
+            Ordering::Less => println!("Less then secret number"),
+            Ordering::Greater => println!("Great then secret number"),
+            Ordering::Equal => {
+                println!("You win!");
+                break;
+            }
+        }
+    }
 }
