@@ -102,36 +102,69 @@
 //     println!("You guessed: {}", you_number)
 // }
 
-use rand::Rng;
+// use rand::Rng;
+// use std::io;
+// fn main() {
+//     println!("PLease guess my number!!!\n");
+//     println!("PLease input your number from(0 to u8)");
+
+//     // Input number
+//     let mut system_input: String = String::new();
+//     io::stdin()
+//         .read_line(&mut system_input)
+//         .expect("Error reading");
+
+//     // Read number
+//     let system_value: u8 = match system_input.trim().parse() {
+//         Ok(value) => value,
+//         Err(_) => {
+//             println!("Đầu vào không hợp lệ. Vui lòng nhập kiểu dữ u8");
+//             return;
+//         }
+//     };
+
+//     // Ramdon number
+//     let mut count_time: u128 = 0;
+//     for n in 0..=1000000 {
+//         let mut rng = rand::thread_rng();
+//         let random_number: u8 = rng.gen_range(0..127);
+//         println!("Random number is: {}", random_number);
+//         if (random_number == system_value) {
+//             count_time += 1;
+//         }
+//     }
+//     println!("You win {} times", count_time);
+// }
+
+// use std::io;
+// fn main() {
+//     println!("Guess your number!!");
+//     println!("Please input you number");
+//     let mut string_value = String::new();
+//     io::stdin()
+//         .read_line(&mut string_value)
+//         .expect("Invalid input");
+//     print!("You data is: {}", string_value)
+// }
+
 use std::io;
-fn main() {
-    println!("PLease guess my number!!!\n");
-    println!("PLease input your number from(0 to u8)");
-
-    // Input number
-    let mut system_input: String = String::new();
-    io::stdin()
-        .read_line(&mut system_input)
-        .expect("Error reading");
-
-    // Read number
-    let system_value: u8 = match system_input.trim().parse() {
+fn read_number(prompt: &str) -> u128 {
+    println!("Please enter {}", prompt);
+    let mut value: String = String::new();
+    io::stdin().read_line(&mut value).expect("Error reading");
+    let value_input: u128 = match value.trim().parse() {
         Ok(value) => value,
         Err(_) => {
-            println!("Đầu vào không hợp lệ. Vui lòng nhập kiểu dữ u8");
-            return;
+            println!("Invalis number");
+            std::process::exit(1)
         }
     };
+    return value_input;
+}
 
-    // Ramdon number
-    let mut count_time: u128 = 0;
-    for n in 0..=1000000 {
-        let mut rng = rand::thread_rng();
-        let random_number: u8 = rng.gen_range(0..127);
-        println!("Random number is: {}", random_number);
-        if (random_number == system_value) {
-            count_time += 1;
-        } 
-    }
-    println!("You win {} times", count_time);
+fn main() {
+    let value_one: u128 = read_number("Value 1");
+    let value_two: u128 = read_number("Value 2");
+    let total_value: u128 = value_one + value_two;
+    println!("total_value is: {}", total_value);
 }

@@ -196,3 +196,29 @@ fn main() {
     println!("You win {} times", count_time);
 }
 ```
+
+### Total number cal functions
+```
+use std::io;
+fn read_number(prompt: &str) -> u128 {
+    println!("Please enter {}", prompt);
+    let mut value: String = String::new();
+    io::stdin().read_line(&mut value).expect("Error reading");
+    let value_input: u128 = match value.trim().parse() {
+        Ok(value) => value,
+        Err(_) => {
+            println!("Invalis number");
+            std::process::exit(1)
+        }
+    };
+    return value_input;
+}
+
+fn main() {
+    let value_one: u128 = read_number("Value 1");
+    let value_two: u128 = read_number("Value 2");
+    let total_value: u128 = value_one + value_two;
+    println!("total_value is: {}", total_value);
+}
+
+```
