@@ -842,12 +842,127 @@
 //     println!("Value is {}", reference_to_nothing);
 // }
 
-fn get_data() -> String {
-    let value_string = String::from("Ok, pro!!!");
-    return value_string;
+// fn get_data() -> String {
+//     let value_string = String::from("Ok, pro!!!");
+//     return value_string;
+// }
+
+// fn main() {
+//     let data = get_data();
+//     println!("Value: {}", data);
+// }
+
+// fn get_data(s: &String) -> &[u8] {
+//     let bytes = s.as_bytes();
+//     return bytes;
+    
+// }
+
+// fn main() {
+//     let data: String = String::from("hello");
+//     let value: &[u8] = get_data(&data);
+//     println!("Data is {:?}", value);
+// }
+
+// fn main() {
+//     let bytes: Vec<u8> = vec![b'H', b'e', b'l', b'l', b'o', b' ', b'W', b'o', b'r', b'l', b'd'];
+
+//     for(index, &value) in bytes.iter().enumerate() {
+//         println!("Value {value}, index {index}")
+//     }
+// }
+
+// fn main() {
+//     let mut string_value = String::from("Helloworld");
+//     let data = get_data(&string_value);
+//     println!("Value is {}", data);
+// }
+
+// fn get_data(string_value: &String) -> usize {
+//     for (index, value) in string_value.chars().enumerate() {
+//         if(value == ' ') {
+//             return index
+//         }
+//     }
+//     return string_value.len()
+// }
+
+// fn get_data(string_value: &String) -> usize {
+//     let bytes = string_value.as_bytes();
+//     for (index, & value) in bytes.iter().enumerate() {
+//         if(value == b' ') {
+//             return index
+//         }
+//     }
+//     return bytes.len();
+// }
+
+// fn main () {
+//     let mut string_value = String::from("OKello world!");
+//     let data = first_word(&string_value);
+//     println!("Value is {}", data);
+//     string_value.clear();
+//     // string_value.push_str("Hello");
+//     println!("Value is after clear {}", string_value);
+// }
+
+// fn main() {
+//     let mut string_value = String::from("Okello world!");
+//     let data = first_word(&string_value);
+//     println!("Value is {}", data);
+//     string_value.clear();
+// }
+
+
+// fn first_word(string_value: &String) -> &str {
+//     for(index, value) in string_value.chars().enumerate() {
+//         if value == ' ' {
+//             return &string_value[0..index]
+//         }
+//     }
+//     return &string_value;
+// }
+
+// fn main() {
+//     let value_string = String::from("hello world");
+
+//     let hello = &value_string[0..5];
+//     let world = &value_string[6..11];
+//     let all = &value_string[..];
+//     let mul = &value_string[0..2];
+//     println!("Value: {}", hello);
+//     println!("Value: {}", world);
+//     println!("Value: {}", all);
+//     println!("Value: {}", mul);
+// }
+
+// fn main() {
+//     let value_string = String::from("hello world");
+//     let lenth_value = value_string.len();
+//     let value1 = &value_string[6..];
+//     let value2 = &value_string[6..lenth_value];
+//     println!("Value: {}", value1);
+//     println!("Value: {}", value2);
+// }
+
+fn first_word(s: &String) -> &str {
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[0..i];
+        }
+    }
+    return &s[..]
 }
 
 fn main() {
-    let data = get_data();
-    println!("Value: {}", data);
+    let my_string = String::from("Hello world");
+    // let work = first_word(&my_string[0..6]);
+    // let work = first_word(&my_string[..]);
+    let work = first_word(&my_string);
+    println!("Value is {}", work);
+
+    let my_string_literal = "hello world";
+    let word = first_word(&my_string_literal[0..6]); /// ==> Error come
 }
