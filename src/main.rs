@@ -756,13 +756,98 @@
 //     println!("Value is s3 {s3}");
 // }
 
-fn main() {
-    let s1: String = String::from("HELLO");
-    let (s2, value) = get_length(s1);
-    println!("Value is {s2} and length is {value}");
+// fn main() {
+//     let s1: String = String::from("HELLO");
+//     let (s2, value) = get_length(s1);
+//     println!("Value is {s2} and length is {value}");
+// }
+
+// fn get_length(s1: String) -> (String, usize) {
+//     let length_data = s1.len();
+//     return (s1, length_data)
+// }
+
+// fn calculate_length(s: &String) -> usize {
+//     return s.len();
+// }
+
+// fn main() {
+//     let s1: String = String::from("Hello");
+//     let len = calculate_length(&s1);
+//     println!("Value this {}", len);
+// }
+
+// fn change_something(some_string: &mut String) {
+//     some_string.push_str("Index");
+// }
+
+// fn main() {
+//     let mut data: String = String::from("Omg!");
+//     println!("Hello data {data}");
+// }
+
+// fn main() {
+//     let mut s: String = String::from("hello");
+
+//     let r1 = &s;
+//     let r2 = &s;
+
+//     println!("{}, {}", r1, r2);
+// }
+
+// fn main() {
+//     let mut value_string = String::from("hello");
+//     {
+//         let value1 = &mut value_string;
+//         println!("Value string {}", value1);
+//     }
+//     let value2 = &mut value_string;
+//     println!("Value string {}", value2);
+// }
+
+// fn main() {
+//     let mut s = String::from("Hello world");
+//     let r1 = &s; // no problem
+//     let r2 = &s; // no problem
+//     println!("Value 1: {}\n Value 2: {}", r1, r2);
+
+//     let value3 =  &mut s;
+//     println!("Value 3: {}", value3);
+// }
+
+// fn main() {
+//     let mut s = String::from("hello");
+
+//     let r1 = &mut s;
+//     let r2 = &mut s;
+
+//     println!("{}", r2);
+// }
+// fn dangle() -> &'static str {
+//     let s: &'static str = "Hello";
+//     return s
+// }
+
+// fn main() {
+//     println!("Value: {}", dangle());
+// }
+
+// fn dangle() -> &'static str {
+//     let s: &'static str= ("OK Bro");
+//     return s;
+// }
+
+// fn main() {
+//     let reference_to_nothing = dangle();
+//     println!("Value is {}", reference_to_nothing);
+// }
+
+fn get_data() -> String {
+    let value_string = String::from("Ok, pro!!!");
+    return value_string;
 }
 
-fn get_length(s1: String) -> (String, usize) {
-    let length_data = s1.len();
-    return (s1, length_data)
+fn main() {
+    let data = get_data();
+    println!("Value: {}", data);
 }
