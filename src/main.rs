@@ -347,7 +347,7 @@ fn main() {
     let index_value: usize = match value_input.trim().parse() {
         Ok(value) => {
             if value > length_array {
-                println!("Invalid number array");
+                println!("Please input from 0 to {length_array}");
                 return;
             }
             value // Use 'value' instead of 'return value'
