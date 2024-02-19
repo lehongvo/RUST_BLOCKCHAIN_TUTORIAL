@@ -404,7 +404,7 @@
 
 // fn print_labeled_measurement(value: i32, unit_label: char) {
 //     println!("The print_labeled_measurement is {value}{unit_label}");
-// } 
+// }
 // fn main() {
 //     print_labeled_measurement(5, 'h');
 // }
@@ -445,8 +445,189 @@
 
 // hello World
 
-fn main() {
-    // I'm feeling lucky number
-    let lucky_number = 7; 
+// fn main() {
+//     // I'm feeling lucky number
+//     let lucky_number = 7;
 
+// }
+
+// fn main() {
+//     let number = 3;
+//     if(number < 5) {
+//         println!("Condition was true");
+//     } else {
+//         println!("Condition was false")
+//     }
+// }
+
+// fn main() {
+//     let number = 0;
+//     if number != 0 {
+//         println!("Number was something other than zero");
+//     } else {
+//         println!("Great number");
+//     }
+// }
+
+// fn main() {
+//     let number = 5;
+//     if number % 4 == 0 {
+//         println!("Number is divisible by 4");
+//     } else {
+//         if number % 3 == 0 {
+//             println!("Number is divisible by 3");
+//         } else {
+//             if number % 2 == 0 {
+//                 println!("Number is divisible by 2");
+//             } else {
+//                 println!("number is not divisible by 4, 3, or 2");
+//             }
+//         }
+//     }
+// }
+
+// fn main() {
+//     let number = 4;
+//     match number {
+//         n if n % 4 == 0 => println!("Number is divisible by 4 {}", n),
+//         m if m % 3 == 0 => println!("Number is divisible by 3"),
+//         m if m % 2 == 0 => println!("Number is divisible by 2"),
+//         _ => println!("Number is not divisible by 4, 3, or 2"),
+//     }
+// }
+
+// fn main() {
+//     let condition = false;
+//     let number = if condition { 1 } else { 0 };
+//     println!("Number: {}", number);
+// }
+
+// fn main() {
+//     let condition = false;
+//     let number = if condition { 1 } else { "322".parse().expect("Not a number") };
+//     println!("Number: {}", number);
+// }
+
+// fn main() {
+//     let mut string_data: String = String::new();
+//     let mut counter: i128 = 0;
+//     loop {
+//         let secret_number = rand::random::<i32>();
+//         counter += 1;
+//         if(secret_number == 10) {
+//             println!("---Number: {}", secret_number);
+//             println!("---counter: {}", counter);
+//             break;
+//         }
+//     }
+// }
+
+// use tokio::time::{sleep, Duration};
+
+// async fn async_task() {
+//     let mut count: u128 = 0;
+
+//     'count_up: loop {
+//         println!("------{}", count);
+
+//         if count == 100_000_000_000 {
+//             break 'count_up;
+//         }
+
+//         count += 1;
+
+//         // Asynchronously sleep for 1 second
+//         sleep(Duration::from_secs(2)).await;
+//     }
+// }
+
+// #[tokio::main]
+// async fn main() {
+//     async_task().await;
+// }
+
+// fn main() {
+//     let mut number = 1000;
+//     while number > -11111110 {
+//         println!("Value number is: {}", number);
+//         number -= 1;
+//     }
+//     print!("DONE");
+// }
+
+// fn main() {
+//     let array = [10, 20, 30, 40, 50];
+//     let mut index = 0;
+//     while index <= array.len() {
+//         println!("Value is {}", array[index]);
+//         index += 1;
+//     }
+// ;}
+
+// fn main() {
+//     let array = [10, 20, 30, 40, 50];
+//     for element in array.iter() {
+//         println!("Element is: {}", element);
+//     }
+// }
+
+// fn fahrenheit_to_celsius(fahrenheit: f64) -> f64 {
+//     let data: f64 = (fahrenheit - 32 as f64) * 5 as f64 / 9 as f64;
+//     return data;
+// }
+
+// fn celsius_to_fahrenheit(celsius: f64) -> f64 {
+//     let data: f64 = celsius * 9.0 / 5.0  + 32.0;
+//     return data;
+// }
+
+// fn main() {
+//     println!("Data is: {}", fahrenheit_to_celsius(1000.0));
+//     println!("Data is: {}", celsius_to_fahrenheit(537.0));
+// }
+
+// fn fibonacci_recursive(number: u128) -> u128 {
+//     if number == 0 {
+//         return 0;
+//     };
+
+//     if number == 1 {
+//         return 1;
+//     }
+
+//     println!("Hello {}", number);
+
+//     return fibonacci_recursive(number - 1) + fibonacci_recursive(number - 2);
+// }
+
+// fn main() {
+//     let result = fibonacci_recursive(10);
+//     println!("The Fibonacci number is: {}", result);
+// }
+fn main() {
+    let gifts = [
+        "A partridge in a pear tree",
+        "Two turtle doves",
+        "Three French hens",
+        "Four calling birds",
+        "Five golden rings",
+        "Six geese a-laying",
+        "Seven swans a-swimming",
+        "Eight maids a-milking",
+        "Nine ladies dancing",
+        "Ten lords a-leaping",
+        "Eleven pipers piping",
+        "Twelve drummers drumming",
+    ];
+
+    println!("On the first day of Christmas, my true love gave to me:");
+    for day in 1..=12 {
+        println!("{}{}", day, if day == 1 { "st" } else { "th" });
+
+        for gift_day in (1..=day).rev() {
+            println!("{}{}", if gift_day == 1 && day != 1 { "And " } else { "" }, gifts[gift_day - 1]);
+        }
+
+        println!(); // Empty line between days
+    }
 }
