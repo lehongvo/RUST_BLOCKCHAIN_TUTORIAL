@@ -433,12 +433,20 @@
 //     println!("Value is {value}");
 // }
 
-fn plue(x: i128, y: i128) -> i128 {
-    let total_value: i128 = x + y;
-    return total_value;
-}
+// fn plus(x: i128, y: i128) -> i128 {
+//     let total_value: i128 = x + y;
+//     return total_value;
+// }
+
+// fn main() {
+//     let value: i128 = plus(10, 20);
+//     println!(" Data is {value}");
+// }
+
+// hello World
 
 fn main() {
-    let value: i128 = plue(10, 20);
-    println!(" Data is {value}");
+    // I'm feeling lucky number
+    let lucky_number = 7; 
+
 }
