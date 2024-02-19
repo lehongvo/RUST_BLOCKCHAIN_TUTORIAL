@@ -333,30 +333,112 @@
 //     println!("first_value {}", first_value);
 // }
 
-use std::io;
+// use std::io;
+// fn main() {
+//     let a = [1, 2, 3, 4, 5, 6, 7, 8];
+//     let length_array = a.len();
+
+//     let mut value_input: String = String::new();
+
+//     println!("PLease in put you number");
+//     io::stdin()
+//         .read_line(&mut value_input)
+//         .expect("Error reading");
+//     let index_value: usize = match value_input.trim().parse() {
+//         Ok(value) => {
+//             if value > length_array {
+//                 println!("Please input from 0 to {length_array}");
+//                 return;
+//             }
+//             value // Use 'value' instead of 'return value'
+//         }
+//         Err(_) => {
+//             println!("Error parsing data");
+//             std::process::exit(1);
+//         }
+//     };
+
+//     println!("Your number is {}", a[index_value]);
+// }
+
+// fn add_number(value1: u8, value2: u8) -> u8 {
+//     let value: u8 = value1 + value2;
+//     return value;
+// }
+// fn main() {
+//     let value = add_number(3, 4);
+//     println!("data: {}", value);
+// }
+
+// fn great_name(name: &str) -> &str {
+//     let current_str: &str = &(name.to_string() + "is best name");
+//     return current_str;
+// }
+
+// fn great_name(name: &str) -> String {
+//     let current_str: String = name.to_string() + "is the best name";
+//     return current_str;
+// }
+
+// fn main() {
+//     let name: String= String::from("vali");
+//     let string_value: String= great_name(&name);
+//     println!("Value is: {}", string_value)
+// }
+
+// fn another_function() {
+//     println!("Another function");
+// }
+
+// fn main() {
+//     println!("Hello world");
+//     another_function();
+// }
+
+// fn another_function(value: u8) {
+//     println!("Another function says: {}", value);
+// }
+// fn main() {
+//     another_function(4);
+// }
+
+// fn print_labeled_measurement(value: i32, unit_label: char) {
+//     println!("The print_labeled_measurement is {value}{unit_label}");
+// } 
+// fn main() {
+//     print_labeled_measurement(5, 'h');
+// }
+
+// fn main() {
+//     let y = {
+//         let x: i32 = 10;
+//         x + 1
+//     };
+//     println!("Value of y is {y}")
+// }
+
+// fn return_data(value: i128) -> i128 {
+//     let max_value: i8 = i8::MAX;
+//     let min_value: i8 = i8::MIN;
+//     if value < 10 || value > 1000 {
+//         println!("Invalis valus {value}, please input value from {min_value} to {max_value} ");
+//         return 0;
+//     }
+//     let value: i128 = value % 100;
+//     return value;
+// }
+
+// fn main() {
+//     let value: i128 = return_data(1200);
+//     println!("Value is {value}");
+// }
+
+fn plue(x: i128, y: i128) -> i128 {
+    let total_value: i128 = x + y;
+    return total_value;
+}
+
 fn main() {
-    let a = [1, 2, 3, 4, 5, 6, 7, 8];
-    let length_array = a.len();
-
-    let mut value_input: String = String::new();
-
-    println!("PLease in put you number");
-    io::stdin()
-        .read_line(&mut value_input)
-        .expect("Error reading");
-    let index_value: usize = match value_input.trim().parse() {
-        Ok(value) => {
-            if value > length_array {
-                println!("Please input from 0 to {length_array}");
-                return;
-            }
-            value // Use 'value' instead of 'return value'
-        }
-        Err(_) => {
-            println!("Error parsing data");
-            std::process::exit(1);
-        }
-    };
-
-    println!("Your number is {}", a[index_value]);
+    let value: i128 = plue(10, 20);
+    println!(" Data is {value}");
 }
