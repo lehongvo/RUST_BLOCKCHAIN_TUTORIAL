@@ -263,4 +263,6 @@ fn main() {;
     }
 }
 ```
-// 3.1: Variables and Mutability
+
+### Tuple data type in rust
+#### In rust, please set {:?} for print something with tuple data

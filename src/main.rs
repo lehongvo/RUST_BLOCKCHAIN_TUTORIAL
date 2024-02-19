@@ -247,9 +247,47 @@
 //     println!("bool_data {}", bool_data);
 // }
 
-fn main() {
-    let char_value: char = 'A';
-    let mut string_value: String = String::from("hello world");
-    string_value = string_value + &char_value.to_string();
-    println!("string_value {}", string_value);
+// fn main() {
+//     let char_value: char = 'A';
+//     let mut string_value: String = String::from("hello world");
+//     string_value = string_value + &char_value.to_string();
+//     println!("string_value {}", string_value);
+// }
+
+// fn main() {
+//     let tup: (i32, f64, u8) = (500, 6.4, 1);
+// }
+// Tuple data type in rust
+// fn main () {
+//     println!("HELLO");
+//     let myData: (i32, f64) = (32, 12.12);
+//     let data1 = myData.0;
+//     let data2 = myData.1;
+//     println!("Data 1 : {}, Data 2 : {}", data1, data2);
+// }
+
+// fn main () {
+//     let mut x: u8;
+//     let mut y: f64;
+//     let my_tuple: (u8, u8) = (12, 123);
+//     (x, y) = (my_tuple.0, my_tuple.1 as f64);
+//     println!("Value x is {}, Value y is {}", x, y)
+// }
+
+fn return_function(value1: u128, value2: u128) -> (u8, bool) {
+    let mut is_bool: bool = false;
+    let current_value: u8 = 0;
+    if value1 > value2 {
+        is_bool = true;
+        let current_value: u8 = (value1 - value2) as u8;
+        return(current_value, is_bool)
+    }
+    return(value1 as u8, is_bool)
+
+}
+
+fn main () {
+    let val1: u128 = 10;
+    let val2: u128 = 9;
+    println!("The value is {:?}", return_function(val1, val2));
 }
