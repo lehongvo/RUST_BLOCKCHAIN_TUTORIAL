@@ -676,23 +676,93 @@
 //     println!("{}", result);
 // }
 
-fn longest<'a>(data1: &'a str, data2: &'a str) -> &'a str {
-    if data1.len() > data2.len() {
-        data1
-    } else {
-        data2
-    }
-}
+// fn longest<'a>(data1: &'a str, data2: &'a str) -> &'a str {
+//     if data1.len() > data2.len() {
+//         data1
+//     } else {
+//         data2
+//     }
+// }
+
+// fn main() {
+//     let str1 = String::from("Hello world1!!!");
+//     let str2 = String::from("Hello world2");
+
+//     let result;
+//     {
+//         let r1 = &str1;
+//         let r2 = &str2;
+//         result = longest(r1, r2);
+//     }
+//     println!("result = {}", result);
+// }
+
+// fn main () {
+//     let s1 = String::from("hello");
+//     let s2 = s1.clone();
+
+//     println!("{}, world!", s1);
+// }
+
+
+// fn main () {
+//     let mut x = 5;
+//     x = 7;
+//     println!("{}, world!", x);
+// }
+
+// fn give_ownership() -> String {
+//     let some_string: String = String::from("hello");
+//     return some_string;
+// }
+
+// fn take_and_gives_back(c: Stirng) -> String {
+//     return   let s1 = String::from("hello");
+//     let s2 = s1;
+
+//     println!("{}, world!", s1);;
+// }
+
+// fn takes_ownership(some_string: String) {
+//     println!("Values are {some_string}");
+// }
+
+// fn make_copy(some_integer: i32) {
+//     println!("values are {some_integer}");
+// } 
+
+// fn main() {
+//     let value_string = String::from("hello");
+//     takes_ownership(value_string);
+//     println!("Values are {value_string}");
+//     // let x = 5;
+//     // make_copy(x);
+//     // println!("Value is {x}");
+// }
+
+// fn give_ownership() -> String {
+//     let some_string: String = String::from("hello");
+//     return some_string;
+// }
+
+// fn take_and_gives_back(value: String) -> String {
+//     return value
+// }
+
+// fn main() {
+//     let s1 = give_ownership();
+//     let s2 = String::from("hello");
+//     let s3 = take_and_gives_back(s2);
+//     println!("Value is s3 {s3}");
+// }
 
 fn main() {
-    let str1 = String::from("Hello world1!!!");
-    let str2 = String::from("Hello world2");
+    let s1: String = String::from("HELLO");
+    let (s2, value) = get_length(s1);
+    println!("Value is {s2} and length is {value}");
+}
 
-    let result;
-    {
-        let r1 = &str1;
-        let r2 = &str2;
-        result = longest(str1, r2);
-    }
-    println!("result = {}", result);
+fn get_length(s1: String) -> (String, usize) {
+    let length_data = s1.len();
+    return (s1, length_data)
 }
