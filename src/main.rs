@@ -231,8 +231,25 @@
 //     println!("The value of x under scope is {}", x);
 // }
 
+// fn main() {
+//     let spaces = "   ";
+//     let spaces = spaces.len();
+//     println!("Error: {}", spaces)
+// }
+// fn main() {
+//     let number_string: f64 = "7232232.12".parse().expect("Not a number");
+//     println!("number_string: {}", number_string);
+// }
+
+// fn main () {
+//     let mut bool_data: bool = false;
+//     bool_data = true;
+//     println!("bool_data {}", bool_data);
+// }
+
 fn main() {
-    let spaces = "   ";
-    let spaces = spaces.len();
-    println!("Error: {}", spaces)
+    let char_value: char = 'A';
+    let mut string_value: String = String::from("hello world");
+    string_value = string_value + &char_value.to_string();
+    println!("string_value {}", string_value);
 }
