@@ -219,7 +219,7 @@
 //     println!("THREE_HOURS_IN_SECONDS: {THREE_HOURS_IN_SECONDS}")
 // }
 
-//Shadowing 
+//Shadowing
 // fn main() {
 //     let x = 5;
 //     let x = x + 1;
@@ -274,20 +274,89 @@
 //     println!("Value x is {}, Value y is {}", x, y)
 // }
 
-fn return_function(value1: u128, value2: u128) -> (u8, bool) {
-    let mut is_bool: bool = false;
-    let current_value: u8 = 0;
-    if value1 > value2 {
-        is_bool = true;
-        let current_value: u8 = (value1 - value2) as u8;
-        return(current_value, is_bool)
-    }
-    return(value1 as u8, is_bool)
+// fn return_function(value1: u128, value2: u128) -> (u8, bool) {
+//     let mut is_bool: bool = false;
+//     let current_value: u8 = 0;
+//     if value1 > value2 {
+//         is_bool = true;
+//         let current_value: u8 = (value1 - value2) as u8;
+//         return(current_value, is_bool)
+//     }
+//     return(value1 as u8, is_bool)
 
-}
+// }
 
-fn main () {
-    let val1: u128 = 10;
-    let val2: u128 = 9;
-    println!("The value is {:?}", return_function(val1, val2));
+// fn main () {
+//     let val1: u128 = 10;
+//     let val2: u128 = 9;
+//     println!("The value is {:?}", return_function(val1, val2));
+// }
+
+// fn main() {
+//     let tuple_value: (i32, f64, u8) = (500, 6.4, 1);
+//     println!("tuple_value, {:?}", tuple_value);
+// }
+
+// fn main () {
+//     let tup: (i32, i32, bool, bool, f64, &str) = (200, 12, true, false, 3.444, "HELLO");
+//     let (x, y, z, g, h, e) = tup;
+//     println!("Value is {}", e);
+// }
+
+// fn main () {
+//     let x: (i32, f64, u8) = (400, 8.1, 1);
+//     let five_hundred = x.0;
+//     let value_point_one = x.1;
+//     let one = x.2;
+//     println!("data: {}", value_point_one);
+// }
+
+// fn main() {
+//     let months: [&str; 12]= ["January", "February", "March", "April", "May", "June", "July",
+//               "August", "September", "October", "November", "December"];
+//     let tup: (i8, [&str; 12]) = (1, months);
+//     println!("Value is {:?}", tup);
+// }
+
+// fn main() {
+//     let a: [i8; 10] = [1, 2, 3, 4, 5, 6, 7, 8, 9 ,120];
+//     print!("New array is {:?}", a);
+// }
+// fn main() {
+//     let a = [3,4];
+//     println!("New array using default type is {:?}", a);
+// }
+
+// fn main() {
+//     let a = [1,2,3,4,5,6,7,8];
+//     let first_value = a[3];
+//     println!("first_value {}", first_value);
+// }
+
+use std::io;
+fn main() {
+    let a = [1, 2, 3, 4, 5, 6, 7, 8];
+    let length_array = a.len();
+
+    let mut value_input: String = String::new();
+
+    println!("PLease in put you number");
+    io::stdin()
+        .read_line(&mut value_input)
+        .expect("Error reading");
+    let index_value: usize = match value_input.trim().parse() {
+        Ok(value) => {
+            if value > length_array {
+                println!("Invalid number array");
+                return;
+            }
+            value // Use 'value' instead of 'return value'
+        }
+        Err(_) => {
+            println!("Error parsing data");
+            std::process::exit(1);
+        }
+    };
+
+    println!("Your number is {}", a[index_value]);
 }
