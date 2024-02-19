@@ -604,30 +604,95 @@
 //     let result = fibonacci_recursive(10);
 //     println!("The Fibonacci number is: {}", result);
 // }
-fn main() {
-    let gifts = [
-        "A partridge in a pear tree",
-        "Two turtle doves",
-        "Three French hens",
-        "Four calling birds",
-        "Five golden rings",
-        "Six geese a-laying",
-        "Seven swans a-swimming",
-        "Eight maids a-milking",
-        "Nine ladies dancing",
-        "Ten lords a-leaping",
-        "Eleven pipers piping",
-        "Twelve drummers drumming",
-    ];
+// fn main() {
+//     let gifts = [
+//         "A partridge in a pear tree",
+//         "Two turtle doves",
+//         "Three French hens",
+//         "Four calling birds",
+//         "Five golden rings",
+//         "Six geese a-laying",
+//         "Seven swans a-swimming",
+//         "Eight maids a-milking",
+//         "Nine ladies dancing",
+//         "Ten lords a-leaping",
+//         "Eleven pipers piping",
+//         "Twelve drummers drumming",
+//     ];
 
-    println!("On the first day of Christmas, my true love gave to me:");
-    for day in 1..=12 {
-        println!("{}{}", day, if day == 1 { "st" } else { "th" });
+//     println!("On the first day of Christmas, my true love gave to me:");
+//     for day in 1..=12 {
+//         println!("{}{}", day, if day == 1 { "st" } else { "th" });
 
-        for gift_day in (1..=day).rev() {
-            println!("{}{}", if gift_day == 1 && day != 1 { "And " } else { "" }, gifts[gift_day - 1]);
-        }
+//         for gift_day in (1..=day).rev() {
+//             println!("{}{}", if gift_day == 1 && day != 1 { "And " } else { "" }, gifts[gift_day - 1]);
+//         }
 
-        println!(); // Empty line between days
+//         println!(); // Empty line between days
+//     }
+// }
+
+// fn main() {
+//     let s1: String = String::from("Hello");
+//     let s2: String = s1.clone();
+//     println!("Value is s1{}", s1);
+//     println!("Value is s2{}", s2);
+// }
+
+// fn print_length(value: &String) {
+//     println!("Length: {}", value.len());
+// }
+
+// fn main() {
+//     let value: String = String::from("sisss");
+//     print_length(&value);
+//     println!("Value is {value}");
+// }
+
+// fn longest<'a, 'b>(s1: &'a str, s2: &'b str) -> &'a str where 'b:'a {
+//     // Có thể chọn thời gian sống là `'a` hoặc `'b`
+//     if s1.len() > s2.len() {
+//         s1
+//     } else {
+//         s2
+//     }
+// }
+
+
+// fn longest<'a, 'b>(s1: &'a str, s2: &'b str) -> &'a str {
+//     if s1.len() > s2.len() {
+//         s1
+//     } else {
+//         s2
+//     }
+// }
+// fn main() {
+//     let s1 = String::from("HELLO");
+//     let result;
+//     {
+//         let s2 = String::from("HELLO");
+//         result = longest(&s1, &s2);
+//     }
+//     println!("{}", result);
+// }
+
+fn longest<'a>(data1: &'a str, data2: &'a str) -> &'a str {
+    if data1.len() > data2.len() {
+        data1
+    } else {
+        data2
     }
+}
+
+fn main() {
+    let str1 = String::from("Hello world1!!!");
+    let str2 = String::from("Hello world2");
+
+    let result;
+    {
+        let r1 = &str1;
+        let r2 = &str2;
+        result = longest(str1, r2);
+    }
+    println!("result = {}", result);
 }
