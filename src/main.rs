@@ -1323,4 +1323,74 @@
 //     new_applycation.finish();
 //     new_applycation.print_data();
 
+// 
+
+// struct User {
+//     active: bool,
+//     username: String,
+//     email: String,
+//     sign_in_count: u64
 // }
+
+// impl User {
+//     fn build_user(username: String, email: String) -> User {
+//         let user = User {
+//             active: false,
+//             username: username,
+//             email: email,
+//             sign_in_count: 1
+//         };
+//         return user;
+//     }
+//     fn update_user(&mut self, username: String, email: String) {
+//         self.username = username;
+//         self.email = email;
+//     }
+
+//     fn print_data(&self) {
+//         println!("--------------------------------");
+//         println!("Active user: {}", self.active);
+//         println!("username user: {}", self.username);
+//         println!("email user: {}", self.email);
+//         println!("sign_in_count user: {}", self.sign_in_count);
+//         println!("--------------------------------");
+//     }
+// }
+
+// fn main() {
+//     let mut user = User::build_user(
+//         String::from("LE HONG VO"),
+//         String::from("volehong@gmail.com")
+//     );
+//     user.print_data();
+
+//     user.update_user(
+//         String::from("Mai thi van anh"),
+//         String::from("maithivananh@gmail.com")
+//     );
+//     user.print_data();
+// }
+
+// struct User<'a> {
+//     active: bool,
+//     username: &'a str,
+//     email: &'a str,
+//     sign_in_count: u64
+// }
+
+// fn main() {
+//     let user1 = User {
+//         active: true,
+//         username: "someusername123",
+//         email: "someone@example.com",
+//         sign_in_count: 1,
+//     };
+//     println!("Value is: {}", user1.username);
+// }
+#[derive(Debug)]
+struct AlwaysEqual;
+
+fn main() {
+    let subject = AlwaysEqual;
+    println!("Subject: {:?}", subject)
+}
