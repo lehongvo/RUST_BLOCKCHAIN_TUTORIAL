@@ -1142,29 +1142,57 @@
 //     print!("Book: {}", info);
 // }
 
-struct Rectangle {
-    width: u32,
-    height: u32
+// struct Rectangle {
+//     width: u32,
+//     height: u32
+// }
+
+// impl Rectangle {
+//     fn area(&self) -> u32 {
+//         let area: u32 = self.width * self.height;
+//         return area;
+//     }
+
+//     fn resize(&mut self, _width: u32, _height: u32) {
+//         self.width = _width;
+//         self.height = _height;
+//     }
+// }
+
+// fn main () {
+//     let mut rectangle = Rectangle{
+//         width: 10,
+//         height: 10,
+//     };
+//     println!("Rectangle is {}", rectangle.area());
+//     rectangle.resize(20, 209);
+//     println!("Rectangle after resize {}", rectangle.area());
+// }
+
+/// This Rust program defines a struct RGBColor with three u8 fields representing red, green, and blue
+/// values, and then prints out these values for a specific color.
+// struct RGBColor (u8, u8, u8);
+// fn main() {
+//     let red_color = RGBColor(100, 100, 100);
+//     let red_value = red_color.0;
+//     let green_value = red_color.1;
+//     let blue_value = red_color.2;
+//     println!("Red {}, Green {}, Blue {}", red_value, green_value, blue_value);
+// }
+struct Car {
+    brand: String,
+    model: String,
+    year: u16,
 }
 
-impl Rectangle {
-    fn area(&self) -> u32 {
-        let area: u32 = self.width * self.height;
-        return area;
-    }
-
-    fn resize(&mut self, _width: u32, _height: u32) {
-        self.width = _width;
-        self.height = _height;
-    }
-}
-
-fn main () {
-    let mut rectangle = Rectangle{
-        width: 10,
-        height: 10,
+fn main() {
+    let my_car =Car {
+        brand: String::from("Toyota"),
+        model: String::from("Camry"),
+        year: 2018
     };
-    println!("Rectangle is {}", rectangle.area());
-    rectangle.resize(20, 209);
-    println!("Rectangle after resize {}", rectangle.area());
+    let car_brand = my_car.brand;
+    let car_model = my_car.model;
+    let car_year = my_car.year;
+    println!("Brand: {}, Model: {}, Year: {}", car_brand, car_model, car_year);
 }
