@@ -1394,3 +1394,64 @@
 //     let subject = AlwaysEqual;
 //     println!("Subject: {:?}", subject)
 // }
+
+// fn area(width: u32, height: u32) -> u32{
+//     let value = width * height;
+//     return value;
+// }
+
+// fn main() {
+//     let width1 = 30;
+//     let height1 = 50;
+//     println!(
+//         "The area of the rectangle is {} square pixels.",
+//         area(width1, height1)
+//     );
+// }
+
+// fn area(dimensions: (u32, u32)) -> u32 {
+//     let dimensions: u32 = dimensions.0 * dimensions.1;
+//     return dimensions;
+// }
+
+// fn main() {
+//     let rect1: (u32, u32)= (30, 50);
+//     let area: u32 = area(rect1);
+//     println!("Value {}", area);
+// }
+// trait Geometry {
+//     fn area(&self) -> u32;
+//     fn get_info(&self);
+// }
+// #[derive(Debug)]
+// struct Rectangle {
+//     width: u32,
+//     height: u32 
+// }
+
+// impl Geometry for Rectangle {
+//     fn area(&self) -> u32 {
+//         let area = self.width * self.height;
+//         return area
+//     }
+
+//     fn get_info(&self) {
+//         println!("Height {}, width is {}", self.height, self.width);
+//     }
+// }
+
+// fn main () {
+//     let rectangle = Rectangle {
+//         width: 10,
+//         height: 30
+//     };
+//     rectangle.get_info();
+//     let area: u32 = rectangle.area();
+//     println!("Area is {}", area);
+// }
+
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
