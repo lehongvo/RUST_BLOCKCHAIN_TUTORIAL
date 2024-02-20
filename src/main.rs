@@ -1240,27 +1240,87 @@
 //     title: String,
 //     author: String
 // }
-#[derive(Debug)]
-enum State {
-    Pending,
-    Started,
-    Stopped,
-    Finish
-}
+// #[derive(Debug)]
+// enum State {
+//     Pending,
+//     Started,
+//     Stopped,
+//     Finish
+// }
 
-fn main() {
-    // Create instances of the enum
-    let state1 = State::Pending;
-    let state2 = State::Started;
-    let state3 = State::Stopped;
-    let state4 = State::Finish;
+// fn main() {
+//     // Create instances of the enum
+//     let state1 = State::Pending;
+//     let state2 = State::Started;
+//     let state3 = State::Stopped;
+//     let state4 = State::Finish;
 
-    // Print the enum instances using println!
-    println!("State 1: {:?}", state1);
-    println!("State 2: {:?}", state2);
-    println!("State 3: {:?}", state3);
-    println!("State 4: {:?}", state4);
+//     // Print the enum instances using println!
+//     println!("State 1: {:?}", state1);
+//     println!("State 2: {:?}", state2);
+//     println!("State 3: {:?}", state3);
+//     println!("State 4: {:?}", state4);
 
-    // Alternatively, you can use dbg! macro for debugging
-    dbg!(state1, state2, state3, state4);
-}
+//     // Alternatively, you can use dbg! macro for debugging
+//     dbg!(state1, state2, state3, state4);
+// }
+
+// #[derive(Debug)]
+// enum State {
+//     Pending,
+//     Started,
+//     Stopped,
+//     Finish
+// }
+
+// struct Applycation {
+//     name: String,
+//     state: State
+// }
+
+// impl Applycation {
+//     fn new(name: &String) -> Applycation {
+//         let new_applycation = Applycation{
+//             name: name.to_string(),
+//             state: State::Pending
+//         };
+//         return new_applycation;
+//     }
+    
+//     fn start(&mut self) {
+//         self.state = State::Started;
+//         println!("Applycation is started {}", self.name);
+//     }
+
+//     fn stop(&mut self) {
+//         self.state = State::Stopped;
+//         println!("Applycation is stopped {}", self.name);
+//     }
+
+//     fn finish(&mut self) {
+//         self.state = State::Finish;
+//         println!("Applycation is finish {}", self.name);
+//     }
+
+//     fn print_data(&self) {
+//         println!("Name is {}, state is {:?} \n", self.name, self.state)
+//     }
+// }
+
+// fn main() {
+//     let mut new_applycation = Applycation{
+//         name: "VoLeHong".to_string(),
+//         state: State::Pending
+//     };
+//     new_applycation.print_data();
+
+//     new_applycation.start();
+//     new_applycation.print_data();
+
+//     new_applycation.stop();
+//     new_applycation.print_data();
+
+//     new_applycation.finish();
+//     new_applycation.print_data();
+
+// }
