@@ -996,96 +996,146 @@
 //     println!("Value is {}", current_data)
 // }
 
-trait Shape {
-    fn area(&self) -> u32;
-    fn perimeter(&self) -> u32;
+// trait Shape {
+//     fn area(&self) -> u32;
+//     fn perimeter(&self) -> u32;
+// }
+
+// struct Rectangle {
+//     width: u32,
+//     height: u32
+// }
+
+// struct Circle {
+//     radius: f64
+// }
+
+// struct Square{
+//     side: f64
+// }
+
+// impl Shape for Rectangle {
+//     fn area(&self) -> u32 {
+//         let area = self.width * self.height;
+//         return area;
+//     }
+//     fn perimeter(&self) -> u32 {
+//         let perimeter: u32 = (self.width + self.height) * 2;
+//         return perimeter;
+//     }
+// }
+
+// impl Shape for Circle {
+//     fn area(&self) -> u32 {
+//         let value = 3.14159 * self.radius * self.radius;
+//         let area = value as u32;
+//         return area;
+//     }
+//     fn perimeter(&self) -> u32 {
+//         let value: f64 = 3.14159 * self.radius * 2.0;
+//         let perimeter: u32 = value as u32;
+//         return perimeter;
+//     }
+// }
+
+// impl Shape for Square {
+//     fn area(&self) -> u32 {
+//         let value = self.side * self.side;
+//         let area = value as u32;
+//         return area;
+//     }
+//     fn perimeter(&self) -> u32 {
+//         let value: f64 = self.side * 4.0;
+//         let perimeter: u32 = value as u32;
+//         return perimeter;
+//     }
+// }
+
+// fn main() {
+//     let rectangle: Rectangle = Rectangle {
+//         width: 10,
+//         height: 20
+//     };
+//     let circle: Circle = Circle{
+//         radius: 12.3
+//     };
+//     let square: Square = Square{
+//         side: 100.0
+//     };
+
+//     let area_rectangle: u32 = rectangle.area();
+//     let perimeter_rectangle: u32 = rectangle.perimeter();
+//     println!("area_rectangle {}", area_rectangle);
+//     println!("perimeter_rectangle {}", perimeter_rectangle);
+
+
+//     let area_circle : u32= circle.area();
+//     let perimeter_circle : u32= circle.perimeter();
+//     println!("area_circle {}", area_circle);
+//     println!("perimeter_circle {}", perimeter_circle);
+
+//     let area_square : u32= square.area();
+//     let perimeter_square : u32= square.perimeter();
+//     println!("area_square {}", area_square);
+//     println!("perimeter_square {}", perimeter_square);
+
+//     if area_square < area_rectangle {
+//         println!("Rectangle has a larger area than Square.");
+//         return 
+//     }
+//     if area_square > area_rectangle {
+//         println!("Square has a larger area than Rectangle.");
+//         return 
+//     }
+//     println!("Rectangle and Square have the same area.");
+// }
+
+// struct Point {
+//     x :f64,
+//     y: f64
+// }
+
+// fn main() {
+//     let origin: Point = Point{x: 12.1, y: 10.2};
+//     let point: Point = Point{x: 12.12, y: 10.21};
+//     println!("Origin : {},{}", origin.x, origin.y);
+//     println!("Point : {},{}", point.x, point.y);
+// }
+
+// struct Rectangle {
+//     width: u32,
+//     height: u32
+// }
+
+// fn main() {
+//     let width = 10;
+//     let height = 20;
+//     let rect = Rectangle { width, height };
+//     println!("Value width is {}, Value height is {}", rect.width, rect.height);
+// }
+
+trait Bool {
+    fn get_info(&self) -> String;
+}
+struct Math {
+    title: String,
+    author: String,
+    pages: u32
 }
 
-struct Rectangle {
-    width: u32,
-    height: u32
-}
-
-struct Circle {
-    radius: f64
-}
-
-struct Square{
-    side: f64
-}
-
-impl Shape for Rectangle {
-    fn area(&self) -> u32 {
-        let area = self.width * self.height;
-        return area;
-    }
-    fn perimeter(&self) -> u32 {
-        let perimeter: u32 = (self.width + self.height) * 2;
-        return perimeter;
-    }
-}
-
-impl Shape for Circle {
-    fn area(&self) -> u32 {
-        let value = 3.14159 * self.radius * self.radius;
-        let area = value as u32;
-        return area;
-    }
-    fn perimeter(&self) -> u32 {
-        let value: f64 = 3.14159 * self.radius * 2.0;
-        let perimeter: u32 = value as u32;
-        return perimeter;
-    }
-}
-
-impl Shape for Square {
-    fn area(&self) -> u32 {
-        let value = self.side * self.side;
-        let area = value as u32;
-        return area;
-    }
-    fn perimeter(&self) -> u32 {
-        let value: f64 = self.side * 4.0;
-        let perimeter: u32 = value as u32;
-        return perimeter;
+impl Bool for Math {
+    fn get_info(&self) -> String {
+        let info: String = format!("Title {}, author {}, pages {}", self.title, self.author, self.pages);
+        return info
     }
 }
 
 fn main() {
-    let rectangle: Rectangle = Rectangle {
-        width: 10,
-        height: 20
+    let math_book = Math {
+        title: "Math book".to_string(),
+        author: "Vo Le".to_string(),
+        pages: 200
     };
-    let circle: Circle = Circle{
-        radius: 12.3
-    };
-    let square: Square = Square{
-        side: 100.0
-    };
-
-    let area_rectangle: u32 = rectangle.area();
-    let perimeter_rectangle: u32 = rectangle.perimeter();
-    println!("area_rectangle {}", area_rectangle);
-    println!("perimeter_rectangle {}", perimeter_rectangle);
-
-
-    let area_circle : u32= circle.area();
-    let perimeter_circle : u32= circle.perimeter();
-    println!("area_circle {}", area_circle);
-    println!("perimeter_circle {}", perimeter_circle);
-
-    let area_square : u32= square.area();
-    let perimeter_square : u32= square.perimeter();
-    println!("area_square {}", area_square);
-    println!("perimeter_square {}", perimeter_square);
-
-    if area_square < area_rectangle {
-        println!("Rectangle has a larger area than Square.");
-        return 
-    }
-    if area_square > area_rectangle {
-        println!("Square has a larger area than Rectangle.");
-        return 
-    }
-    println!("Rectangle and Square have the same area.");
+    let info = math_book.get_info();
+    print!("Book: {}", info);
 }
