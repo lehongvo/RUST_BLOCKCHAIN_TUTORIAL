@@ -998,6 +998,7 @@
 
 trait Shape {
     fn area(&self) -> u32;
+    fn perimeter(&self) -> u32;
 }
 
 struct Rectangle {
@@ -1014,6 +1015,10 @@ impl Shape for Rectangle {
         let area = self.width * self.height;
         return area;
     }
+    fn perimeter(&self) -> u32 {
+        let perimeter: u32 = (self.width + self.height) * 2;
+        return perimeter;
+    }
 }
 
 impl Shape for Circle {
@@ -1021,6 +1026,11 @@ impl Shape for Circle {
         let value = 3.14159 * self.radius * self.radius;
         let area = value as u32;
         return area;
+    }
+    fn perimeter(&self) -> u32 {
+        let value: f64 = 3.14159 * self.radius * 2.0;
+        let perimeter: u32 = value as u32;
+        return perimeter;
     }
 }
 
@@ -1034,9 +1044,15 @@ fn main() {
         radius: 12.3
     };
 
-    let areaRectangle: u32 = rectangle.area();
-    let areaCircle : u32= circle.area();
+    let area_rectangle: u32 = rectangle.area();
+    let perimeter_rectangle: u32 = rectangle.perimeter();
+    println!("area_rectangle {}", area_rectangle);
+    println!("perimeter_rectangle {}", perimeter_rectangle);
 
-    println!("areaRectangle {}", areaRectangle);
-    println!("areaCircle {}", areaCircle);
+
+    let area_circle : u32= circle.area();
+    let perimeter_circle : u32= circle.perimeter();
+
+    println!("area_circle {}", area_circle);
+    println!("perimeter_circle {}", perimeter_circle);
 }
