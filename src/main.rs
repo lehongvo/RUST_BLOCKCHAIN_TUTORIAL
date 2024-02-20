@@ -658,7 +658,6 @@
 //     }
 // }
 
-
 // fn longest<'a, 'b>(s1: &'a str, s2: &'b str) -> &'a str {
 //     if s1.len() > s2.len() {
 //         s1
@@ -704,7 +703,6 @@
 //     println!("{}, world!", s1);
 // }
 
-
 // fn main () {
 //     let mut x = 5;
 //     x = 7;
@@ -729,7 +727,7 @@
 
 // fn make_copy(some_integer: i32) {
 //     println!("values are {some_integer}");
-// } 
+// }
 
 // fn main() {
 //     let value_string = String::from("hello");
@@ -855,7 +853,7 @@
 // fn get_data(s: &String) -> &[u8] {
 //     let bytes = s.as_bytes();
 //     return bytes;
-    
+
 // }
 
 // fn main() {
@@ -912,7 +910,6 @@
 //     println!("Value is {}", data);
 //     string_value.clear();
 // }
-
 
 // fn first_word(string_value: &String) -> &str {
 //     for(index, value) in string_value.chars().enumerate() {
@@ -1068,7 +1065,6 @@
 //     println!("area_rectangle {}", area_rectangle);
 //     println!("perimeter_rectangle {}", perimeter_rectangle);
 
-
 //     let area_circle : u32= circle.area();
 //     let perimeter_circle : u32= circle.perimeter();
 //     println!("area_circle {}", area_circle);
@@ -1081,11 +1077,11 @@
 
 //     if area_square < area_rectangle {
 //         println!("Rectangle has a larger area than Square.");
-//         return 
+//         return
 //     }
 //     if area_square > area_rectangle {
 //         println!("Square has a larger area than Rectangle.");
-//         return 
+//         return
 //     }
 //     println!("Rectangle and Square have the same area.");
 // }
@@ -1286,7 +1282,7 @@
 //         };
 //         return new_applycation;
 //     }
-    
+
 //     fn start(&mut self) {
 //         self.state = State::Started;
 //         println!("Applycation is started {}", self.name);
@@ -1323,7 +1319,7 @@
 //     new_applycation.finish();
 //     new_applycation.print_data();
 
-// 
+//
 
 // struct User {
 //     active: bool,
@@ -1426,7 +1422,7 @@
 // #[derive(Debug)]
 // struct Rectangle {
 //     width: u32,
-//     height: u32 
+//     height: u32
 // }
 
 // impl Geometry for Rectangle {
@@ -1450,8 +1446,76 @@
 //     println!("Area is {}", area);
 // }
 
+// #[derive(Debug)]
+// struct Rectangle {
+//     width: u32,
+//     height: u32,
+// }
+
+// #[derive(Debug)]
+// struct Rectangle {
+//     width: u32,
+//     height: u32,
+// }
+
+// impl Rectangle {
+//     fn area(&self) -> u32 {
+//         let area = self.width * self.height;
+//         return area;
+//     }
+//     fn check_width_height(&self) -> bool {
+//         let status = self.height > 0 && self.height > 0;
+//         return status;
+//     }
+// }
+
+// fn main() {
+//     let rect1 = Rectangle {
+//         width: 30,
+//         height: 100
+//     };
+//     let status: bool = rect1.check_width_height();
+//     if !status {
+//         println!("Invalid data");
+//         return;
+//     } else {
+//         println!("Status is ok!!!");
+//     }
+//     let area = rect1.area();
+//     println!("Area is {}", area);
+// }
+
 #[derive(Debug)]
 struct Rectangle {
     width: u32,
     height: u32,
+}
+
+impl Rectangle {
+    fn area(&self) -> u32 {
+        let area = self.width * self.height;
+        return area;
+    }
+
+    fn can_hold(&self, rectangle: &Rectangle) -> bool {
+        let status = self.area() >= rectangle.area();
+        return status;
+    }
+}
+
+fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+    let rect2 = Rectangle {
+        width: 10,
+        height: 40,
+    };
+    let rect3 = Rectangle {
+        width: 60,
+        height: 45,
+    };
+    println!("Rect1 can hold Rect2 is ok: {}", rect1.can_hold(&rect2));
+    println!("Rect2 can hold Rect3 is ok: {}", rect2.can_hold(&rect3));
 }
