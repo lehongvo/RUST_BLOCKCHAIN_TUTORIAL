@@ -1114,28 +1114,57 @@
 //     println!("Value width is {}, Value height is {}", rect.width, rect.height);
 // }
 
-trait Bool {
-    fn get_info(&self) -> String;
-}
-struct Math {
-    title: String,
-    author: String,
-    pages: u32
+/// The above Rust code defines a trait `Bool` and a struct `Math` implementing the trait, with a main
+/// function that creates a `Math` instance and prints its information.
+// trait Bool {
+//     fn get_info(&self) -> String;
+// }
+// struct Math {
+//     title: String,
+//     author: String,
+//     pages: u32
+// }
+
+// impl Bool for Math {
+//     fn get_info(&self) -> String {
+//         let info: String = format!("Title {}, author {}, pages {}", self.title, self.author, self.pages);
+//         return info
+//     }
+// }
+
+// fn main() {
+//     let math_book = Math {
+//         title: "Math book".to_string(),
+//         author: "Vo Le".to_string(),
+//         pages: 200
+//     };
+//     let info: String = math_book.get_info();
+//     print!("Book: {}", info);
+// }
+
+struct Rectangle {
+    width: u32,
+    height: u32
 }
 
-impl Bool for Math {
-    fn get_info(&self) -> String {
-        let info: String = format!("Title {}, author {}, pages {}", self.title, self.author, self.pages);
-        return info
+impl Rectangle {
+    fn area(&self) -> u32 {
+        let area: u32 = self.width * self.height;
+        return area;
+    }
+
+    fn resize(&mut self, _width: u32, _height: u32) {
+        self.width = _width;
+        self.height = _height;
     }
 }
 
-fn main() {
-    let math_book = Math {
-        title: "Math book".to_string(),
-        author: "Vo Le".to_string(),
-        pages: 200
+fn main () {
+    let mut rectangle = Rectangle{
+        width: 10,
+        height: 10,
     };
-    let info: String = math_book.get_info();
-    print!("Book: {}", info);
+    println!("Rectangle is {}", rectangle.area());
+    rectangle.resize(20, 209);
+    println!("Rectangle after resize {}", rectangle.area());
 }
