@@ -957,12 +957,5 @@ fn first_word(s: &String) -> &str {
 }
 
 fn main() {
-    let my_string = String::from("Hello world");
-    // let work = first_word(&my_string[0..6]);
-    // let work = first_word(&my_string[..]);
-    let work = first_word(&my_string);
-    println!("Value is {}", work);
-
-    let my_string_literal = "hello world";
-    let word = first_word(&my_string_literal[0..6]); /// ==> Error come
+ 
 }
