@@ -1387,10 +1387,10 @@
 //     };
 //     println!("Value is: {}", user1.username);
 // }
-#[derive(Debug)]
-struct AlwaysEqual;
+// #[derive(Debug)]
+// struct AlwaysEqual;
 
-fn main() {
-    let subject = AlwaysEqual;
-    println!("Subject: {:?}", subject)
-}
+// fn main() {
+//     let subject = AlwaysEqual;
+//     println!("Subject: {:?}", subject)
+// }
