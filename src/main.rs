@@ -1010,6 +1010,10 @@ struct Circle {
     radius: f64
 }
 
+struct Square{
+    side: f64
+}
+
 impl Shape for Rectangle {
     fn area(&self) -> u32 {
         let area = self.width * self.height;
@@ -1034,14 +1038,29 @@ impl Shape for Circle {
     }
 }
 
+impl Shape for Square {
+    fn area(&self) -> u32 {
+        let value = self.side * self.side;
+        let area = value as u32;
+        return area;
+    }
+    fn perimeter(&self) -> u32 {
+        let value: f64 = self.side * 4.0;
+        let perimeter: u32 = value as u32;
+        return perimeter;
+    }
+}
+
 fn main() {
     let rectangle: Rectangle = Rectangle {
         width: 10,
         height: 20
     };
-
     let circle: Circle = Circle{
         radius: 12.3
+    };
+    let square: Square = Square{
+        side: 100.0
     };
 
     let area_rectangle: u32 = rectangle.area();
@@ -1052,7 +1071,21 @@ fn main() {
 
     let area_circle : u32= circle.area();
     let perimeter_circle : u32= circle.perimeter();
-
     println!("area_circle {}", area_circle);
     println!("perimeter_circle {}", perimeter_circle);
+
+    let area_square : u32= square.area();
+    let perimeter_square : u32= square.perimeter();
+    println!("area_square {}", area_square);
+    println!("perimeter_square {}", perimeter_square);
+
+    if area_square < area_rectangle {
+        println!("Rectangle has a larger area than Square.");
+        return 
+    }
+    if area_square > area_rectangle {
+        println!("Square has a larger area than Rectangle.");
+        return 
+    }
+    println!("Rectangle and Square have the same area.");
 }
