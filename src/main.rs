@@ -945,17 +945,53 @@
 //     println!("Value: {}", value2);
 // }
 
-fn first_word(s: &String) -> &str {
-    let bytes = s.as_bytes();
+// fn first_word(s: &String) -> &str {
+//     let bytes = s.as_bytes();
 
-    for (i, &item) in bytes.iter().enumerate() {
-        if item == b' ' {
-            return &s[0..i];
-        }
+//     for (i, &item) in bytes.iter().enumerate() {
+//         if item == b' ' {
+//             return &s[0..i];
+//         }
+//     }
+//     return &s[..]
+// }
+
+// struct Person {
+//     name: String,
+//     age: u8,
+// }
+
+// fn create_person(_name: String, _age: u8) -> Person {
+//     let person: Person = Person {
+//         name: _name,
+//         age: _age,
+//     };
+//     return person;
+// }
+
+// fn main() {
+//     let name: String = String::from("Le Vo");
+//     let age: u8 = 10;
+//     let person: Person = create_person(name, age);
+//     println!("Person name is {}, age is {}", person.name, person.age);
+// }
+
+struct Rectangle {
+    width: u32,
+    height: u32
+}
+
+impl Rectangle {
+    fn area(&self) -> u32 {
+        return self.width * self.height;
     }
-    return &s[..]
 }
 
 fn main() {
- 
+    let rectangle_value = Rectangle{
+        width: 10,
+        height: 20
+    };
+    let current_data = rectangle_value.area();
+    println!("Value is {}", current_data)
 }
