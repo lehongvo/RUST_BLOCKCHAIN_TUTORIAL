@@ -1136,6 +1136,6 @@ fn main() {
         author: "Vo Le".to_string(),
         pages: 200
     };
-    let info = math_book.get_info();
+    let info: String = math_book.get_info();
     print!("Book: {}", info);
 }
