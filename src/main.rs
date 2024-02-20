@@ -1179,20 +1179,59 @@
 //     let blue_value = red_color.2;
 //     println!("Red {}, Green {}, Blue {}", red_value, green_value, blue_value);
 // }
-struct Car {
-    brand: String,
-    model: String,
-    year: u16,
+
+/// The above code is written in Rust and defines a struct `Car` with fields `brand` (String), `model`
+/// (String), and `year` (u16). However, the struct is commented out, so it is not being used in the
+/// code.
+// struct Car {
+//     brand: String,
+//     model: String,
+//     year: u16,
+// }
+
+// fn main() {
+//     let my_car =Car {
+//         brand: String::from("Toyota"),
+//         model: String::from("Camry"),
+//         year: 2018
+//     };
+//     let car_brand = my_car.brand;
+//     let car_model = my_car.model;
+//     let car_year = my_car.year;
+//     println!("Brand: {}, Model: {}, Year: {}", car_brand, car_model, car_year);
+// }
+
+struct Address {
+    street: String,
+    city: String,
+    country: String
+}
+
+struct Person {
+    name: String,
+    age: u32,
+    address: Address
 }
 
 fn main() {
-    let my_car =Car {
-        brand: String::from("Toyota"),
-        model: String::from("Camry"),
-        year: 2018
+    let my_address = Address {
+        street: String::from("Ha Noi"),
+        city: String::from("Viet Nam"),
+        country: String::from("Nghe an")
     };
-    let car_brand = my_car.brand;
-    let car_model = my_car.model;
-    let car_year = my_car.year;
-    println!("Brand: {}, Model: {}, Year: {}", car_brand, car_model, car_year);
+
+    let person: Person = Person {
+        name: String::from("Le Vo"),
+        age: 31,
+        address: my_address
+    };
+
+    let person_name = person.name;
+    let person_age = person.age;
+    let person_street = person.address.street;
+    let person_city = person.address.city;
+    let person_country = person.address.country;
+
+    println!("Name is {person_name}, age {person_age}");
+    println!("Street is {person_street}, city {person_city}, country {person_country}");
 }
