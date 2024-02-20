@@ -1201,37 +1201,66 @@
 //     println!("Brand: {}, Model: {}, Year: {}", car_brand, car_model, car_year);
 // }
 
-struct Address {
-    street: String,
-    city: String,
-    country: String
-}
+// struct Address {
+//     street: String,
+//     city: String,
+//     country: String
+// }
 
-struct Person {
-    name: String,
-    age: u32,
-    address: Address
+// struct Person {
+//     name: String,
+//     age: u32,
+//     address: Address
+// }
+
+// fn main() {
+//     let my_address = Address {
+//         street: String::from("Ha Noi"),
+//         city: String::from("Viet Nam"),
+//         country: String::from("Nghe an")
+//     };
+
+//     let person: Person = Person {
+//         name: String::from("Le Vo"),
+//         age: 31,
+//         address: my_address
+//     };
+
+//     let person_name = person.name;
+//     let person_age = person.age;
+//     let person_street = person.address.street;
+//     let person_city = person.address.city;
+//     let person_country = person.address.country;
+
+//     println!("Name is {person_name}, age {person_age}");
+//     println!("Street is {person_street}, city {person_city}, country {person_country}");
+// }
+
+// struct Book {
+//     title: String,
+//     author: String
+// }
+#[derive(Debug)]
+enum State {
+    Pending,
+    Started,
+    Stopped,
+    Finish
 }
 
 fn main() {
-    let my_address = Address {
-        street: String::from("Ha Noi"),
-        city: String::from("Viet Nam"),
-        country: String::from("Nghe an")
-    };
+    // Create instances of the enum
+    let state1 = State::Pending;
+    let state2 = State::Started;
+    let state3 = State::Stopped;
+    let state4 = State::Finish;
 
-    let person: Person = Person {
-        name: String::from("Le Vo"),
-        age: 31,
-        address: my_address
-    };
+    // Print the enum instances using println!
+    println!("State 1: {:?}", state1);
+    println!("State 2: {:?}", state2);
+    println!("State 3: {:?}", state3);
+    println!("State 4: {:?}", state4);
 
-    let person_name = person.name;
-    let person_age = person.age;
-    let person_street = person.address.street;
-    let person_city = person.address.city;
-    let person_country = person.address.country;
-
-    println!("Name is {person_name}, age {person_age}");
-    println!("Street is {person_street}, city {person_city}, country {person_country}");
+    // Alternatively, you can use dbg! macro for debugging
+    dbg!(state1, state2, state3, state4);
 }
