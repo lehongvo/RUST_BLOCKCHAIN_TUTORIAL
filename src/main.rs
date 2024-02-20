@@ -976,22 +976,67 @@
 //     println!("Person name is {}, age is {}", person.name, person.age);
 // }
 
+// struct Rectangle {
+//     width: u32,
+//     height: u32
+// }
+
+// impl Rectangle {
+//     fn area(&self) -> u32 {
+//         return self.width * self.height;
+//     }
+// }
+
+// fn main() {
+//     let rectangle_value = Rectangle{
+//         width: 10,
+//         height: 20
+//     };
+//     let current_data = rectangle_value.area();
+//     println!("Value is {}", current_data)
+// }
+
+trait Shape {
+    fn area(&self) -> u32;
+}
+
 struct Rectangle {
     width: u32,
     height: u32
 }
 
-impl Rectangle {
+struct Circle {
+    radius: f64
+}
+
+impl Shape for Rectangle {
     fn area(&self) -> u32 {
-        return self.width * self.height;
+        let area = self.width * self.height;
+        return area;
+    }
+}
+
+impl Shape for Circle {
+    fn area(&self) -> u32 {
+        let value = 3.14159 * self.radius * self.radius;
+        let area = value as u32;
+        return area;
     }
 }
 
 fn main() {
-    let rectangle_value = Rectangle{
+    let rectangle: Rectangle = Rectangle {
         width: 10,
         height: 20
     };
-    let current_data = rectangle_value.area();
-    println!("Value is {}", current_data)
+
+    let circle: Circle = Circle{
+        radius: 12.3
+    };
+
+    let areaRectangle: u32 = rectangle.area();
+    let areaCircle : u32= circle.area();
+
+    println!("areaRectangle {}", areaRectangle);
+    println!("areaCircle {}", areaCircle);
 }
