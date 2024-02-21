@@ -1691,7 +1691,6 @@
 //     address: String
 // }
 
-
 // fn main() {
 //     let home = IpAddr {
 //         kind: IpAddrKind::V4,
@@ -1717,7 +1716,6 @@
 //     let home = IpAddress::V4(String::from("127::0::12"));
 //     println!("Home is {:?}", home);
 // }
-
 
 // #[derive(Debug)]
 // enum IpAddress {
@@ -1808,15 +1806,65 @@
 //     println!("Value is: {}", value)
 // }
 
+// #[derive(Debug)]
+// enum Option<T> {
+//     None,
+//     Some(T)
+// }
+
+// fn main() {
+//     let config_max = Some(3u8);
+//     let mut current_number: u8= 3;
+//     if let Some(max) = config_max {
+//         current_number = max;
+//     }
+
+//     if config_max == Some(current_number) {
+//         println!("Ok");
+//     } else {
+//         println!("Not ok");
+//     }
+// }
+
 #[derive(Debug)]
-enum Option<T> {
-    None,
-    Some(T)
+enum UsState {
+    Alabame,
+    Alaska(String),
 }
 
-fn plus_one(x: Option<i32>) -> Option<i32> {
-    match x {
-        None => None,
-        Some(i) => Some(i + 1),
-    }
+#[derive(Debug)]
+enum Coin {
+    Penny,
+    Sickel,
+    Dime,
+    Quarter(UsState),
 }
+
+// fn main() {
+//     let mut count = 0;
+
+//     let coin: Coin = Coin::Quarter(UsState::Alaska(String::from("umballa")));
+//     let coin1: Coin = Coin::Penny;
+
+//     match coin1 {
+//         Coin::Quarter(state) => {
+//             println!("Value is {:?}", state)
+//         }
+//         _ => count += 1,
+//     }
+
+//     println!("Value is: {}", count)
+// }
+
+// fn main() {
+//     let mut count = 0;
+//     let coin1: Coin = Coin::Quarter(UsState::Alaska(String::from("umballa")));
+//     let coin2: Coin = Coin::Penny;
+
+//     if let Coin::Quarter(state) =  coin2 {
+//         println!("Value is: {:?}", state);
+//     } else {
+//         count += 1;
+//     }
+//     println!("Count is {}", count);
+// }
