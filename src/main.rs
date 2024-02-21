@@ -1643,38 +1643,133 @@
 //     }
 // }
 
-enum Operation {
-    Add,
-    Subtract,
-    Multiple,
-    Divide,
-}
+// enum Operation {
+//     Add,
+//     Subtract,
+//     Multiple,
+//     Divide,
+// }
 
-fn perform_operation(operation: Operation, x: f64, y: f64) -> Result<f64, String> {
-    match operation {
-        Operation::Add => Ok(x + y),
-        Operation::Subtract => {
-            if x >= y {
-                Ok( x - y)
-            } else {
-                Err(String::from("Invalid value"))
-            }
-        },
-        Operation::Multiple => Ok(x * y),
-        Operation::Divide => {
-            if y != 0.0 {
-                return  Ok(x / y)
-            } else {
-                Err(String::from("Cannot divide by zero"))
-            }
-        }
-    }
+// fn perform_operation(operation: Operation, x: f64, y: f64) -> Result<f64, String> {
+//     match operation {
+//         Operation::Add => Ok(x + y),
+//         Operation::Subtract => {
+//             if x >= y {
+//                 Ok( x - y)
+//             } else {
+//                 Err(String::from("Invalid value"))
+//             }
+//         },
+//         Operation::Multiple => Ok(x * y),
+//         Operation::Divide => {
+//             if y != 0.0 {
+//                 return  Ok(x / y)
+//             } else {
+//                 Err(String::from("Cannot divide by zero"))
+//             }
+//         }
+//     }
+// }
+
+// fn main() {
+//     let result = perform_operation(Operation::Add, 5.0, 10.0);
+//     println!("{:?}", result);
+//     let result1 = perform_operation(Operation::Subtract, 5.0, 10.0);
+//     println!("{:?}", result1);
+
+// }
+
+// #[derive(Debug)]
+// enum IpAddrKind {
+//     V4,
+//     V6
+// }
+
+// #[derive(Debug)]
+// struct IpAddr {
+//     kind: IpAddrKind,
+//     address: String
+// }
+
+
+// fn main() {
+//     let home = IpAddr {
+//         kind: IpAddrKind::V4,
+//         address: String::from("127.0.01")
+//     };
+
+//     let loopbook = IpAddr {
+//         kind: IpAddrKind::V6,
+//         address: String::from("127.0.0.2")
+//     };
+
+//     println!("home is {:?}", home);
+//     println!("loopbook is {:?}", loopbook);
+// }
+
+// #[derive(Debug)]
+// enum IpAddress {
+//     V4(String),
+//     V6(String)
+// }
+
+// fn main() {
+//     let home = IpAddress::V4(String::from("127::0::12"));
+//     println!("Home is {:?}", home);
+// }
+
+
+// #[derive(Debug)]
+// enum IpAddress {
+//     V4(u8, u8, u8, u8),
+//     V6(String)
+// }
+
+// fn main() {
+//     let home = IpAddress::V4(127, 0, 0, 1);
+//     let backhome = IpAddress::V6(String::from("1::0::91"));
+//     println!("Home is {:?}", home);
+//     println!("Backhome is {:?}", backhome);
+// }
+
+// use std::fmt;
+
+// enum Option<T> {
+//     None,
+//     Some(T),
+// }
+
+// impl<T: fmt::Display> fmt::Display for Option<T> {
+//     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+//         match self {
+//             Option::None => write!(f, "None"),
+//             Option::Some(value) => write!(f, "Some({})", value),
+//         }
+//     }
+// }
+
+// fn main() {
+//     let some_number = Option::Some(5);
+//     let some_char = Option::Some('e');
+//     let absent_number = Option::None;
+
+//     println!("Some number is {}", some_number);
+//     println!("Some character is {}", some_char);
+//     println!("Absent number is {}", absent_number);
+// }
+
+enum Option<T> {
+    None,
+    Some(T),
+    Err(String)
 }
 
 fn main() {
-    let result = perform_operation(Operation::Add, 5.0, 10.0);
-    println!("{:?}", result);
-    let result1 = perform_operation(Operation::Subtract, 5.0, 10.0);
-    println!("{:?}", result1);
-
+    let x: i8 = 5;
+    let y = Some(5);
+    let sum = match y {
+        Some(value) => x + value,
+        None => x,
+    };
+    println!("Sum= {}", sum);
 }
