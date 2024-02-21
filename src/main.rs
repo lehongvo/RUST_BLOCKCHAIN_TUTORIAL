@@ -1758,18 +1758,65 @@
 //     println!("Absent number is {}", absent_number);
 // }
 
+// enum Option<T> {
+//     None,
+//     Some(T),
+//     Err(String)
+// }
+
+// fn main() {
+//     let x: i8 = 5;
+//     let y = Some(5);
+//     let sum = match y {
+//         Some(value) => x + value,
+//         None => x,
+//     };
+//     println!("Sum= {}", sum);
+// }
+// #[derive(Debug)]
+// enum UsState {
+//     Alabame,
+//     Alaska(String)
+// }
+
+// #[derive(Debug)]
+// enum Coin {
+//     Penny,
+//     Sickel,
+//     Dime,
+//     Quarter(UsState)
+// }
+
+// fn value_in_cents(coin: Coin) -> u8 {
+//     match coin {
+//         Coin::Penny => {
+//             println!("Lucky penny!");
+//             1
+//         }
+//         Coin::Sickel => 5,
+//         Coin::Dime => 6,
+//         Coin::Quarter(state) => {
+//             println!("State quarter from {:?}!", state);
+//             23
+//         },
+//     }
+// }
+
+// fn main() {
+//     let coin: Coin = Coin::Quarter(UsState::Alaska(String::from("Nono, Cool")));
+//     let value = value_in_cents(coin);
+//     println!("Value is: {}", value)
+// }
+
+#[derive(Debug)]
 enum Option<T> {
     None,
-    Some(T),
-    Err(String)
+    Some(T)
 }
 
-fn main() {
-    let x: i8 = 5;
-    let y = Some(5);
-    let sum = match y {
-        Some(value) => x + value,
-        None => x,
-    };
-    println!("Sum= {}", sum);
+fn plus_one(x: Option<i32>) -> Option<i32> {
+    match x {
+        None => None,
+        Some(i) => Some(i + 1),
+    }
 }
