@@ -1485,37 +1485,196 @@
 //     println!("Area is {}", area);
 // }
 
-#[derive(Debug)]
-struct Rectangle {
-    width: u32,
-    height: u32,
+// #[derive(Debug)]
+// struct Rectangle {
+//     width: u32,
+//     height: u32,
+// }
+
+// impl Rectangle {
+//     fn area(&self) -> u32 {
+//         let area = self.width * self.height;
+//         return area;
+//     }
+
+//     fn can_hold(&self, rectangle: &Rectangle) -> bool {
+//         let status = self.area() >= rectangle.area();
+//         return status;
+//     }
+// }
+
+// fn main() {
+//     let rect1 = Rectangle {
+//         width: 30,
+//         height: 50,
+//     };
+//     let rect2 = Rectangle {
+//         width: 10,
+//         height: 40,
+//     };
+//     let rect3 = Rectangle {
+//         width: 60,
+//         height: 45,
+//     };
+//     println!("Rect1 can hold Rect2 is ok: {}", rect1.can_hold(&rect2));
+//     println!("Rect2 can hold Rect3 is ok: {}", rect2.can_hold(&rect3));
+// }
+
+// #[derive(Debug)]
+// enum Season {
+//     Spring,
+//     Summer,
+//     Autumn,
+//     Winter
+// }
+
+// fn main() {
+//     let spring_season = Season::Spring;
+//     let summer_season = Season::Summer;
+//     let autumn_season = Season::Autumn;
+//     let winter_season = Season::Winter;
+//     println!("spring_season: {:?}", spring_season);
+//     println!("summer_season: {:?}", summer_season);
+//     println!("autumn_season: {:?}", autumn_season);
+//     println!("winter_season: {:?}", winter_season);
+// }
+
+// #[derive(Debug)]
+// enum Season {
+//     Spring,
+//     Summer,
+//     Autumn,
+//     Winter
+// }
+
+// fn match_season(season: Season) {
+//     match season {
+//         Season::Spring => println!("spring_season: {:?}", season),
+//         Season::Summer => println!("spring_season: {:?}", season),
+//         Season::Autumn => println!("spring_season: {:?}", season),
+//         Season::Winter => println!("spring_season: {:?}", season),
+//     }
+// }
+
+// fn main() {
+//     let mut season: Season = Season::Winter;
+//     match_season(season);
+// }
+// #[derive(Debug)]
+// enum TrafficLight {
+//     Red,
+//     Green,
+//     Yellow
+// }
+
+// fn next_light(current_light: TrafficLight) -> TrafficLight {
+//     match current_light {
+//         TrafficLight::Red => return TrafficLight::Green,
+//         TrafficLight::Green => return TrafficLight::Yellow,
+//         TrafficLight::Yellow => return TrafficLight::Red,
+//     }
+// }
+
+// fn main() {
+//     let mut new_light: TrafficLight = TrafficLight::Yellow;
+//     let next_light = next_light(new_light);
+//     println!("next_light is {:?}", next_light);
+// }
+
+// enum Shape {
+//     Circle(f64),
+//     Square(f64),
+//     Triangle(f64, f64)
+// }
+
+// fn area(shape: Shape) -> f64 {
+//     match shape {
+//         Shape::Circle(radius) => std::f64::consts::PI * radius * radius,
+//         Shape::Square(side) => side * side,
+//         Shape::Triangle(width, height) => width * height
+//     }
+// }
+
+// fn main () {
+//     let cricle: Shape = Shape::Circle(10.8);
+//     let square: Shape = Shape::Square(12.2);
+//     let triangle: Shape = Shape::Triangle(112.0, 9.0);
+
+//     let value_cricle = area(cricle);
+//     let value_square = area(square);
+//     let value_triangle = area(triangle);
+
+//     println!("value_cricle is {}", value_cricle);
+//     println!("value_square is {}", value_square);
+//     println!("value_triangle is {}", value_triangle);
+// }
+
+// fn print_option_value(value: Option<i32>) {
+//     match value {
+//         Some(x) => println!("Value is ok {}", x),
+//         None => println!("Option not enough value")
+//     }
+// }
+
+// fn main() {
+//     let some_value : Option<i32>= Some(1);
+//     let none_value : Option<i32>= None;
+//     println!("Value is {:#?}", some_value);
+//     println!("Value is {:?}", none_value);
+// }
+
+// fn divide(x: f64, y: f64) -> Result<f64, String> {
+//     if y == 0.0  {
+//         Err("Y = 0 is invalid data".to_string())
+//     } else {
+//         Ok(x / y)
+//     }
+// }
+
+// fn main() {
+//     match divide(10.0, 20.0) {
+//         Ok(result) => println!("Result is ok is {}", result),
+//         Err(error) => println!("Error is: {}", error)
+//     }
+
+//     match divide(10.0, 0.0) {
+//         Ok(result) => println!("Result is ok is {}", result),
+//         Err(error) => println!("Error is: {}", error)
+//     }
+// }
+
+enum Operation {
+    Add,
+    Subtract,
+    Multiple,
+    Divide,
 }
 
-impl Rectangle {
-    fn area(&self) -> u32 {
-        let area = self.width * self.height;
-        return area;
-    }
-
-    fn can_hold(&self, rectangle: &Rectangle) -> bool {
-        let status = self.area() >= rectangle.area();
-        return status;
+fn perform_operation(operation: Operation, x: f64, y: f64) -> Result<f64, String> {
+    match operation {
+        Operation::Add => Ok(x + y),
+        Operation::Subtract => {
+            if x >= y {
+                Ok( x - y)
+            } else {
+                Err(String::from("Invalid value"))
+            }
+        },
+        Operation::Multiple => Ok(x * y),
+        Operation::Divide => {
+            if y != 0.0 {
+                return  Ok(x / y)
+            } else {
+                Err(String::from("Cannot divide by zero"))
+            }
+        }
     }
 }
 
 fn main() {
-    let rect1 = Rectangle {
-        width: 30,
-        height: 50,
-    };
-    let rect2 = Rectangle {
-        width: 10,
-        height: 40,
-    };
-    let rect3 = Rectangle {
-        width: 60,
-        height: 45,
-    };
-    println!("Rect1 can hold Rect2 is ok: {}", rect1.can_hold(&rect2));
-    println!("Rect2 can hold Rect3 is ok: {}", rect2.can_hold(&rect3));
+    let result = perform_operation(Operation::Add, 5.0, 10.0);
+    println!("{:?}", result);
+    let result1 = perform_operation(Operation::Subtract, 5.0, 10.0);
+    println!("{:?}", result1);
+
 }
