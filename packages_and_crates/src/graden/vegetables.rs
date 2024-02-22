@@ -1,14 +1,14 @@
 #[derive(Debug)]
 pub struct Asparagus {
     tree: String,
-    flower: String
+    flower: String,
 }
 
 impl Asparagus {
     pub fn create_tree() -> Asparagus {
-        let new_tree = Asparagus{
+        let new_tree = Asparagus {
             tree: String::from("Rose"),
-            flower: String::from("Rose_01")
+            flower: String::from("Rose_01"),
         };
         return new_tree;
     }
