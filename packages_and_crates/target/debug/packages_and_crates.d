@@ -1,0 +1,1 @@
+/Users/nguyenductrang/Desktop/Contract/RUST_BLOCKCHAIN_TUTORIAL/packages_and_crates/target/debug/packages_and_crates: /Users/nguyenductrang/Desktop/Contract/RUST_BLOCKCHAIN_TUTORIAL/packages_and_crates/src/main.rs

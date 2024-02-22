@@ -1,24 +1,33 @@
-use rand::{Rng, RngCore, SeedableRng};
+mod back_house {
+    #[derive(Debug)]
+    pub struct Breakfast {
+        pub toast: String,
+        pub fruit: String
+    }
+
+    pub enum Salad {
+        Soup,
+        Salad
+    }
+
+    impl Breakfast {
+        pub fn order_food() -> Breakfast {
+            let meal = Breakfast {
+                toast: String::from("chicken"),
+                fruit: String::from("Banana")
+            };
+            return meal;
+        }
+    }
+}
 
 mod front_house;
-mod hosting;
 
-use crate::hosting::{Breakfast, Salad};
-use crate::hosting::hosting:: {add_to_hosting, update_to_hosting};
+use crate::back_house::{Breakfast, Salad};
 
 fn eat_at_restaurant() {
-    let mut order = Breakfast::monday("Fish");
-    order.toast = String::from("Chicken");
+    let mut meal: Breakfast = Breakfast::order_food();
+    meal.toast = String::from("rice");
 
-    let order1 = Breakfast{
-        toast: String::from("Chicken"),
-        fruit: String::from("Apple")
-    };
-
-    let mut order2 = Salad::Salad;
-    order2 = Salad::Soup;
-
-    add_to_hosting();
-    update_to_hosting();
-
+    let mut salas: Salad = Salad::Salad;
 }
