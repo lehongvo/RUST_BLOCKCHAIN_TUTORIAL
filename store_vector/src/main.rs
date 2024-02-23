@@ -58,3 +58,29 @@
 //     print!("vector: {:?}", vector)
 
 // }
+
+fn main() {
+    // let my_str: &str = "Hello, world!";
+    // let my_string: String = String::from("Hello, world");
+    // println!("Value is {}", my_str);
+    // println!("Value is {}", my_string);
+
+    // let mut empty_string = String::new();
+
+    // let data = "Initial contents";
+    // let data_to_string = data.to_string();
+
+    // let mut my_string = String::from("foo");
+    // my_string.push_str("Hi");
+    // println!("my_string {}", my_string)
+
+    // let s1 = String::from("Hello,!");
+    // let s2 = String::from("world!");
+    // let s3 = s1 + &s2;
+    // println!("Values is s3 {}", s3);
+
+    let hello = "Здравствуйте";
+    for value in hello.chars() {
+        println!("Value is {}", value);
+    }
+ }
