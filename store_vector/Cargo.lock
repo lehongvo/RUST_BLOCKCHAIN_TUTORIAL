@@ -5,3 +5,7 @@ version = 3
 [[package]]
 name = "store_vector"
 version = "0.1.0"
+
+[[package]]
+name = "vector-practise"
+version = "0.1.0"

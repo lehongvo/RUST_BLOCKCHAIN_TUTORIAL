@@ -369,18 +369,152 @@ let mut mapping_hashmap: HashMap<i32, i32> = HashMap::new();
 //     }
 // }
 
+// use std::collections::HashMap;
+
+// struct Company {
+//     employees: HashMap<String, HashMap<String, f64>>,
+//     managers: HashMap<String, Vec<String>>,
+// }
+
+// impl Company {
+//     fn new() -> Company {
+//         let company = Company {
+//             employees: HashMap::new(),
+//             managers: HashMap::new(),
+//         };
+//         return company;
+//     }
+
+//     fn add_employees(&mut self, name: &str, department: &str, salary: f64) {
+//         let employees = self
+//             .employees
+//             .entry(name.to_string())
+//             .or_insert(HashMap::new());
+//         employees.insert(department.to_string(), salary);
+
+//         let managers = self
+//             .managers
+//             .entry(department.to_string())
+//             .or_insert(vec![]);
+//         managers.push(name.to_string());
+//     }
+
+//     fn get_salary_per_month_1(&self, name: &str, department: &str) -> Option<f64> {
+//         self.employees
+//             .get(name)
+//             .and_then(|department_employees| department_employees.get(department))
+//             .map_or(None, |&salary| Some(salary))
+//     }
+
+//     fn get_salary_per_month_2(&self, name: &str, department: &str) -> Option<f64> {
+//         match self.employees.get(name) {
+//             Some(department_employees) => {
+//                 department_employees.get(department).map(|&salary| salary)
+//             }
+//             None => None,
+//         }
+//     }
+
+//     fn get_all_department(&self) -> Vec<String> {
+//         let all_department: Vec<String> = self.managers.keys().cloned().collect();
+//         return all_department;
+//     }
+
+//     fn get_all_employees(&self) -> Vec<String> {
+//         let all_employees: Vec<String> = self.employees.keys().cloned().collect();
+//         return all_employees;
+//     }
+
+//     fn get_all_member_in_department(&self, department: &str) -> Option<Vec<String>> {
+//         if let Some(members) = self.managers.get(department) {
+//             Some(members.clone())
+//         } else {
+//             None
+//         }
+//     }
+
+//     fn average_salary(&self) -> Option<f64> {
+//         let total_salary: f64 = self.employees.values().flat_map(|dept| dept.values()).sum();
+//         let total_member = self.employees.len() as f64;
+//         if total_salary > 0.0 {
+//             let return_value = total_salary / total_member;
+//             Some(return_value)
+//         } else {
+//             None
+//         }
+//     }
+
+// }
+
+// fn main() {
+//     let mut company: Company = Company::new();
+//     company.add_employees("Le Hong Vo1", "Admin", 200000000.01);
+//     company.add_employees("Le Hong Vo2", "Admin", 300000000.02);
+//     company.add_employees("Le Hong Vo3", "Dev", 400000000.03);
+//     company.add_employees("Le Hong Vo4", "Dev", 500000000.04);
+//     company.add_employees("Le Hong Vo5", "Dev", 600000000.05);
+//     company.add_employees("Le Hong Vo6", "HR", 700000000.04);
+
+//     let all_employees: Vec<String> = company.get_all_employees();
+//     println!("All employees is {:?}", all_employees);
+
+//     let all_department: Vec<String> = company.get_all_department();
+//     println!("All employees is {:?}", all_department);
+
+//     let all_member_in_department: Option<Vec<String>> = company.get_all_member_in_department("Dev");
+//     match all_member_in_department {
+//         Some(value) =>  println!("Value is {:?}", value),
+//         None => println!("Department not found")
+//     }
+
+//     let average_salary = company.average_salary();
+//     match average_salary {
+//         Some(value) => println!("Value is {:?}", value),
+//         None => println!("Department not found")
+//     }
+// }
+
 use std::collections::HashMap;
 
-struct Company {
-    employees: HashMap<String, HashMap<String, f64>>,
-    managers: HashMap<String, Vec<String>>,
+trait Office {
+    fn new() -> Self
+    where
+        Self: Sized;
+
+    fn add_employees(&mut self, name: &str, department: &str, salary: f64);
+
+    fn get_salary_of_employee(&self, name: &str, department: &str) -> Option<f64>;
+
+    fn get_all_department_in_company(&self) -> Vec<String>;
+
+    fn get_all_employees_in_company(&self) -> Vec<String>;
+
+    fn get_all_salary_of_employee(&self) -> Option<f64>;
+
+    fn average_salary(&self) -> Option<f64>;
+
+    fn average_salary_of_department(&self, department: &str) -> Option<f64>;
+
+    fn min_salary_of_department(&self, department: &str) -> Option<f64>;
+
+    fn max_salary_of_department(&self, department: &str) -> Option<f64>;
+
+    fn min_salary_of_company(&self) -> Option<f64>;
+
+    fn max_salary_of_company(&self) -> Option<f64>;
 }
 
-impl Company {
+#[derive(Debug)]
+struct Company {
+    employees: HashMap<String, HashMap<String, f64>>,
+    manager: HashMap<String, Vec<String>>,
+}
+
+impl Office for Company {
     fn new() -> Company {
         let company = Company {
             employees: HashMap::new(),
-            managers: HashMap::new(),
+            manager: HashMap::new(),
         };
         return company;
     }
@@ -392,42 +526,31 @@ impl Company {
             .or_insert(HashMap::new());
         employees.insert(department.to_string(), salary);
 
-        let managers = self
-            .managers
-            .entry(department.to_string())
-            .or_insert(vec![]);
-        managers.push(name.to_string());
+        let manager = self.manager.entry(department.to_string()).or_insert(vec![]);
+        manager.push(name.to_string());
     }
 
-    fn get_salary_per_month_1(&self, name: &str, department: &str) -> Option<f64> {
-        self.employees
-            .get(name)
-            .and_then(|department_employees| department_employees.get(department))
-            .map_or(None, |&salary| Some(salary))
-    }
-
-    fn get_salary_per_month_2(&self, name: &str, department: &str) -> Option<f64> {
+    fn get_salary_of_employee(&self, name: &str, department: &str) -> Option<f64> {
         match self.employees.get(name) {
-            Some(department_employees) => {
-                department_employees.get(department).map(|&salary| salary)
-            }
+            Some(department_employee) => department_employee.get(department).map(|&salary| salary),
             None => None,
         }
     }
 
-    fn get_all_department(&self) -> Vec<String> {
-        let all_department: Vec<String> = self.managers.keys().cloned().collect();
-        return all_department;
-    }
-
-    fn get_all_employees(&self) -> Vec<String> {
-        let all_employees: Vec<String> = self.employees.keys().cloned().collect();
+    fn get_all_employees_in_company(&self) -> Vec<String> {
+        let all_employees = self.employees.keys().cloned().collect();
         return all_employees;
     }
 
-    fn get_all_member_in_department(&self, department: &str) -> Option<Vec<String>> {
-        if let Some(members) = self.managers.get(department) {
-            Some(members.clone())
+    fn get_all_department_in_company(&self) -> Vec<String> {
+        let all_department = self.manager.keys().cloned().collect();
+        return all_department;
+    }
+
+    fn get_all_salary_of_employee(&self) -> Option<f64> {
+        let total_salary: f64 = self.employees.values().flat_map(|dept| dept.values()).sum();
+        if total_salary > 0.0 {
+            Some(total_salary as f64)
         } else {
             None
         }
@@ -435,41 +558,156 @@ impl Company {
 
     fn average_salary(&self) -> Option<f64> {
         let total_salary: f64 = self.employees.values().flat_map(|dept| dept.values()).sum();
-        let total_member = self.employees.len() as f64;
-        if total_salary > 0.0 {
-            let return_value = total_salary / total_member;
-            Some(return_value)
+        let total_employee = self.employees.len() as f64;
+        if total_employee > 0.0 {
+            let avarage: f64 = total_salary / total_employee;
+
+            Some(avarage)
         } else {
             None
         }
     }
 
+    fn average_salary_of_department(&self, department: &str) -> Option<f64> {
+        if let Some(employee_of_department) = self.manager.get(department) {
+            let total_menber = employee_of_department.len() as f64;
+            let total_salary: f64 = employee_of_department
+                .iter()
+                .filter_map(|employee| self.employees.get(employee))
+                .filter_map(|dept| dept.get(department))
+                .sum();
+            if total_menber != 0.0 && total_salary != 0.0 {
+                let return_value = total_salary / total_menber;
+                Some(return_value)
+            } else {
+                None
+            }
+        } else {
+            None
+        }
+    }
+
+    fn min_salary_of_department(&self, department: &str) -> Option<f64> {
+        if let Some(employee_department) = self.manager.get(department) {
+            let min_salary = employee_department
+                .iter()
+                .filter_map(|employee| self.employees.get(employee))
+                .filter_map(|dept| dept.get(department))
+                .fold(f64::INFINITY, |min, &salary| min.min(salary));
+            if min_salary != 0.0 {
+                Some(min_salary)
+            } else {
+                None
+            }
+        } else {
+            None
+        }
+    }
+
+    fn max_salary_of_department(&self, department: &str) -> Option<f64> {
+        if let Some(employee_department) = self.manager.get(department) {
+            let max_salary = employee_department
+                .iter()
+                .filter_map(|employee| self.employees.get(employee))
+                .filter_map(|dept| dept.get(department))
+                .fold(f64::NEG_INFINITY, |max, &salary| max.max(salary));
+            if max_salary != 0.0 {
+                Some(max_salary)
+            } else {
+                None
+            }
+        } else {
+            None
+        }
+    }
+
+    fn min_salary_of_company(&self) -> Option<f64> {
+        let min_salary = self.employees
+            .values()
+            .flat_map(|dept| dept.values())
+            .fold(f64::INFINITY, |min, &salary| min.min(salary));
+        if min_salary.is_finite() {
+            Some(min_salary)
+        } else {
+            None
+        }
+    }
+
+    fn max_salary_of_company(&self) -> Option<f64> {
+        let max_salary = self.employees
+            .values()
+            .flat_map(|dept| dept.values())
+            .fold(f64::NEG_INFINITY, |max, &salary| max.max(salary));
+        if max_salary.is_finite() {
+            Some(max_salary)
+        } else {
+            None
+        }
+    }
 }
 
 fn main() {
     let mut company: Company = Company::new();
-    company.add_employees("Le Hong Vo1", "Admin", 200000000.01);
-    company.add_employees("Le Hong Vo2", "Admin", 300000000.02);
-    company.add_employees("Le Hong Vo3", "Dev", 400000000.03);
-    company.add_employees("Le Hong Vo4", "Dev", 500000000.04);
-    company.add_employees("Le Hong Vo5", "Dev", 600000000.05);
-    company.add_employees("Le Hong Vo6", "HR", 700000000.04);
+    company.add_employees("Myoonu", "It", 90123213123.0);
+    company.add_employees("John", "It", 100123213123.0);
+    company.add_employees("Marry", "It", 200123213123.0);
+    company.add_employees("Sone", "dev", 300123213123.0);
+    company.add_employees("Collron", "Admin", 500123213123.0);
+    company.add_employees("Onron", "Hr", 600123213123.0);
+    company.add_employees("Horro", "Hr", 700123213123.0);
+    company.add_employees("Camfogo", "Hr", 800123213123.0);
 
-    let all_employees: Vec<String> = company.get_all_employees();
-    println!("All employees is {:?}", all_employees);
-
-    let all_department: Vec<String> = company.get_all_department();
-    println!("All employees is {:?}", all_department);
-
-    let all_member_in_department: Option<Vec<String>> = company.get_all_member_in_department("Dev");
-    match all_member_in_department {
-        Some(value) =>  println!("Value is {:?}", value),
-        None => println!("Department not found")
+    let John_salary = company.get_salary_of_employee("John", "It");
+    match John_salary {
+        Some(salary) => println!("Value is {:?}", salary),
+        None => println!("Invalid salary"),
     }
+
+    let all_employees = company.get_all_employees_in_company();
+    println!("all_employees {:?}", all_employees);
+
+    let all_department = company.get_all_department_in_company();
+    println!("all_department {:?}", all_department);
+
+    let get_all_salary_of_employee = company.get_all_salary_of_employee();
+    match get_all_salary_of_employee {
+        Some(total_salary) => println!("Total salary is: {:?}", total_salary),
+        None => println!("Employee not found"),
+    };
 
     let average_salary = company.average_salary();
     match average_salary {
-        Some(value) => println!("Value is {:?}", value),
-        None => println!("Department not found")
+        Some(avarage) => println!("Avarage: {:?}", avarage),
+        None => println!("Employee not found"),
+    };
+
+    let average_salary_of_department = company.average_salary_of_department("Hr");
+    match average_salary_of_department {
+        Some(valus) => println!("average_salary_of_department: {:?}", valus),
+        None => println!("Invalid department"),
+    }
+
+    let min_salary_of_department = company.min_salary_of_department("Admin");
+    match min_salary_of_department {
+        Some(value) => println!("min_salary_of_department: {:?}", value),
+        None => println!("Invalid department"),
+    }
+
+    let max_salary_of_department = company.max_salary_of_department("Admin");
+    match max_salary_of_department {
+        Some(value) => println!("max_salary_of_department: {:?}", value),
+        None => println!("Invalid department"),
+    }
+
+    let min_salary_of_company = company.min_salary_of_company();
+    match min_salary_of_company {
+        Some(value) => println!("min_salary_of_company: {:?}", value),
+        None => println!("Invalid value"),
+    }
+
+    let max_salary_of_company = company.max_salary_of_company();
+    match max_salary_of_company {
+        Some(value) => println!("max_salary_of_company: {:?}", value),
+        None => println!("Invalid value"),
     }
 }
