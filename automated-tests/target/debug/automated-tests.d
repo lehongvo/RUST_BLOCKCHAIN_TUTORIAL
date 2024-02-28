@@ -1,0 +1,1 @@
+/Users/nguyenductrang/Desktop/Contract/RUST_BLOCKCHAIN_TUTORIAL/automated-tests/target/debug/automated-tests: /Users/nguyenductrang/Desktop/Contract/RUST_BLOCKCHAIN_TUTORIAL/automated-tests/src/lib.rs /Users/nguyenductrang/Desktop/Contract/RUST_BLOCKCHAIN_TUTORIAL/automated-tests/src/main.rs
