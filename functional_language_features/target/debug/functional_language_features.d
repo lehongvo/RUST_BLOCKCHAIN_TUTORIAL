@@ -1,0 +1,1 @@
+/Users/nguyenductrang/Desktop/Contract/RUST_BLOCKCHAIN_TUTORIAL/functional_language_features/target/debug/functional_language_features: /Users/nguyenductrang/Desktop/Contract/RUST_BLOCKCHAIN_TUTORIAL/functional_language_features/src/main.rs
