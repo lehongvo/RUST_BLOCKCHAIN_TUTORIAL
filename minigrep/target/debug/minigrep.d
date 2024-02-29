@@ -1,0 +1,1 @@
+/Users/nguyenductrang/Desktop/Contract/RUST_BLOCKCHAIN_TUTORIAL/minigrep/target/debug/minigrep: /Users/nguyenductrang/Desktop/Contract/RUST_BLOCKCHAIN_TUTORIAL/minigrep/src/lib.rs /Users/nguyenductrang/Desktop/Contract/RUST_BLOCKCHAIN_TUTORIAL/minigrep/src/main.rs
