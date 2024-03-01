@@ -7,6 +7,13 @@ description = "The above Rust functions perform arithmetic operations on unsigne
 license = "MIT"
 repository = "https://github.com/lehongvo/RUST_BLOCKCHAIN_TUTORIAL/tree/main/library_dev_bc"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[profile.dev]
+opt-level = 1
+debug = true
+
+[profile.release]
+opt-level = 3
+debug = false
 
 [dependencies]
