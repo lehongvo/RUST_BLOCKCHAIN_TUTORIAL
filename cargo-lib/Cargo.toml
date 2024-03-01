@@ -4,6 +4,8 @@ version = "0.1.0"
 edition = "2021"
 description = "A versatile Rust library for [briefly describe the main functionality or use cases]."
 author = "VoLeHong"
+license = "MIT"
+repository = "https://github.com/lehongvo/RUST_BLOCKCHAIN_TUTORIAL/tree/main/cargo-lib"
 
 [profile.dev]
 opt-level = 1
