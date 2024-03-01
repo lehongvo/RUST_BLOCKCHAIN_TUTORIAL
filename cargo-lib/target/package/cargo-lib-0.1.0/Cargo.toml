@@ -13,6 +13,7 @@
 edition = "2021"
 name = "cargo-lib"
 version = "0.1.0"
+exclude = ["src/*"]
 description = "A versatile Rust library for [briefly describe the main functionality or use cases]."
 license = "MIT"
 repository = "https://github.com/lehongvo/RUST_BLOCKCHAIN_TUTORIAL/tree/main/cargo-lib"

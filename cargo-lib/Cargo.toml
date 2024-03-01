@@ -6,7 +6,6 @@ description = "A versatile Rust library for [briefly describe the main functiona
 author = "VoLeHong"
 license = "MIT"
 repository = "https://github.com/lehongvo/RUST_BLOCKCHAIN_TUTORIAL/tree/main/cargo-lib"
-exclude = ["src/*"]
 
 [profile.dev]
 opt-level = 1
