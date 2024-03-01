@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "library_dev_bc"
+name = "block_mod"
 version = "0.1.0"
