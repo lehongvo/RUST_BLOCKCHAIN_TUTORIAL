@@ -13,7 +13,7 @@
 edition = "2021"
 name = "cargo_io"
 version = "0.1.0"
-authors = ["volh lehongvi19x@gmail.com"]
+authors = ["lehongvi19x@gmail.com"]
 description = "A simple Rust library."
 license = "MIT"
 repository = "https://github.com/lehongvo/RUST_BLOCKCHAIN_TUTORIAL/blob/main/cargo_io/src/lib.rs"
