@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":["Company"],"trait":["Office"]};
+window.SIDEBAR_ITEMS = {"mod":["Intructions"]};
