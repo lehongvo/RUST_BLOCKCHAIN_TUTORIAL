@@ -1,5 +1,0 @@
-var searchIndex = new Map(JSON.parse('[\
-["block_mod",{"doc":"","t":"CHHHHH","n":["calculator","try_add","try_div","try_mod","try_mul","try_sub"],"q":[[0,"block_mod"],[1,"block_mod::calculator"],[6,"core::option"]],"d":["<code>pub mod calculator;</code> is a Rust code snippet that declares a …","The function <code>try_add</code> in Rust attempts to add two <code>u128</code> …","The function <code>try_div</code> in Rust attempts to divide two <code>u128</code> …","This Rust function calculates the remainder of dividing …","The function <code>try_mul</code> in Rust attempts to multiply two <code>u128</code> …","The function <code>try_sub</code> in Rust attempts to subtract two <code>u128</code> …"],"i":[0,0,0,0,0,0],"f":[0,[[1,1],[[2,[1]]]],[[1,1],[[2,[1]]]],[[1,1],[[2,[1]]]],[[1,1],[[2,[1]]]],[[1,1],[[2,[1]]]]],"c":[],"p":[[1,"u128"],[6,"Option",6]],"b":[]}]\
-]'));
-if (typeof exports !== 'undefined') exports.searchIndex = searchIndex;
-else if (window.initSearch) window.initSearch(searchIndex);

@@ -1,1 +1,0 @@
-/Users/nguyenductrang/Desktop/Contract/RUST_BLOCKCHAIN_TUTORIAL/cargo_seting/target/package/cargo_io-0.1.0/target/debug/libmy_library.rlib: /Users/nguyenductrang/Desktop/Contract/RUST_BLOCKCHAIN_TUTORIAL/cargo_seting/target/package/cargo_io-0.1.0/src/lib.rs
