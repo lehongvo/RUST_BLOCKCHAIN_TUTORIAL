@@ -95,28 +95,51 @@
 // }
 
 // #[derive(Debug)]
-struct MyBox<T>(T);
+// struct MyBox<T>(T);
 
-impl<T> MyBox<T> {
-    fn new(x: T) -> MyBox<T> {
-        MyBox(x)
+// impl<T> MyBox<T> {
+//     fn new(x: T) -> MyBox<T> {
+//         MyBox(x)
+//     }
+// }
+
+// // fn main() {
+// //     let x = 5;
+// //     let y = MyBox(x);
+
+// //     assert_eq!(5, x);
+// //     assert_eq!(5, *y);
+// // }
+
+// fn hello(name: &str) {
+//     println!("Hello, {name}");
+// }
+
+// fn main() {
+//     let message = MyBox::new(String::from("Rust"));
+//     let value = &(*message.0)[..];
+//     hello(value);
+// } 
+
+struct CustomSmartPointer {
+    data: String
+}
+
+impl Drop for CustomSmartPointer {
+    fn drop(&mut self) {
+        println!("Dropping CustomSmartPointer with data `{}`!", self.data);
     }
 }
 
-// fn main() {
-//     let x = 5;
-//     let y = MyBox(x);
-
-//     assert_eq!(5, x);
-//     assert_eq!(5, *y);
-// }
-
-fn hello(name: &str) {
-    println!("Hello, {name}");
-}
-
 fn main() {
-    let message = MyBox::new(String::from("Rust"));
-    let value = &(*message.0)[..];
-    hello(value);
-} 
+    let value1 = CustomSmartPointer {
+        data: String::from("Mt yourself")
+    };
+
+    let value2 = CustomSmartPointer {
+        data: String::from("other stuff")
+    };
+
+    println!("CustomSmartPointers created.");
+    println!("--------------------------------")
+}
