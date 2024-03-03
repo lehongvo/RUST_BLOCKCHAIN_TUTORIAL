@@ -1,0 +1,1 @@
+/Users/nguyenductrang/Desktop/Contract/RUST_BLOCKCHAIN_TUTORIAL/library-mod/target/debug/libsafe_math.rlib: /Users/nguyenductrang/Desktop/Contract/RUST_BLOCKCHAIN_TUTORIAL/library-mod/src/lib.rs /Users/nguyenductrang/Desktop/Contract/RUST_BLOCKCHAIN_TUTORIAL/library-mod/src/math/mod.rs
