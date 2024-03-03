@@ -8,6 +8,7 @@ repository = "https://github.com/lehongvo/RUST_BLOCKCHAIN_TUTORIAL/tree/main/lib
 license = "MIT"
 
 [dependencies]
+safemath_dev = "0.1.0"
 
 [profile.dev]
 opt-level = 1
