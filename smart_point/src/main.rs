@@ -82,14 +82,41 @@
 //     in_order_traversal(&tree);
 // }
 
-#[derive(Debug)]
-enum List {
-    Cons(i32, Box<List>),
-    Nil
+// #[derive(Debug)]
+// enum List {
+//     Cons(i32, Box<List>),
+//     Nil
+// }
+
+// use crate::List::{Cons, Nil};
+// fn main () {
+//     let value = Cons(1, Box::new(Cons(2, Box::new(Cons(3, Box::new(Cons(4, Box::new(Nil))))))));
+//     println!("Value is {:?}", value);
+// }
+
+// #[derive(Debug)]
+struct MyBox<T>(T);
+
+impl<T> MyBox<T> {
+    fn new(x: T) -> MyBox<T> {
+        MyBox(x)
+    }
 }
 
-use crate::List::{Cons, Nil};
-fn main () {
-    let value = Cons(1, Box::new(Cons(2, Box::new(Cons(3, Box::new(Cons(4, Box::new(Nil))))))));
-    println!("Value is {:?}", value);
+// fn main() {
+//     let x = 5;
+//     let y = MyBox(x);
+
+//     assert_eq!(5, x);
+//     assert_eq!(5, *y);
+// }
+
+fn hello(name: &str) {
+    println!("Hello, {name}");
 }
+
+fn main() {
+    let message = MyBox::new(String::from("Rust"));
+    let value = &(*message.0)[..];
+    hello(value);
+} 
