@@ -95,7 +95,7 @@
 // }
 
 // #[derive(Debug)]
-// struct MyBox<T>(T);
+struct MyBox<T>(T);
 
 // impl<T> MyBox<T> {
 //     fn new(x: T) -> MyBox<T> {
