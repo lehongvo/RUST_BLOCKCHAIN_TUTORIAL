@@ -121,25 +121,55 @@
 //     hello(value);
 // } 
 
-struct CustomSmartPointer {
-    data: String
+// struct CustomSmartPointer {
+//     data: String
+// }
+
+// impl Drop for CustomSmartPointer {
+//     fn drop(&mut self) {
+//         println!("Dropping CustomSmartPointer with data `{}`!", self.data);
+//     }
+// }
+
+// fn main() {
+//     let value1 = CustomSmartPointer {
+//         data: String::from("Mt yourself")
+//     };
+
+//     let value2 = CustomSmartPointer {
+//         data: String::from("other stuff")
+//     };
+
+//     println!("CustomSmartPointers created.");
+//     println!("--------------------------------")
+// }
+
+use std::rc::Rc;
+use crate::List::{Cons, Nil};
+
+enum List {
+    Cons(i32, Rc<List>),
+    Nil
 }
 
-impl Drop for CustomSmartPointer {
-    fn drop(&mut self) {
-        println!("Dropping CustomSmartPointer with data `{}`!", self.data);
+fn main () {
+    let a = Rc::new(Cons(5, Rc::new(Cons(10, Rc::new(Nil)))));
+    let b = Cons(3, Rc::clone(&a));
+    let c = Cons(4, Rc::clone(&a));
+    println!("Reference count after creating b: {}", Rc::strong_count(&a));
+    println!("Reference count after creating c: {}", Rc::strong_count(&a));
+    {
+        let m = Cons(4, Rc::clone(&a));
+        let m = Cons(4, Rc::clone(&a));
+        let m = Cons(4, Rc::clone(&a));
+        let m = Cons(4, Rc::clone(&a));
+        let m = Cons(4, Rc::clone(&a));
+        let m = Cons(4, Rc::clone(&a));
+        println!("count after creating c = {}", Rc::strong_count(&a));
     }
-}
-
-fn main() {
-    let value1 = CustomSmartPointer {
-        data: String::from("Mt yourself")
-    };
-
-    let value2 = CustomSmartPointer {
-        data: String::from("other stuff")
-    };
-
-    println!("CustomSmartPointers created.");
-    println!("--------------------------------")
+    drop(b);
+    println!("Reference count after creating c: {}", Rc::strong_count(&a));
+    drop(c);
+    println!("Reference count after creating b: {}", Rc::strong_count(&a));
+    drop(a);
 }
