@@ -1,0 +1,18 @@
+[package]
+name = "safe_math"
+version = "0.1.0"
+edition = "2021"
+authors = ["RajSu"]
+description = "Math operations with safety checks that throw on error"
+repository = "git"
+license = "MIT"
+
+[dependencies]
+
+[profile.dev]
+opt-level = 1
+debug = true
+
+[profile.release]
+opt-level = 3
+debug = false
