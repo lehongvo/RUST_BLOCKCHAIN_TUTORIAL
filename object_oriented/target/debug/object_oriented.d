@@ -1,0 +1,1 @@
+/Users/nguyenductrang/Desktop/Contract/RUST_BLOCKCHAIN_TUTORIAL/object_oriented/target/debug/object_oriented: /Users/nguyenductrang/Desktop/Contract/RUST_BLOCKCHAIN_TUTORIAL/object_oriented/src/main.rs
