@@ -140,12 +140,32 @@
 //     }
 // }
 
-fn main() {
-    let numbers = (2, 4, 8, 16, 32);
+// fn main() {
+//     let numbers = (2, 4, 8, 16, 32);
 
-    match numbers {
-        (first, .., last) => {
-            println!("Some numbers: {first}, {last}");
-        }
-    }
+//     match numbers {
+//         (first, .., last) => {
+//             println!("Some numbers: {first}, {last}");
+//         }
+//     }
+// }
+
+// fn main() {
+//     let mut x:u128 = 10;
+//     unsafe {
+//         x = x - 11;
+//     }
+//     println!("Value is {}", x)
+// }
+
+fn main() {
+    let mut num = 5;
+
+    let r1 = &num as *const i32;
+    let r2 = &mut num as *mut i32;
+
+    let address = 0x012345usize;
+    let r = address as *const i32;
+
+    println!("Value: {:?}", address);
 }
