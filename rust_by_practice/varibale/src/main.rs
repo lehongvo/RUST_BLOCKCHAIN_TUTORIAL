@@ -1749,77 +1749,333 @@
 // =================================================================
 
 // Fill in the blank
-fn main() {
-    let mut count = 0;
-    'outer: loop {
-        'inner1: loop {
-            if count >= 20 {
-                break 'inner1; 
-            }
-            count += 2;
-        }
+// fn main() {
+//     let mut count = 0;
+//     'outer: loop {
+//         'inner1: loop {
+//             if count >= 20 {
+//                 break 'inner1;
+//             }
+//             count += 2;
+//         }
 
-        count += 5;
+//         count += 5;
 
-        'inner2: loop {
-            if count >= 30 {
-                break 'outer;
-            }
+//         'inner2: loop {
+//             if count >= 30 {
+//                 break 'outer;
+//             }
 
-            continue 'outer;
-        }
-    }
+//             continue 'outer;
+//         }
+//     }
 
-    println!("Value is {count}");
+//     println!("Value is {count}");
 
-    assert!(count == __);
+//     assert!(count == __);
 
-    println!("Success!");
-}
+//     println!("Success!");
+// }
 
-// =================================================================
-
-// =================================================================
 // =================================================================
 
 // =================================================================
-// =================================================================
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
+// fn main() {
+//     let value = Some(19);
+//     if let Some(value) = value {
+//         println!("Value is {value}");
+//     }
+// }
 // =================================================================
 
 // =================================================================
+// Fill the blanks
+// enum Direction {
+//     East,
+//     West,
+//     North,
+//     South,
+// }
+// fn main() {
+//     let dire = Direction::South;
+//     match dire {
+//         Direction::East => println!("East"),
+//         Direction::North | Direction::South => { // Matching South or North here
+//             println!("South or North");
+//         },
+//         _ => println!("Other direction"),
+//     };
+// }
 // =================================================================
 
 // =================================================================
+// fn main() {
+//     let boolean = true;
+
+//     // Fill the blank with a match expression:
+//     //
+//     // boolean = true => binary = 1
+//     // boolean = false =>  binary = 0
+//     let binary = match boolean {
+//         true => 1,
+//         false => 2
+//     };
+
+//     assert_eq!(binary, 1);
+
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
+// enum Message {
+//     Quit,
+//     Move { x: i32, y: i32 },
+//     Write(String),
+//     ChangeColor(i32, i32, i32),
+// }
+
+// fn main() {
+//     let msgs = [
+//         Message::Quit,
+//         Message::Move{x:1, y:3},
+//         Message::ChangeColor(255,255,0)
+//     ];
+
+//     for msg in msgs {
+//         show_message(msg)
+//     }
+
+//     println!("Success!");
+// }
+
+// fn show_message(msg: Message) {
+//     match msg {
+//         Message::Move{x :a, y: b} => { // match  Message::Move
+//             assert_eq!(a, 1);
+//             assert_eq!(b, 3);
+//         },
+//         Message::ChangeColor(_, g, b) => {
+//             assert_eq!(g, 255);
+//             assert_eq!(b, 0);
+//         }
+//         __ => println!("no data in these variants")
+//     }
+// }
 // =================================================================
 
 // =================================================================
-// =================================================================
-// =================================================================
+// fn main() {
+//     let alphabets = ['a', 'E', 'Z', '0', 'x', '9' , 'Y'];
+
+//     for ab in alphabets {
+//         assert!(matches!(ab, 'A'..='Z' | 'a'..='z' | '0' | '9'));
+//     }
+
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
+// enum MyEnum {
+//     Foo,
+//     Bar
+// }
+
+// fn main() {
+//     let mut count = 0;
+
+//     let v = vec![MyEnum::Foo,MyEnum::Bar,MyEnum::Foo];
+//     for e in v {
+//         if let MyEnum::Foo = &e {
+//             count += 1;
+//         }
+//     }
+
+//     assert_eq!(count, 2);
+
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
+
+// fn main() {
+//     let o = Some(7);
+
+//     // Remove the whole `match` block, using `if let` instead
+//     match o {
+//         Some(i) => {
+//             println!("This is a really long string and `{:?}`", i);
+
+//             println!("Success!");
+//         }
+//         _ => {}
+//     };
+//     if let Some(value) = &o {
+//         println!("This is a really long string and `{:?}`", value);
+//         println!("Success!");
+//     } else {
+//         println!("Failure!");
+//     }
+// }
 // =================================================================
 
 // =================================================================
+// Fill in the blank
+// enum Foo {
+//     Bar(u8)
+// }
+
+// fn main() {
+//     let a = Foo::Bar(1);
+
+//     match a {
+//         Foo::Bar(i) => {
+//             println!("foobar holds the value: {}", i);
+
+//             println!("Success!");
+//         },
+//         _ => print!("Error")
+//     }
+// }
 // =================================================================
 
 // =================================================================
+// enum Foo {
+//     Bar,
+//     Baz,
+//     Qux(u32)
+// }
+
+// fn main() {
+//     let a = Foo::Qux(10);
+
+//     // Remove the codes below, using `match` instead
+//     match a {
+//         Foo::Bar => println!("match foo::bar"),
+//         Foo::Baz => println!("match foo::baz"),
+//         _ => println!("match foo::bar")
+//     }
+// }
 // =================================================================
 
 // =================================================================
+// Fix the errors in-place
+// fn main() {
+//     let age = Some(30);
+//     if let Some(age) = age { // Create a new variable with the same name as previous `age`
+//        assert_eq!(age, 30);
+//     } // The new variable `age` goes out of scope here
+
+//     match age {
+//         // Match can also introduce a new shadowed variable
+//         Some(age) =>  println!("age is a new variable, it's value is {}", &age),
+//         _ => ()
+//     }
+//  }
+// =================================================================
+
+// =================================================================
+
+// fn main() {
+//     match_number(11)
+// }
+// fn match_number(n: i32) {
+//     match n {
+//         // Match a single value
+//         1 => println!("One!"),
+//         // Fill in the blank with `|`, DON'T use `..` or `..=`
+//         2..=5 => println!("match 2 -> 5"),
+//         // Match an inclusive range
+//         6..=10 => {
+//             println!("match 6 -> 10")
+//         },
+//         _ => {
+//             println!("match -infinite -> 0 or 11 -> +infinite")
+//         }
+//     }
+// }
+// =================================================================
+
+// use std::process::id;
+
+// // =================================================================
+// enum Message {
+//     Hello { id: i32 },
+// }
+// fn main() {
+//     let msg = Message::Hello { id: 5 };
+
+//     match msg {
+//         Message::Hello {id} => {
+//             if (3..=7).contains(&id) {
+//                 println!("Tìm thấy id trong khoảng [3, 7]: {}", id);
+//             }
+//         }
+//         Message::Hello {id} => {
+//             if (10..=12).contains(&id) {
+//                 println!("Tìm thấy id trong khoảng khác [10, 12]: {}", id);
+//             }
+//         }
+//         Message::Hello { id } => {
+//             println!("Tìm thấy một id khác: {}", id);
+//         }
+//     }
+// }
+// =================================================================
+
+// =================================================================
+
+// Fill in the blank to make the code work, `split` MUST be used
+// fn main() {
+//     let num = Some(4);
+//     let split = 5;
+//     match num {
+//         Some(x) => {
+//             if x < split {
+//                 assert!(x < split);
+//             }
+//         }
+//         Some(x) => {
+//             if x > split {
+//                 assert!(x >= split)
+//             }
+//         },
+//         None => (),
+//     }
+//     println!("Success!");
+// }
+// =================================================================
+
+// =================================================================
+// Fill the blank to make the code work
+// fn main() {
+//     let numbers = (2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048);
+
+//     match numbers {
+//         (first,..,last) => {
+//            assert_eq!(first, 2);
+//            assert_eq!(last, 2048);
+//         }
+//     }
+
+//     println!("Success!");
+// }
+// =================================================================
+
+// =================================================================
+
+// FIX the error with least changing
+// DON'T remove any code line
+// fn main() {
+//     let mut v = String::from("hello,");
+//     let r = &mut v;
+
+//     match r {
+//        value => value.push_str(" world!") 
+//     }
+// }
 // =================================================================
 
 // =================================================================
