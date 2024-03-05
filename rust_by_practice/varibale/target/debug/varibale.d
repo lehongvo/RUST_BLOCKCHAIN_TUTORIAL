@@ -1,0 +1,1 @@
+/Users/nguyenductrang/Desktop/Contract/RUST_BLOCKCHAIN_TUTORIAL/rust_by_practice/varibale/target/debug/varibale: /Users/nguyenductrang/Desktop/Contract/RUST_BLOCKCHAIN_TUTORIAL/rust_by_practice/varibale/src/main.rs
