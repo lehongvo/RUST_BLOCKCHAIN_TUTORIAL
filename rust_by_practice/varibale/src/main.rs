@@ -2073,157 +2073,1591 @@
 //     let r = &mut v;
 
 //     match r {
-//        value => value.push_str(" world!") 
+//        value => value.push_str(" world!")
 //     }
 // }
 // =================================================================
 
 // =================================================================
-// =================================================================
-// =================================================================
+// struct Point {
+//     x: f64,
+//     y: f64,
+// }
+
+// impl Point {
+//     fn origin() -> Point {
+//         Point { x: 0.0, y: 0.0 }
+//     }
+
+//     fn new(x: f64, y: f64) -> Point {
+//         Point { x: x, y: y }
+//     }
+// }
+
+// struct Rectangle {
+//     p1: Point,
+//     p2: Point,
+// }
+
+// impl Rectangle {
+
+//     fn area(&self) -> f64 {
+//         let Point { x: x1, y: y1 } = self.p1;
+//         let Point { x: x2, y: y2 } = self.p2;
+
+//         ((x1 - x2) * (y1 - y2)).abs()
+//     }
+
+//     fn perimeter(&self) -> f64 {
+//         let Point { x: x1, y: y1 } = self.p1;
+//         let Point { x: x2, y: y2 } = self.p2;
+
+//         2.0 * ((x1 - x2).abs() + (y1 - y2).abs())
+//     }
+
+//     fn translate(&mut self, x: f64, y: f64) {
+//         self.p1.x += x;
+//         self.p2.x += x;
+
+//         self.p1.y += y;
+//         self.p2.y += y;
+//     }
+// }
+
+// struct Pair(Box<i32>, Box<i32>);
+
+// impl Pair {
+
+//     fn destroy(self) {
+//         let Pair(first, second) = self;
+//         println!("Destroying Pair({}, {})", first, second);
+
+//     }
+// }
+
+// fn main() {
+//     let rectangle = Rectangle {
+//         p1: Point::origin(),
+//         p2: Point::new(3.0, 4.0),
+//     };
+
+//     // Methods are called using the dot operator.
+//     // Note that the first argument `&self` is implicitly passed, i.e.
+//     // `rectangle.perimeter()` === `Rectangle::perimeter(&rectangle)`
+//     println!("Rectangle perimeter: {}", rectangle.perimeter());
+//     println!("Rectangle area: {}", rectangle.area());
+
+//     let mut square = Rectangle {
+//         p1: Point::origin(),
+//         p2: Point::new(1.0, 1.0),
+//     };
+
+//     // Error! `rectangle` is immutable, but this method requires a mutable
+//     // object.
+//     //rectangle.translate(1.0, 0.0);
+//     // TODO ^ Try uncommenting this line
+
+//     // Okay! Mutable objects can call mutable methods
+//     square.translate(1.0, 1.0);
+
+//     let pair = Pair(Box::new(1), Box::new(2));
+
+//     pair.destroy();
+
+//     // Error! Previous `destroy` call "consumed" `pair`
+//     //pair.destroy();
+//     // TODO ^ Try uncommenting this line
+// }
 // =================================================================
 
 // =================================================================
+// struct Rectangle {
+//     width: u32,
+//     height: u32,
+// }
+
+// impl Rectangle {
+//     fn area(&self) -> i32 {
+//         let area = self.width * self.height;
+//         return area as i32;
+//     }
+// }
+
+// fn main() {
+//     let rect1 = Rectangle { width: 30, height: 50 };
+
+//     assert_eq!(rect1.area(), 1500);
+
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
+// Only fill in the blanks, DON'T remove any line!
+// #[derive(Debug)]
+// struct TrafficLight {
+//     color: String,
+// }
+
+// impl TrafficLight {
+//     pub fn show_state(&self)  {
+//         println!("the current state is {}", self.color);
+//     }
+// }
+// fn main() {
+//     let light: TrafficLight = TrafficLight{
+//         color: "red".to_owned(),
+//     };
+//     light.show_state();
+//     println!("{:?}", light);
+// }
 // =================================================================
 
 // =================================================================
+// struct TrafficLight {
+//     color: String,
+// }
+
+// impl TrafficLight {
+//     // Using `Self` to fill in the blank.
+//     pub fn show_state(&self)  {
+//         println!("the current state is {}", self.color);
+//     }
+
+//     // Fill in the blank, DON'T use any variants of `Self`.
+//     pub fn change_state(&mut self) {
+//         self.color = "green".to_string()
+//     }
+// }
+// fn main() {
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
+// #[derive(Debug)]
+// struct TrafficLight {
+//     color: String,
+// }
+
+// impl TrafficLight {
+//     // 1. Implement an associated function `new`,
+//     // 2. It will return a TrafficLight contains color "red"
+//     // 3. Must use `Self`, DONT use `TrafficLight` in fn signatures or body
+//     pub fn new() -> TrafficLight {
+//         let traffic_light = TrafficLight {
+//             color: "red".to_string()
+//         };
+//         return traffic_light;
+//     }
+
+//     pub fn get_state(&self) -> &str {
+//         &self.color
+//     }
+// }
+
+// fn main() {
+//     let light = TrafficLight::new();
+//     assert_eq!(light.get_state(), "red");
+
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
+
+// struct Rectangle {
+//     width: u32,
+//     height: u32,
+// }
+
+// // Using multiple `impl` blocks to rewrite the code below.
+// impl Rectangle {
+//     fn area(&self) -> u32 {
+//         self.width * self.height
+//     }
+// }
+
+// impl Rectangle {
+//     fn can_hold(&self, other: &Rectangle) -> bool {
+//         self.width > other.width && self.height > other.height
+//     }
+// }
+
+// fn main() {
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
-// =================================================================
-// =================================================================
+
+// #[derive(Debug)]
+// enum TrafficLightColor {
+//     Red,
+//     Yellow,
+//     Green,
+// }
+
+// // Implement TrafficLightColor with a method.
+// impl TrafficLightColor {
+//     pub fn color(&self) -> String {
+//         match &self{
+//             TrafficLightColor::Red => "red".to_string(),
+//             TrafficLightColor::Yellow => "yellow".to_string(),
+//             TrafficLightColor::Green => "green".to_string(),
+//         }
+//     }
+// }
+
+// fn main() {
+//     let c = TrafficLightColor::Yellow;
+
+//     assert_eq!(c.color(), "yellow");
+
+//     println!("{:?}",c);
+// }
 // =================================================================
 
 // =================================================================
+// Fill in the blanks to make it work
+// struct A;
+// struct S(A);
+// struct SGen<T>(T);
+
+// fn reg_fn(_s: S) {}
+
+// fn gen_spec_t(_s: SGen<A>) {}
+
+// fn gen_spec_i32(_s: SGen<i32>) {}
+
+// fn generic<T>(_s: SGen<T>) {}
+
+// fn main() {
+//     reg_fn(S(A));
+//     gen_spec_t(SGen(A));
+//     gen_spec_i32(SGen(10));
+
+//     generic::<char>(SGen('a'));
+
+//     generic(SGen(10));
+
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
+
+// // Fill in the blanks to make it w/// The code defines various functions using concrete and generic
+/// types in Rust, demonstrating both implicit and explicit type
+/// parameter specification.
+///
+/// Arguments:
+///
+/// * `_s`: Here's a breakdown of the parameters used in the code
+/// snippet:
+// struct A;          // Concrete type `A`.
+// struct S(A);       // Concrete type `S`.
+// struct SGen<T>(T); // Generic type `SGen`.
+
+// fn reg_fn(_s: S) {}
+
+// fn gen_spec_t(_s: SGen<A>) {}
+
+// fn gen_spec_i32(_s: SGen<i32>) {}
+
+// fn generic<T>(_s: SGen<T>) {}
+
+// fn main() {
+//     // Using the non-generic functions
+//     reg_fn(S(A));          // Concrete type.
+//     gen_spec_t(SGen(A));   // Implicitly specified type parameter `A`.
+//     gen_spec_i32(SGen(-1)); // Implicitly specified type parameter `i32`.
+
+//     // Explicitly specified type parameter `char` to `generic()`.
+//     generic::<char>(SGen('a'));
+
+//     // Implicitly specified type parameter `char` to `generic()`.
+//     generic(SGen(12));
+
+//     println!("Success!");
+// }
+// =================================================================
+
+// use std::ops::Add;
+
+// // =================================================================
+// fn sum<T>(value0: T, value1: T) -> T where T: Add<Output = T>{
+//     let value = value0 + value1;
+//     return value;
+// }
+
+// fn main() {
+//     assert_eq!(5, sum(2i8, 3i8));
+//     assert_eq!(50, sum(20, 30));
+//     assert_eq!(2.46, sum(1.23, 1.23));
+
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
+
+// #[derive(Debug)]
+// struct Point<T> {
+//     x: T,
+//     y: T
+// }
+
+// fn main() {
+//     let integer = Point { x: 5, y: 10 };
+//     println!("integer is {:?}", integer);
+
+//     let float = Point { x: 1.0, y: 4.0 };
+//     println!("float is {:?}", float);
+
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
+// Modify this struct to make the code work
+// struct Point<T> {
+//     x: T,
+//     y: T,
+// }
+
+// fn main() {
+//     // DON'T modify this code.
+//     let p = Point{x: "H!".to_string(), y : "hello".to_string()};
+
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
+// // Add generic for Val to make the code work, DON'T modify the code in `main`.
+// struct Val<T> {
+//     val: T,
+// }
+
+// impl<T> Val<T> {
+//     fn value(&self) -> &T {
+//         &self.val
+//     }
+// }
+
+// fn main() {
+//     let x = Val{ val: 3.0 };
+//     let y = Val{ val: "hello".to_string()};
+//     println!("{}, {}", x.value(), y.value());
+// }
 // =================================================================
 
 // =================================================================
-// =================================================================
-// =================================================================
+// struct Point<T, U> {
+//     x: T,
+//     y: U,
+// }
+
+// impl<T, U> Point<T, U> {
+//     // Implement mixup to make it work, DON'T modify other code.
+//     fn mixup<V, W>(self, other: Point<V, W>) -> Point<T, W> {
+//         let point = Point {
+//             x: self.x,
+//             y: other.y
+//         };
+//         return point;
+//     }
+// }
+
+// fn main() {
+//     let p1 = Point { x: 5, y: 10 };
+//     let p2 = Point { x: "Hello", y: '中'};
+
+//     let p3 = p1.mixup(p2);
+
+//     assert_eq!(p3.x, 5);
+//     assert_eq!(p3.y, '中');
+
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
+// struct Point<T, U> {
+//     x: T,
+//     y: U,
+// }
+
+// impl<T, U> Point<T, U> {
+//     // Implement mixup to make it work, DON'T modify other code.
+//     fn mixup<K, L>(self, other: Point<K, L>) -> Point<T, L> {
+//         let other_point = Point {
+//             x: self.x,
+//             y: other.y
+//         };
+//         return other_point;
+//     }
+// }
+
+// fn main() {
+//     let p1 = Point { x: 5, y: 10 };
+//     let p2 = Point { x: "Hello", y: '中'};
+
+//     let p3 = p1.mixup(p2);
+
+//     assert_eq!(p3.x, 5);
+//     assert_eq!(p3.y, '中');
+
+//     println!("Success!");
+// }
+// =================================================================
+
+// use std::{process::Output, ops::Add};
+
+// // =================================================================
+// // Implement the generic function below.
+// fn sum<T>(value1: T, value2: T) -> T where T: Add<Output = T>{
+//     let total_value = value1 + value2;
+//     return total_value;
+// }
+
+// fn main() {
+//     assert_eq!(5, sum(2i8, 3i8));
+//     assert_eq!(50, sum(20, 30));
+//     assert_eq!(2.46, sum(1.23, 1.23));
+
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
+// Implement struct Point to make it work.
+// struct Point<T, K> {
+//     x: T,
+//     y: K
+// }
+// fn main() {
+//     let integer = Point { x: 5, y: 10 };
+//     let float = Point { x: 1.0, y: 4.0 };
+
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
+// Modify this struct to make the code work
+// struct Point<T> {
+//     x: T,
+//     y: T,
+// }
+
+// fn main() {
+//     // DON'T modify this code.
+//     let p = Point{x: "hi".to_string(), y : "hello".to_string()};
+
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
+
+// Modify this struct to make the code work
+
+// Add generic for Val to make the code work, DON'T modify the code in `main`.
+// struct Val<T> {
+//     val: T,
+// }
+
+// impl<T> Val<T> {
+//     fn value(&self) -> &T {
+//         &self.val
+//     }
+// }
+
+// fn main() {
+//     let x = Val{ val: 3.0 };
+//     let y = Val{ val: "hello".to_string()};
+//     println!("{}, {}", x.value(), y.value());
+// }
 // =================================================================
 
 // =================================================================
+// struct Point<T, U> {
+//     x: T,
+//     y: U,
+// }
+
+// impl<T, U> Point<T, U> {
+//     fn mixup<K, J>(self, other: Point<K, J>) -> Point<T, J> {
+//         Point{
+//             x: self.x,
+//             y: other.y,
+//         }
+//     }
+// }
+
+// fn main() {
+//     let p1 = Point { x: 5, y: 10 };
+//     let p2 = Point { x: "Hello", y: '中'};
+
+//     let p3 = p1.mixup(p2);
+
+//     assert_eq!(p3.x, 5);
+//     assert_eq!(p3.y, '中');
+
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
-// =================================================================
-// =================================================================
+// Fix the errors to make the code work.
+
+// Fix the errors to make the code work.
+// struct Point<T> {
+//     x: T,
+//     y: T,
+// }
+
+// impl Point<f64> {
+//     fn distance_from_origin(&self) -> f64 {
+//         (self.x.powi(2) + self.y.powi(2)).sqrt()
+//     }
+// }
+
+// fn main() {
+//     let p: Point<f64> = Point{x: 5.0, y: 10.0};
+//     println!("{}",p.distance_from_origin());
+// }
 // =================================================================
 
 // =================================================================
+// fn sum_array<const N: usize>(arr: [i32; N]) -> i32 {
+//     let mut value = 0;
+//     for element in &arr {
+//         value += element;
+//     }
+//     return value;
+// }
+// fn main() {
+//     let array1 = [1, 2, 3, 4, 5];
+//     let value = sum_array(array1);
+//     println!("Value is {:?}", value);
+// }
 // =================================================================
 
 // =================================================================
+// fn sort_array<const N: usize>(mut arr: [i32; N]) -> [i32; N] {
+//     arr.sort();
+//     return arr;
+// }
+
+// fn main() {
+//     // Sử dụng hàm sắp xếp với mảng có kích thước cố định
+//     let array = [5, 2, 8, 1, 7];
+//     let sorted_array = sort_array(array);
+//     println!("Sorted array: {:?}", sorted_array);
+// }
 // =================================================================
 
 // =================================================================
+// fn get_total<const N: usize>(values: [i32; N]) -> i32 {
+//     let total_value = values.iter().sum();
+//     return total_value;
+// }
+
+// fn main() {
+//     let array = [5, 2, 8, 1, 7];
+//     let sorted_array = get_total(array);
+//     println!("Sorted array: {:?}", sorted_array);
+// }
 // =================================================================
 
 // =================================================================
+// #[derive(Debug)]
+// struct ArrayPair<T, const N: usize> {
+//     left: [T; N],
+//     right:[T; N]
+// }
+
+// fn main() {
+//     let value = ArrayPair {
+//         left: [1, 2, 3],
+//         right: [1, 2, 3],
+//     };
+//     println!("Value: {:?}", value);
+// }
 // =================================================================
 
 // =================================================================
+// fn foo<const N: usize>() {}
+// fn bar<T, const M: usize>() {
+//     foo::<M>;
+//     foo::<2021>;
+//     foo::<{20 * 100 + 20 * 10 + 1}>();
+//     let _: [u8, m];
+
+// }
 // =================================================================
 
 // =================================================================
-// =================================================================
-// =================================================================
+// pub struct MinSlice<T, const N: usize> {
+//     pub head: [T; N],
+//     pub tail: [T]
+// }
+
+// fn main() {
+//     let slice: &[u8] = b"Hello, world";
+//     let reference = slice.get(6);
+//     assert!(reference.is_some());
+//     let slice: &[u8] = b"Hello, world";
+//     let min_slice = MinSlice::<u8, 12>.
+// }
 // =================================================================
 
 // =================================================================
+// #[derive(Debug)]
+// struct Array<T, const N: usize> {
+//     data : [T; N]
+// }
+
+// fn main() {
+//     let arrays = [
+//         Array{
+//             data: [1, 2, 3],
+//         },
+//         Array {
+//             data: [1, 2, 3],
+//         },
+//         Array {
+//             data: [1, 2, 4]
+//         }
+//     ];
+
+//     println!("Success! is value {:?},", arrays);
+// }
 // =================================================================
 
 // =================================================================
+// Fill in the blanks to make it work.
+// use std::fmt::Debug;
+
+// fn print_array<T: Debug, const N: usize>(arr:[T; N]) {
+//     println!("{:?}", arr);
+// }
+// fn main() {
+//     let arr = [1, 2, 3];
+//     print_array(arr);
+
+//     let arr = ["hello", "world"];
+//     print_array(arr);
+// }
 // =================================================================
 
 // =================================================================
+// #![allow(incomplete_features)]
+// #![feature(generic_const_exprs)]
+
+// fn check_size<T>(val: T)
+// where
+//     Assert<{ core::mem::size_of::<T>() < 768 }>: IsTrue,
+// {
+//     //...
+// }
+
+// // Fix the errors in main.
+// fn main() {
+//     check_size([0u8; 767]);
+//     check_size([0i32; 191]);
+//     check_size(["hello你好"; __]); // Size of &str ?
+//     check_size([(); __].map(|_| "hello你好".to_string()));  // Size of String?
+//     check_size(['中'; __]); // Size of char ?
+
+//     println!("Success!");
+// }
+
+// pub enum Assert<const CHECK: bool> {}
+
+// pub trait IsTrue {}
+
+// impl IsTrue for Assert<true> {}
 // =================================================================
 
 // =================================================================
+
+// #[derive(Debug)]
+// struct Sheep {
+//     naked: bool,
+//     name: String,
+// }
+
+// trait Animal {
+//     // Associated function signature; `Self` refers to the implementor type.
+//     fn new(name: String) -> Self;
+
+//     // Method signatures; these will return a string.
+//     fn name(&self) -> String;
+
+//     fn noise(&self) -> String;
+
+//     // Traits can provide default method definitions.
+//     fn talk(&self) {
+//         println!("{} says {}", self.name(), self.noise());
+//     }
+// }
+
+// impl Sheep {
+//     fn is_naked(&self) -> bool {
+//         self.naked
+//     }
+
+//     fn un_naked(&mut self) {
+//         self.naked = true;
+//     }
+
+//     fn shear(&mut self) {
+//         if self.is_naked() {
+//             // Implementor methods can use the implementor's trait methods.
+//             println!("{} is already naked...", self.name());
+//         } else {
+//             println!("{} gets a haircut!", self.name);
+
+//             self.naked = true;
+//         }
+//     }
+// }
+
+// // Implement the `Animal` trait for `Sheep`.
+// impl Animal for Sheep {
+//     // `Self` is the implementor type: `Sheep`.
+//     fn new(name: String) -> Sheep {
+//         Sheep {
+//             name: name,
+//             naked: false,
+//         }
+//     }
+
+//     fn name(&self) -> String {
+//         self.name.clone()
+//     }
+
+//     fn noise(&self) -> String {
+//         if self.is_naked() {
+//             "baaaaah?".to_string()
+//         } else {
+//             "baaaaah!".to_string()
+//         }
+//     }
+
+//     // Default trait methods can be overridden.
+//     fn talk(&self) {
+//         // For example, we can add some quiet contemplation.
+//         println!("{} pauses briefly... {}", self.name, self.noise());
+//     }
+// }
+
+// fn main() {
+//     // Type annotation is necessary in this case.
+//     let mut dolly: Sheep = Animal::new("Dolly".to_string());
+//     // TODO ^ Try removing the type annotations.
+
+//     dolly.talk();
+//     dolly.shear();
+//     dolly.talk();
+
+//     dolly.un_naked();
+//     dolly.shear();
+//     dolly.noise();
+// }
 // =================================================================
 
 // =================================================================
+
+// trait Hello {
+//     fn say_hi(&self) -> String;
+
+//     fn say_something(&self) -> String;
+// }
+
+// #[derive(Debug)]
+// struct Student {}
+
+// impl Hello for Student {
+//     fn say_hi(&self) -> String {
+//         String::from("hi")
+//     }
+//     fn say_something(&self) -> String {
+//         let value = format!("I'm a good student");
+//         return value;
+//     }
+// }
+
+// #[derive(Debug)]
+// struct Teacher {}
+// impl Hello for Teacher {
+//     fn say_hi(&self) -> String {
+//         String::from("Hi, I'm your new teacher")
+//     }
+//     fn say_something(&self) -> String {
+//         let value = format!("I'm not a bad teacher");
+//         return value;
+//     }
+// }
+
+// fn main() {
+//     let s = Student {};
+//     assert_eq!(s.say_hi(), "hi");
+//     assert_eq!(s.say_something(), "I'm a good student");
+
+//     let t = Teacher {};
+//     assert_eq!(t.say_hi(), "Hi, I'm your new teacher");
+//     assert_eq!(t.say_something(), "I'm not a bad teacher");
+
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
-// =================================================================
-// =================================================================
+
+// #[derive(PartialEq, Debug, PartialOrd)]
+// struct Centimeters(f64);
+
+// #[derive(Debug)]
+// struct Inches(i32);
+
+// impl Inches {
+//     fn to_centimeters(&self) -> Centimeters {
+//         let &Inches(inches) = self;
+
+//         Centimeters(inches as f64 * 2.54)
+//     }
+// }
+
+// #[derive(PartialEq, Debug, PartialOrd)]
+// struct Seconds(i32);
+
+// fn main() {
+//     let _one_second = Seconds(1);
+
+//     println!("One second looks like: {:?}", _one_second);
+//     let _this_is_true = (_one_second == _one_second);
+//     let _this_is_false = (_one_second > _one_second);
+
+//     let foot = Inches(12);
+
+//     println!("One foot equals {:?}", foot);
+
+//     let meter = Centimeters(100.0);
+
+//     let cmp =
+//         if foot.to_centimeters() < meter {
+//             "smaller"
+//         } else {
+//             "bigger"
+//         };
+
+//     println!("One foot is {} than one meter.", cmp);
+// }
 // =================================================================
 
 // =================================================================
+// use std::ops::{self, Mul};
+
+// fn multiply<T>(x: T, y: T) -> T where T: Mul<Output = T>{
+//     let value = x * y;
+//     return value;
+// }
+
+// fn main() {
+//     assert_eq!(6, multiply(2u8, 3u8));
+//     assert_eq!(5.0, multiply(1.0, 5.0));
+//     println!("Success!");
+// }
+
 // =================================================================
 
 // =================================================================
+
+// Fix the errors, DON'T modify the code in `main`.
+// use std::ops;
+
+// #[derive(Debug, PartialEq)]
+// struct Foo;
+
+// #[derive(Debug, PartialEq)]
+// struct Bar;
+
+// #[derive(Debug, PartialEq)]
+// struct FooBar;
+
+// #[derive(Debug, PartialEq)]
+// struct BarFoo;
+
+// // The `std::ops::Add` trait is used to specify the functionality of `+`.
+// // Here, we make `Add<Bar>` - the trait for addition with a RHS of type `Bar`.
+// // The following block implements the operation: Foo + Bar = FooBar
+// impl ops::Add<Bar> for Foo {
+//     type Output = FooBar;
+
+//     fn add(self, _rhs: Bar) -> FooBar {
+//         FooBar
+//     }
+// }
+
+// impl ops::Sub<Foo> for Bar {
+//     type Output = BarFoo;
+
+//     fn sub(self, _rhs: Foo) -> BarFoo {
+//         BarFoo
+//     }
+// }
+
+// fn main() {
+//     // DON'T modify the code below.
+//     // You need to derive some trait for FooBar to make it comparable.
+//     assert_eq!(Foo + Bar, FooBar);
+//     assert_eq!(Foo - Bar, BarFoo);
+
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
+
+// Implement `fn summary` to make the code work.
+// Fix the errors without removing any code line
+// pub trait Summary {
+//     fn summarize(&self) -> String;
+// }
+
+// #[derive(Debug)]
+// pub struct Post {
+//     title: String,
+//     author: String,
+//     content: String,
+// }
+
+// impl Summary for Post {
+//     fn summarize(&self) -> String {
+//         format!("The author of post {} is {}", self.title, self.author)
+//     }
+// }
+
+// #[derive(Debug)]
+// pub struct Weibo {
+//     username: String,
+//     content: String,
+// }
+
+// impl Summary for Weibo {
+//     fn summarize(&self) -> String {
+//         format!("{} published a weibo {}", self.username, self.content)
+//     }
+// }
+
+// fn main() {
+//     let post = Post {
+//         title: "Popular Rust".to_string(),
+//         author: "Sunface".to_string(),
+//         content: "Rust is awesome!".to_string(),
+//     };
+//     let weibo = Weibo {
+//         username: "sunface".to_string(),
+//         content: "Weibo seems to be worse than Tweet".to_string(),
+//     };
+
+//     post.summarize();
+//     weibo.summarize();
+
+//     println!("{:?}", post);
+//     println!("{:?}", weibo);
+// }
 // =================================================================
 
 // =================================================================
+// struct Sheep {}
+// struct Cow {}
+
+// trait Animal {
+//     fn noise(&self) -> String;
+// }
+
+// impl Animal for Sheep {
+//     fn noise(&self) -> String {
+//         "baaaaah!".to_string()
+//     }
+// }
+
+// impl Animal for Cow {
+//     fn noise(&self) -> String {
+//         "moooooo!".to_string()
+//     }
+// }
+
+// // Returns some struct that implements Animal, but we don't know which one at compile time.
+// // FIX the errors here, you can make a fake random, or you can use trait object.
+// fn random_animal(random_number: f64) -> Box<dyn Animal> {
+//     if random_number < 0.5 {
+//         Box::new(Sheep {})
+//     } else {
+//         Box::new(Cow {})
+//     }
+// }
+
+// fn main() {
+//     let random_number = 0.234;
+//     let animal = random_animal(random_number);
+//     println!("You've randomly chosen an animal, and it says {}", animal.noise());
+// }
+// =================================================================
+
+// use std::{process::Output, ops::Add};
+
+// =================================================================
+// fn main() {
+//     assert_eq!(sum(1, 2), 3);
+//     println!("All ok");
+// }
+
+// fn sum<T>(x: T, y: T) -> T  where T: Add<Output = T>{
+//     x + y
+// }
 // =================================================================
 
 // =================================================================
+// FIX the errors.
+// #[derive(Debug, PartialEq, PartialOrd)]
+// struct Pair<T> {
+//     x: T,
+//     y: T,
+// }
+
+// impl<T> Pair<T> {
+//     fn new(x: T, y: T) -> Self {
+//         Self {
+//             x,
+//             y,
+//         }
+//     }
+// }
+
+// impl<T: std::fmt::Debug + PartialOrd> Pair<T> {
+//     fn cmp_display(&self) {
+//         if self.x >= self.y {
+//             println!("The largest member is x = {:?}", self.x);
+//         } else {
+//             println!("The largest member is y = {:?}", self.y);
+//         }
+//     }
+// }
+
+// #[derive(Debug, PartialEq, PartialOrd)]
+// struct Unit(i32);
+
+// fn main() {
+//     let pair = Pair{
+//         x: Unit(1),
+//         y: Unit(3)
+//     };
+
+//     pair.cmp_display();
+// }
 // =================================================================
 
 // =================================================================
-// =================================================================
-// =================================================================
+
+// Fill in the blanks to make it work
+// fn example1() {
+//     // `T: Trait` is the commonly used way.
+//     // `T: Fn(u32) -> u32` specifies that we can only pass a closure to `T`.
+//     struct Cacher<T: Fn(u32) -> u32> {
+//         calculation: T,
+//         value: Option<u32>,
+//     }
+
+//     impl<T: Fn(u32) -> u32> Cacher<T> {
+//         fn new(calculation: T) -> Cacher<T> {
+//             Cacher {
+//                 calculation,
+//                 value: None,
+//             }
+//         }
+
+//         fn value(&mut self, arg: u32) -> u32 {
+//             match self.value {
+//                 Some(v) => v,
+//                 None => {
+//                     let v = (self.calculation)(arg);
+//                     self.value = Some(v);
+//                     v
+//                 }
+//             }
+//         }
+//     }
+
+//     let mut cacher = Cacher::new(|x| x + 1);
+//     assert_eq!(cacher.value(10), __);
+//     assert_eq!(cacher.value(15), __);
+// }
+
+// fn example2() {
+//     // We can also use `where` to construct `T`
+//     struct Cacher<T>
+//     where
+//         T: Fn(u32) -> u32,
+//     {
+//         calculation: T,
+//         value: Option<u32>,
+//     }
+
+//     impl<T> Cacher<T>
+//     where
+//         T: Fn(u32) -> u32,
+//     {
+//         fn new(calculation: T) -> Cacher<T> {
+//             Cacher {
+//                 calculation,
+//                 value: None,
+//             }
+//         }
+
+//         fn value(&mut self, arg: u32) -> u32 {
+//             match self.value {
+//                 Some(v) => v,
+//                 None => {
+//                     let v = (self.calculation)(arg);
+//                     self.value = Some(v);
+//                     v
+//                 }
+//             }
+//         }
+//     }
+
+//     let mut cacher = Cacher::new(|x| x + 1);
+//     assert_eq!(cacher.value(20), __);
+//     assert_eq!(cacher.value(25), __);
+// }
+
+// fn main() {
+//     example1();
+//     example2();
+
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
+// fn example_test1() {
+//     struct Cached<T: Fn(u32) -> u32> {
+//         calculate: T,
+//         value: Option<u32>
+//     }
+
+//     impl <T: Fn(u32) -> u32> Cached<T> {
+//         fn new(calculate: T) -> Cached<T> {
+//             let new_cacher = Cached {
+//                 calculate: calculate,
+//                 value: None
+//             };
+//             return new_cacher;
+//         }
+
+//         fn value(&mut self, arg: u32) -> u32 {
+//             match self.value {
+//                 Some(v) => v,
+//                 None => {
+//                     let v = (self.calculate)(arg);
+//                     self.value = Some(v);
+//                     v
+//                 }
+//             }
+//         }
+//     }
+//     let mut cached = Cached::new(|x| x + 1);
+//     assert_eq!(cached.value(10), 11);
+//     assert_eq!(cached.value(15), 15);
+
+// }
+
+// fn main() {
+//     example_test1();
+// }
 // =================================================================
 
 // =================================================================
+// trait Printable {
+//     fn print(&self);
+// }
+
+// struct Dog;
+
+// impl Printable for Dog {
+//     fn print(&self) {
+//         println!("This a dog");
+//     }
+// }
+
+// fn print_trait_object(printable: &dyn Printable) {
+//     printable.print();
+// }
+
+// fn main() {
+//     let dog = Dog;
+//     print_trait_object(&dog);
+// }
+
 // =================================================================
 
 // =================================================================
+// trait Bird {
+//     fn quack(&self) -> String;
+// }
+
+// #[derive(Debug)]
+// struct Duck;
+// impl Duck {
+//     fn swim(&self) {
+//         println!("Look, the duck is swimming")
+//     }
+// }
+
+// #[derive(Debug)]
+// struct Swan;
+// impl Swan {
+//     fn fly(&self) {
+//         println!("Look, the duck.. oh sorry, the swan is flying")
+//     }
+// }
+
+// impl Bird for Duck {
+//     fn quack(&self) -> String{
+//         "duck duck".to_string()
+//     }
+// }
+
+// impl Bird for Swan {
+//     fn quack(&self) -> String{
+//         "swan swan".to_string()
+//     }
+// }
+
+// fn hatch_a_bird(id: i32) -> Box<dyn Bird> {
+//     match id % 2 {
+//         0 => Box::new(Duck),
+//         _ => {
+//             println!("OK");
+//             Box::new(Swan)
+//         },
+//     }
+// }
+
+// fn main() {
+//     let duck = Duck {};
+//     duck.swim();
+
+//     let bird: Box<dyn Bird> = hatch_a_bird(2);
+//     assert_eq!(bird.quack(), "duck duck");
+
+//     let swan = hatch_a_bird(1);
+//     assert_eq!(swan.quack(), "swan swan");
+
+//     println!("Success!");
+// }
+
 // =================================================================
 
 // =================================================================
+// trait Bird {
+//     fn quack(&self);
+// }
+
+// struct Duck;
+// impl Duck {
+//     fn fly(&self) {
+//         println!("Look, the duck is flying")
+//     }
+// }
+// struct Swan;
+// impl Swan {
+//     fn fly(&self) {
+//         println!("Look, the duck.. oh sorry, the swan is flying")
+//     }
+// }
+
+// impl Bird for Duck {
+//     fn quack(&self) {
+//         println!("{}", "duck duck");
+//     }
+// }
+
+// impl Bird for Swan {
+//     fn quack(&self) {
+//         println!("{}", "swan swan");
+//     }
+// }
+
+// fn main() {
+//     // FILL in the blank to make the code work.
+//     let birds: Vec<Box<dyn Bird>> = vec![Box::new(Duck), Box::new(Swan)];
+
+//     for bird in birds {
+//         bird.quack();
+//         // When duck and swan turn into Birds, they all forgot how to fly, only remember how to quack.
+//         // So, the code below will cause an error.
+//         // bird.fly();
+//     }
+// }
 // =================================================================
 
 // =================================================================
+
+// FILL in the blanks.
+// trait Draw {
+//     fn draw(&self) -> String;
+// }
+
+// impl Draw for u8 {
+//     fn draw(&self) -> String {
+//         format!("u8: {}", *self)
+//     }
+// }
+
+// impl Draw for f64 {
+//     fn draw(&self) -> String {
+//         format!("f64: {}", *self)
+//     }
+// }
+
+// fn main() {
+//     let x = 1.1f64;
+//     let y = 8u8;
+
+//     // Draw x.
+//     draw_with_box(Box::new(x));
+
+//     // Draw y.
+//     draw_with_ref(&y);
+
+//     println!("Success!");
+// }
+
+// fn draw_with_box(x: Box<dyn Draw>) {
+//     x.draw();
+// }
+
+// fn draw_with_ref(x: &dyn Draw) {
+//     x.draw();
+// }
 // =================================================================
 
 // =================================================================
-// =================================================================
-// =================================================================
+// trait Foo {
+//     fn method(&self) -> String;
+// }
+
+// impl Foo for u8 {
+//     fn method(&self) -> String { format!("u8: {}", *self) }
+// }
+
+// impl Foo for String {
+//     fn method(&self) -> String { format!("string: {}", *self) }
+// }
+
+// // IMPLEMENT below with generics.
+// fn static_dispatch<T : Foo>(value: T) {
+//     println!("{}", value.method());
+// }
+
+// // Implement below with trait objects.
+// fn dynamic_dispatch(value: &dyn Foo) {
+//     println!("{}", value.method());
+// }
+
+// fn main() {
+//     let x = 5u8;
+//     let y = "Hello".to_string();
+
+//     static_dispatch(x);
+//     dynamic_dispatch(&y);
+
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
+
+// Use at least two approaches to make it work.
+// DON'T add/remove any code line.
+// trait MyTrait {
+//     fn f(&self) -> Self;
+// }
+
+// impl MyTrait for u32 {
+//     fn f(&self) -> Self { 42u32 }
+// }
+
+// impl MyTrait for String {
+//     fn f(&self) -> Self { self.clone() }
+// }
+
+// fn my_function<T: MyTrait>(x: T) {
+//     println!("Print some thing");
+// }
+
+// fn main() {
+//     my_function(21);
+//     my_function("Je".to_string());
+
+//     println!("Success!");
+// }
+// =================================================================
+
+// =================================================================
+
+// Use at least two approaches to make it work.
+// DON'T add/remove any code line.
+// trait MyTrait {
+//     fn f(&self) -> Self;
+// }
+
+// impl MyTrait for u32 {
+//     fn f(&self) -> Self { 42 }
+// }
+
+// impl MyTrait for String {
+//     fn f(&self) -> Self { self.clone() }
+// }
+
+// fn my_function<T: MyTrait>(x: T)  {
+//     println!("Print some thing");
+// }
+
+// fn main() {
+//     my_function(21);
+//     my_function("Je".to_string());
+
+//     println!("Success!");
+// }
+// =================================================================
+
+// =================================================================
+
+// Use at least two approaches to make it work.
+// DON'T add/remove any code line.
+// trait MyTrait {
+//     fn f(&self) -> Box<dyn MyTrait>;
+// }
+
+// impl MyTrait for u32 {
+//     fn f(&self) -> Box<dyn MyTrait> { Box::new(342) }
+// }
+
+// impl MyTrait for String {
+//     fn f(&self) -> Box<dyn MyTrait> { Box::new(self.clone()) }
+// }
+
+// fn my_function(x: Box<dyn MyTrait>)  {
+//     println!("Do some thing");
+//     // x.f()
+// }
+
+// fn main() {
+//     my_function(Box::new(13_u32));
+//     my_function(Box::new(String::from("abc")));
+
+//     println!("Success!");
+// }
+// =================================================================
+
+// =================================================================
+// struct Container(i32, i32);
+
+// trait Contains<A, B> {
+//     fn contains(&self, _: &A, _: &B) -> bool;
+//     fn first(&self) -> i32;
+//     fn last(&self) -> i32;
+// }
+
+// impl Contains<i32, i32> for Container {
+//     fn contains(&self, number_1: &i32, number_2: &i32) -> bool {
+//         (&self.0 == number_1) && (&self.1 == number_2)
+//     }
+//     fn first(&self) -> i32 { self.0 }
+
+//     fn last(&self) -> i32 { self.1 }
+// }
+
+// fn difference<A, B, C: Contains<A, B>>(container: &C) -> i32 {
+//     container.last() - container.first()
+// }
+
+// fn main() {
+//     let number_1 = 3;
+//     let number_2 = 10;
+
+//     let container = Container(number_1, number_2);
+
+//     println!("Does container contain {} and {}: {}",
+//         &number_1, &number_2,
+//         container.contains(&number_1, &number_2));
+//     println!("First number: {}", container.first());
+//     println!("Last number: {}", container.last());
+    
+//     println!("The difference is: {}", difference(&container));
+// }
+
+// =================================================================
+
+// use std::ops::Sub;
+
+// // =================================================================
+// #[derive(Debug, PartialEq)]
+// struct Point<T> {
+//     x: T,
+//     y: T
+// }
+// impl <T: Sub<Output = T>> Sub for Point<T> {
+//     type Output = Self;
+
+//     fn sub(self, rhs: Self) -> Self::Output {
+//         Point {
+//             x: self.x - rhs.x,
+//             y: self.y - rhs.y,
+//         }
+//     }
+// }
+
+use std::ops::Mul;
+
+// fn main(){
+//     let point = Point{x: 0, y:10} - Point{x: 0, y:11};
+//     println!("Value is {:?}", point);
+// }
+// =================================================================
+#[derive(Debug, PartialEq)]
+struct Point<T> {
+    x: T,
+    y: T
+} 
+
+impl <T: Mul<Output = T>> Mul for Point<T> {
+    type Output = Self;
+
+    fn mul(self, rhs: Self) -> Self::Output {
+        let point = Point {
+            x: self.x * rhs.x,
+            y: self.y * rhs.y
+        };
+        return point;
+    }
+}
+fn main() {
+    let point = Point{x: 3, y: 10} * Point{x: 4, y: 9};
+    println!("Value is: {:?}", point);
+}
+
+// =================================================================
+
 // =================================================================
 
 // =================================================================
