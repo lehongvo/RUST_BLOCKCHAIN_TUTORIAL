@@ -4254,9 +4254,9 @@
 //     let slice1 = &v[..];
 
 //     let slice2 = &v[0..3];
-    
+
 //     assert_eq!(slice1, slice2);
-    
+
 //     // Slices are read only
 //     // Note: slice and &Vec are different
 //     let vec_ref: &mut Vec<i32> = &mut v;
@@ -4275,7 +4275,6 @@
 // fn main() {
 //     let mut vec = Vec::with_capacity(10);
 
-
 //     // The vector contains no items, even though it has capacity for more
 //     assert_eq!(vec.len(), 0);
 //     assert_eq!(vec.capacity(), 10);
@@ -4292,8 +4291,7 @@
 //     assert_eq!(vec.len(), 11);
 //     assert!(vec.capacity() >= 20);
 
-
-//     // Fill in an appropriate value to make the `for` done without reallocating 
+//     // Fill in an appropriate value to make the `for` done without reallocating
 //     let mut vec = Vec::with_capacity(10);
 //     for i in 0..100 {
 //         vec.push(i);
@@ -4301,7 +4299,7 @@
 
 //     assert_eq!(vec.len(), 100);
 //     assert_eq!(vec.capacity(), 10);
-    
+
 //     // println!("Success!");
 // }
 // =================================================================
@@ -4330,10 +4328,10 @@
 // fn main() {
 //     // FILL in the blank
 //     let v : Vec<IpAddr>= vec![
-//         IpAddr::V4("127.0.0.1".to_string()), 
+//         IpAddr::V4("127.0.0.1".to_string()),
 //         IpAddr::V6("::1".to_string())
 //     ];
-    
+
 //     // Comparing two enums need to derive the PartialEq trait
 //     assert_eq!(v[0], IpAddr::V4("127.0.0.1".to_string()));
 //     assert_eq!(v[1], IpAddr::V6("::1".to_string()));
@@ -4376,17 +4374,149 @@
 // =================================================================
 
 // =================================================================
-// =================================================================
-// =================================================================
+
+// use std::collections::HashMap;
+// fn main() {
+//     let mut scores = HashMap::new();
+//     scores.insert("Sunface", 98);
+//     scores.insert("Daniel", 95);
+//     scores.insert("Ashley", 1);
+//     scores.insert("Katie", 58);
+
+//     // Get returns an Option<&V>
+//     let score = scores.get("Sunface");
+//     assert_eq!(score, Some(98).as_ref());
+
+//     if scores.contains_key("Daniel") {
+//         // Indexing returns a value V
+//         let score = scores["Daniel"];
+//         assert_eq!(score, 95);
+//         scores.remove("Daniel");
+//     }
+
+//     assert_eq!(scores.len(), 3);
+
+//     for (name, score) in scores {
+//         println!("The score of {} is {}", name, score);
+//     }
+// }
 // =================================================================
 
 // =================================================================
+
+// use std::collections::HashMap;
+// fn main() {
+//     let teams = [
+//         ("Chinese Team", 100),
+//         ("American Team", 10),
+//         ("France Team", 50),
+//     ];
+
+//     let mut teams_map1: HashMap<&str, i32> = HashMap::new();
+//     for team in &teams {
+//         teams_map1.insert(team.0, team.1);
+//     }
+//     println!("Value {:?}", teams_map1);
+
+//     // IMPLEMENT team_map2 in two ways
+//     // Tips: one of the approaches is to use `collect` method
+//     // let teams_map2 = teams.into_iter().collect();
+//     let teams_map2 = teams.iter().cloned().collect();
+//     assert_eq!(teams_map1, teams_map2);
+//     println!("Success!");
+// }
+// =================================================================
+
+// FILL in the blanks
+// use std::collections::HashMap;
+// fn main() {
+
+//     let mut player_stats = HashMap::new();
+
+//     player_stats.entry("health").or_insert(100);
+
+//     assert_eq!(player_stats["health"], 100);
+
+//     player_stats.entry("health").or_insert_with(random_stat_buff);
+//     assert_eq!(player_stats["health"], 100);
+
+//     let health = player_stats.entry("health").or_insert(50);
+//     assert_eq!(health, &100);
+//     *health -= 50;
+//     assert_eq!(*health, 50);
+// }
+
+// fn random_stat_buff() -> u8 {
+//     // Could actually return some random value here - let's just return
+//     // some fixed value for now
+//     42
+// }
 // =================================================================
 
 // =================================================================
+
+// FIX the errors
+// Tips: `derive` is usually a good way to implement some common used traits
+// use std::collections::HashMap;
+
+// #[derive(Debug)]
+// struct Viking {
+//     name: String,
+//     country: String,
+// }
+
+// impl Viking {
+//     /// Creates a new Viking.
+//     fn new(name: &str, country: &str) -> Viking {
+//         Viking {
+//             name: name.to_string(),
+//             country: country.to_string(),
+//         }
+//     }
+// }
+
+// fn main() {
+//     // Use a HashMap to store the vikings' health points.
+//     let mut vikings = vec![
+//         (Viking::new("Einar", "Norway"), 25),
+//         (Viking::new("Olaf", "Denmark"), 24),
+//         (Viking::new("Harald", "Iceland"), 12),
+//     ];
+
+//     // (Viking::new("Einar", "Norway"), 25),
+//     //     (Viking::new("Olaf", "Denmark"), 24),
+//     //     (Viking::new("Harald", "Iceland"), 12),
+
+//     // Use derived implementation to print the status of the vikings.
+//     for (viking, health) in &vikings {
+//         println!("{:?} has {} hp", viking, health);
+//     }
+// }
 // =================================================================
 
 // =================================================================
+
+// use std::collections::HashMap;
+// fn main() {
+//     let mut map: HashMap<i32, i32> = HashMap::with_capacity(1);
+//     map.insert(1, 2);
+//     map.insert(3, 4);
+//     assert!(map.capacity() <= 100, "Error by {}", map.capacity());
+
+
+//     map.shrink_to(50);
+//     assert!(map.capacity() <= 50, "Error by {}", map.capacity());
+
+//     println!("Value is {}", map.capacity());
+
+//     map.shrink_to_fit();
+//     assert!(map.capacity() >= 2);
+//     println!("Success!");
+// }
+// =================================================================
+
+// =================================================================
+// git
 // =================================================================
 
 // =================================================================
