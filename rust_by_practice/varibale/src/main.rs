@@ -3795,11 +3795,11 @@
 //         age: 28,
 //     };
 
-//     // If you uncomment this line, you'll get an error saying 
+//     // If you uncomment this line, you'll get an error saying
 //     // "multiple `get` found". Because, after all, there are multiple methods
 //     // named `get`.
 //     // println!("{}", form.get());
-    
+
 //     let username = UsernameWidget::get(&form);
 //     println!("Value is {}", username);
 //     assert_eq!("rustacean".to_owned(), username);
@@ -3909,7 +3909,6 @@
 //     }
 // }
 
-
 // fn main() {
 //     let student = CSStudent {
 //         name: "Sunfei".to_string(),
@@ -3945,7 +3944,6 @@
 //     s.push_str("world");
 //     s.push('!');
 
-
 //     assert_eq!(s, "hello, world!");
 //     move_ownership(s);
 
@@ -3958,26 +3956,26 @@
 
 // =================================================================
 // FILL in the blanks
-// fn main() {  
+// fn main() {
 //     let mut s = String::from("hello, world");
- 
+
 //     let slice1: &str = &s ; // In two ways
 //     assert_eq!(slice1, "hello, world");
- 
+
 //     let slice2 = &slice1[0..5];
 //     assert_eq!(slice2, "hello");
- 
+
 //     let mut slice3 = s.to_owned();
 //     slice3.push('!');
 //     assert_eq!(slice3, "hello, world!");
- 
+
 //     println!("Success!");
 //  }
- 
+
 // =================================================================
 // Question: how many heap allocations are happening here?
-// Your answer: 
-// fn main() {  
+// Your answer:
+// fn main() {
 //     // Create a String type based on `&str`
 //     // The type of string literals is `&str`
 //    let s: String = String::from("hello, world!");
@@ -4004,7 +4002,7 @@
 
 //     let slice2 = &s[7..10]; // Tips: `中`  takes 3 bytes in UTF8 format
 //     assert_eq!(slice2, "世");
-    
+
 //     // Iterate through all chars in s
 //     for (i, c) in s.chars().enumerate() {
 //         if i == 7 {
@@ -4038,8 +4036,7 @@
 
 //     // Turn a byte's vector into a String
 //     let s1 = String::from_utf8(v).expect("Failled to convert to String");
-    
-    
+
 //     assert_eq!(s, s1);
 
 // }
@@ -4047,7 +4044,7 @@
 
 // =================================================================
 
-// Modify the code below to print out: 
+// Modify the code below to print out:
 // 25
 // 25
 // 25
@@ -4067,63 +4064,315 @@
 
 // =================================================================
 
+// // FILL in the blanks
+// use std::mem::{self, ManuallyDrop};
+
+// fn main() {
+//     let story = String::from("Rust By Practice");
+
+//     // Prevent automatically dropping of the String's data
+//     let mut story = ManuallyDrop::new(story);
+//     println!("Value is {:?}", story);
+
+//     let ptr = story.as_mut_ptr();
+//     let len = story.len();
+//     let capacity = story.capacity();
+
+//     assert_eq!(16, len);
+
+//     // We can rebuild a String out of ptr, len, and capacity. This is all
+//     // unsafe because we are responsible for making sure the components are
+//     // valid:
+//     let s = unsafe { String::from_raw_parts(ptr, len, capacity) };
+
+//     assert_eq!(*story, s);
+
+//     println!("Success!");
+// }
+// =================================================================
+
+// =================================================================
+
+// fn main() {
+//     let arr: [u8; 3] = [1, 2, 3];
+
+//     let v = Vec::from(arr);
+//     is_vec(&v);
+
+//     let v = vec![1, 2, 3];
+//     is_vec(&v);
+
+//     // vec!(..) and vec![..] are same macros, so
+//     let v = vec!(1, 2, 3);
+//     is_vec(&v);
+
+//     // In code below, v is Vec<[u8; 3]> , not Vec<u8>
+//     // USE Vec::new and `for` to rewrite the below code
+//     let v1 = Vec::from(arr);
+//     is_vec(&v1);
+
+//     assert_eq!(v, v1);
+
+//     println!("Success!");
+// }
+
+// fn is_vec(v: &Vec<u8>) {}
+// =================================================================
+
+// =================================================================
+
+// FILL in the blank
+// fn main() {
+//     let mut v1 = Vec::from([1, 2, 4]);
+//     v1.pop();
+//     v1.push(3);
+
+//     let mut v2 = Vec::new();
+//     v2.extend(&v1);
+
+//     assert_eq!(v1, v2);
+
+//     println!("Success!");
+// }
+// =================================================================
+
+// =================================================================
+
 // FILL in the blanks
-use std::mem::{self, ManuallyDrop};
 
-fn main() {
-    let story = String::from("Rust By Practice");
+// FILL in the blanks
+// fn main() {
+//     // Array -> Vec
+//     // impl From<[T; N]> for Vec
+//     let arr = [1, 2, 3];
+//     let v1 = Vec::from(arr);
+//     let v2: Vec<i32> = arr.into();
 
-    // Prevent automatically dropping of the String's data
-    let mut story = ManuallyDrop::new(story);
-    println!("Value is {:?}", story);
+//     assert_eq!(v1, v2);
 
-    let ptr = story.as_mut_ptr();
-    let len = story.len();
-    let capacity = story.capacity();
+//     // String -> Vec
+//     // impl From<String> for Vec
+//     let s = "hello".to_string();
+//     let v1: Vec<u8> = s.into();
 
-    assert_eq!(16, len);
+//     let s = "hello".to_string();
+//     let v2 = s.into_bytes();
+//     assert_eq!(v1, v2);
 
-    // We can rebuild a String out of ptr, len, and capacity. This is all
-    // unsafe because we are responsible for making sure the components are
-    // valid:
-    let s = unsafe { String::from_raw_parts(ptr, len, capacity) };
+//     // impl<'_> From<&'_ str> for Vec
+//     let s = "hello";
+//     let v3 = Vec::from(s);
+//     assert_eq!(v2, v3);
 
-    assert_eq!(*story, s);
+//     // Iterators can be collected into vectors
+//     let v4: Vec<i32> = [0; 10].into_iter().collect();
+//     assert_eq!(v4, vec![0; 10]);
 
-    println!("Success!");
-}
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
+//     println!("Success!");
+//  }
 // =================================================================
 
 // =================================================================
+// fn main() {
+//     let mut v = Vec::from([1, 2, 3]);
+//     for i in 0..5 {
+//         println!("{:?}", v[i])
+//     }
+
+//     for i in 0..5 {
+//        // IMPLEMENT the code here...
+//     }
+
+//     assert_eq!(v, vec![2, 3, 4, 5, 6]);
+
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
-// =================================================================
-// =================================================================
+// FILL in the blanks
+// fn main() {
+//     // Array -> Vec
+//     // impl From<[T; N]> for Vec
+//     let arr: [i32; 3] = [1, 2, 3];
+//     let v1 = Vec::from(arr);
+//     let v2: Vec<i32> = arr.into();
+
+//     assert_eq!(v1, v2);
+
+//     // String -> Vec
+//     // impl From<String> for Vec
+//     let s = "hello".to_string();
+//     let v1: Vec<u8> = s.into();
+
+//     let s = "hello".to_string();
+//     let v2 = s.into_bytes();
+//     assert_eq!(v1, v2);
+
+//     // impl<'_> From<&'_ str> for Vec
+//     let s = "hello";
+//     let v3 = Vec::from(s);
+//     assert_eq!(v2, v3);
+
+//     // Iterators can be collected into vectors
+//     let v4: Vec<i32> = [0; 10].into_iter().collect();
+//     assert_eq!(v4, vec![0; 10]);
+
+//     println!("Success!");
+//  }
 // =================================================================
 
 // =================================================================
+// FIX the error and IMPLEMENT the code
+// fn main() {
+//     let mut v = Vec::from([1, 2, 3]);
+//     for i in 0..3 {
+//         println!("{:?}", &v[i])
+//     }
+
+//     for i in 0..5 {
+//         if i < v.len(){
+//             v[i] = v[i] + 1;
+//         } else {
+//             v.push(i + 2);
+//         }
+//     }
+
+//     assert_eq!(v, vec![2, 3, 4, 5, 6]);
+
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
+// FIX the errors
+
+// FIX the errors
+// fn main() {
+//     let mut v = vec![1, 2, 3];
+
+//     let slice1 = &v[..];
+
+//     let slice2 = &v[0..3];
+    
+//     assert_eq!(slice1, slice2);
+    
+//     // Slices are read only
+//     // Note: slice and &Vec are different
+//     let vec_ref: &mut Vec<i32> = &mut v;
+//     (*vec_ref).push(4);
+//     let slice3 = &mut v[..];
+//     // slice3.push(4);
+
+//     assert_eq!(slice3, &[1, 2, 3, 4]);
+
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
+// FIX the errors
+// fn main() {
+//     let mut vec = Vec::with_capacity(10);
+
+
+//     // The vector contains no items, even though it has capacity for more
+//     assert_eq!(vec.len(), 0);
+//     assert_eq!(vec.capacity(), 10);
+
+//     // These are all done without reallocating...
+//     for i in 0..10 {
+//         vec.push(i);
+//     }
+//     assert_eq!(vec.len(), 10);
+//     assert_eq!(vec.capacity(), 10);
+
+//     // ...but this may make the vector reallocate
+//     vec.push(11);
+//     assert_eq!(vec.len(), 11);
+//     assert!(vec.capacity() >= 20);
+
+
+//     // Fill in an appropriate value to make the `for` done without reallocating 
+//     let mut vec = Vec::with_capacity(10);
+//     for i in 0..100 {
+//         vec.push(i);
+//     }
+
+//     assert_eq!(vec.len(), 100);
+//     assert_eq!(vec.capacity(), 10);
+    
+//     // println!("Success!");
+// }
+// =================================================================
+
+/// The function creates a vector of boxed values of any type and attempts to downcast the first value
+/// to an `i32`, printing the value if successful.
+// use std::any::Any;
+
+// // =================================================================
+// fn main() {
+//     let vector_box: Vec<Box<dyn Any>> = vec![Box::new(1), Box::new(1.3), Box::new(-1)];
+//     if let Some(value) = vector_box[0].downcast_ref::<i32>() {
+//         println!("Value is: {}", value);
+//     } else {
+//         println!("Invalid valus");
+//     }
+// }
 // =================================================================
 
 // =================================================================
+// #[derive(Debug, PartialEq)]
+// enum IpAddr {
+//     V4(String),
+//     V6(String),
+// }
+// fn main() {
+//     // FILL in the blank
+//     let v : Vec<IpAddr>= vec![
+//         IpAddr::V4("127.0.0.1".to_string()), 
+//         IpAddr::V6("::1".to_string())
+//     ];
+    
+//     // Comparing two enums need to derive the PartialEq trait
+//     assert_eq!(v[0], IpAddr::V4("127.0.0.1".to_string()));
+//     assert_eq!(v[1], IpAddr::V6("::1".to_string()));
+
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
+// trait IpAddr {
+//     fn display(&self);
+// }
+
+// struct V4(String);
+
+// impl IpAddr for V4 {
+//     fn display(&self) {
+//         println!("ipv4: {:?}",self.0)
+//     }
+// }
+// struct V6(String);
+
+// impl IpAddr for V6 {
+//     fn display(&self) {
+//         println!("ipv6: {:?}",self.0)
+//     }
+// }
+
+// fn main() {
+//     // FILL in the blank
+//     let v: Vec<Box<dyn IpAddr>>= vec![
+//         Box::new(V4("127.0.0.1".to_string())),
+//         Box::new(V6("::1".to_string())),
+//     ];
+
+//     for ip in v {
+//         ip.display();
+//     }
+// }
 // =================================================================
 
 // =================================================================
