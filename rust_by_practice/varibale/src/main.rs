@@ -4503,7 +4503,6 @@
 //     map.insert(3, 4);
 //     assert!(map.capacity() <= 100, "Error by {}", map.capacity());
 
-
 //     map.shrink_to(50);
 //     assert!(map.capacity() <= 50, "Error by {}", map.capacity());
 
@@ -4516,57 +4515,399 @@
 // =================================================================
 
 // =================================================================
-// git
+// FIX the errors and FILL in the blank
+// DON'T remove any code
+// FIX the errors and FILL in the blank
+// DON'T remove any code
+// fn main() {
+//     let decimal = 97.123_f32;
+
+//     let integer: u8 = decimal as u8;
+
+//     let c1: char = decimal as u8 as char;
+//     let c2 = integer as char;
+
+//     assert_eq!(integer, 'a' as u8, "Value is {integer}");
+
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
+// fn main() {
+//     assert_eq!(u8::MAX, 255);
+//     // The max of `u8` is 255 as shown above.
+//     // so the below code will cause an overflow error: literal out of range for `u8`.
+//     // PLEASE looking for clues within compile errors to FIX it.
+//     // DON'T modify any code in main.
+//     let v = 1000.0 as u8;
+
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
+// fn main() {
+//     assert_eq!(1000 as u16, 1000);
+
+//     assert_eq!(100 as u8, 100);
+
+//     assert_eq!(-1_i8 as u8, 255);
+
+//     // Since Rust 1.45, the `as` keyword performs a *saturating cast*
+//     // when casting from float to int. If the floating point value exceeds
+//     // the upper bound or is less than the lower bound, the returned value
+//     // will be equal to the bound crossed.
+//     assert_eq!(300.1_f32 as u8, 255);
+//     assert_eq!(-100.1_f32 as u8,0);
+
+//     // This behavior incurs a small runtime cost and can be avoided
+//     // with unsafe methods, however the results might overflow and
+//     // return **unsound values**. Use these methods wisely:
+//     unsafe {
+//         println!("300.0 is {}", 300.0_f32.to_int_unchecked::<u8>());
+//         println!("-100.0 as u8 is {}", (-100.0_f32).to_int_unchecked::<u8>());
+//         println!("nan as u8 is {}", f32::NAN.to_int_unchecked::<u8>());
+//     }
+// }
 // =================================================================
 
 // =================================================================
-// =================================================================
-// =================================================================
+
+// FILL in the blanks
+// fn main() {
+//     let mut values: [i32; 2] = [1, 2];
+//     let p1: *mut i32 = values.as_mut_ptr();
+//     println!("{:?}", p1);
+//     let first_address: usize = p1 as usize;
+//     let second_address = first_address + 4; // 4 == std::mem::size_of::<i32>()
+//     let p2: *mut i32 = second_address as *mut i32; // p2 points to the 2nd element in values
+//     unsafe {
+//         // Add one to the second element
+//         *p2 += 1
+//     }
+
+//     assert_eq!(values[1], 3);
+
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
+// fn main() {
+//     let arr :[u64; 13] = [1; 13];
+//     assert_eq!(std::mem::size_of_val(&arr), 8 * 13);
+//     let a: *const [u64] = &arr;
+//     let b = a as *const [u8];
+//     unsafe {
+//         assert_eq!(std::mem::size_of_val(&*b), 13)
+//     }
+
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
+// fn main() {
+//     let my_str = "hello";
+
+//     // three conversions below all depends on the fact: String implements From<&str>:
+//     let string1 = String::from(my_str);
+//     let string2 = my_str.to_string();
+//     // Explicit type annotation is required here
+//     let string3: String = my_str.into();
+// }
 // =================================================================
 
 // =================================================================
+// fn main() {
+//     // impl From<bool> for i32
+//     let i1: i32 = false.into();
+//     let i2: i32 = i32::from(false);
+//     assert_eq!(i1, i2);
+//     assert_eq!(i1, 0);
+//     let i3: i32 = 'a' as i32;
+
+//     let s: String = String::from('a');
+
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
+// #[derive(Debug)]
+// struct Number {
+//     value: i32,
+// }
+
+// impl From<i32> for Number {
+//     fn from(value: i32) -> Self {
+//         Number { value }
+//     }
+// }
+
+// // FILL in the blanks
+// fn main() {
+//     let num = Number::from(30);
+//     assert_eq!(num.value, 30);
+
+//     let num: Number = Number{value: 3};
+//     assert_eq!(num.value, 30);
+
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
+// use std::fs;
+// use std::io;
+// use std::num;
+
+// enum CliError {
+//     IoError(io::Error),
+//     ParseError(num::ParseIntError),
+// }
+
+// impl From<io::Error> for CliError {
+//     fn from(error: io::Error) -> Self {
+//         let error = CliError::IoError(error);
+//         return error;
+//     }
+// }
+
+// impl From<num::ParseIntError> for CliError {
+//     fn from(error: num::ParseIntError) -> Self {
+//         let error = CliError::ParseError(error);
+//         return error;
+//     }
+// }
+
+// fn open_and_parse_file(file_name: &str) -> Result<i32, CliError> {
+//     // ? automatically converts io::Error to CliError
+//     let contents = fs::read_to_string(&file_name)?;
+//     // num::ParseIntError -> CliError
+//     let num: i32 = contents.trim().parse()?;
+//     Ok(num)
+// }
+
+// fn main() {
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
-// =================================================================
-// =================================================================
+// TryFrom and TryInto are included in `std::prelude`, so there is no need to introduce it into the current scope
+// use std::convert::TryInto;
+
+// fn main() {
+//     let n: i16 = 255;
+
+//     let n: u8 = match n.try_into() {
+//         Ok(n) => n,
+//         Err(e) => {
+//             println!("there is an error when converting: {:?}, but we catch it", e.to_string());
+//             0
+//         }
+//     };
+
+//     assert_eq!(n, 255);
+
+//     println!("Success!");
+// }
+
 // =================================================================
 
 // =================================================================
+// #[derive(Debug, PartialEq)]
+// struct EvenNum(i32);
+
+// impl TryFrom<i32> for EvenNum {
+//     type Error = ();
+
+//     // IMPLEMENT `try_from`
+//     fn try_from(value: i32) -> Result<Self, Self::Error> {
+//         if value % 2 == 0 {
+//             Ok(EvenNum(value))
+//         } else {
+//             Err(())
+//         }
+//     }
+// }
+
+// fn main() {
+//     assert_eq!(EvenNum::try_from(8), Ok(EvenNum(8)));
+//     assert_eq!(EvenNum::try_from(5), Err(()));
+
+//     // FILL in the blanks
+//     let result: Result<EvenNum, ()> = 8i32.try_into();
+//     print!("result {:?}", result);
+//     // assert_eq!(result, 0);
+//     // let result: Result<EvenNum, ()> = 5i32.try_into();
+//     // assert_eq!(result, 1);
+
+//     // println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
+// use std::fmt;
+
+// struct Point {
+//     x: i32,
+//     y: i32,
+// }
+
+// impl fmt::Display for Point {
+//     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+//         write!(f, "The point is ({}, {})", self.x, self.y)
+//     }
+// }
+
+// fn main() {
+//     let origin = Point { x: 0, y: 0 };
+//     // FILL in the blanks
+//     assert_eq!(format!("{}", origin), "The point is (0, 0)");
+//     assert_eq!(origin.to_string(), "The point is (0, 0)");
+
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
+// To use `from_str` method, you need to introduce this trait into the current scope.
+// use std::str::FromStr;
+// fn main() {
+//     let parsed: i32 = "5".parse().unwrap();
+//     let turbo_parsed = i32::from_str("10").unwrap();
+//     let from_str = "20".parse::<i32>().unwrap();
+//     let sum = parsed + turbo_parsed + from_str;
+//     assert_eq!(sum, 35);
+
+//     println!("Success!");
+// }
 // =================================================================
 
 // =================================================================
+
+// FILL the blanks
+// fn drink(beverage: &str) {
+//     if beverage == "lemonade" {
+//         println!("Success!");
+//         // IMPLEMENT the below code
+//         panic!("error with {beverage}")
+//     }
+//     println!("Exercise Failed if printing out this line!");
+// }
+
+// fn main() {
+//     drink("Vo Le Hong Vo");
+//     println!("Exercise Failed if printing out this line!");
+// }
 // =================================================================
 
 // =================================================================
+// fn divide(x: u8, y: u8) {
+//     if y == 0 {
+//         println!("Error: Division by zero!");
+//     } else {
+//         println!("{}", x / y);
+//     }
+// }
+
+// fn production_rate_per_hour(speed: u8) -> f64 {
+//     let cph: u8 = 221;
+//     let return_value = (speed as u16 * cph as u16);
+//     let value = match speed {
+//         1..=4 => return_value as f64,
+//         5..=8 => return_value as f64 * 0.9,
+//         9..=10 => return_value as f64 * 0.77,
+//         _ => 0 as f64,
+//     };
+//     return value;
+// }
+
+// pub fn working_items_per_minute(speed: u8) -> u32 {
+//     (production_rate_per_hour(speed) / 60 as f64) as u32
+// }
+// fn main() {
+//     assert_eq!("abc".as_bytes(), [97, 98, 99]);
+
+//     let v = vec![1, 2, 3];
+//     let ele = v[2];
+//     let ele = v.get(2).unwrap();
+
+//     let v = production_rate_per_hour(2);
+//     println!("Value is {:?}", v);
+
+//     divide(15, 0);
+
+//     println!("Success!")
+// }
 // =================================================================
 
 // =================================================================
+
+// FILL in the blanks and FIX the errors
+// use std::num::ParseIntError;
+
+// fn multiply(n1_str: &str, n2_str: &str) -> Result<i32, ParseIntError> {
+//     let n1 = n1_str.parse::<i32>();
+//     let n2 = n2_str.parse::<i32>();
+//     match (n1, n2) {
+//         (Ok(value1), Ok(value2)) => Ok(value1 * value2),
+//         (Err(err), _) | (_, Err(err)) => Err(err)
+//     }
+// }
+
+// fn main() {
+//     let result = multiply("10", "2").unwrap();
+//     assert_eq!(result, 20);
+
+//     let result = multiply("t", "2").unwrap();
+//     assert_eq!(result.__, 8);
+
+//     println!("Success!");
+// }
 // =================================================================
+
+// =================================================================
+
+// IMPLEMENT multiply with ?
+// DON'T use unwrap here
+// fn multiply(n1_str: &str, n2_str: &str) -> __ {
+// }
+
+// fn main() {
+//     assert_eq!(multiply("3", "4").unwrap(), 12);
+//     println!("Success!");
+// }
+// =================================================================
+
+// =================================================================
+mod restaurants;
+
+use crate::restaurants::{
+    hosting::{add_to_waitlist, seat_at_table},
+    house::{
+        back_house::average_order,
+        front_house::{point, review},
+    },
+    serving::{complain, serve_order, take_order, take_payment},
+};
+
+fn main() {
+    add_to_waitlist();
+    seat_at_table();
+    take_order();
+    take_payment();
+    serve_order();
+    complain();
+    average_order();
+    point();
+    review();
+}
+// =================================================================
+
 // =================================================================
 // =================================================================
 
