@@ -1,7 +1,7 @@
-pub fn review() {
-    println!("Action: review");
-}
+// pub fn review() {
+//     println!("Action: review");
+// }
 
-pub fn point() {
-    println!("Action: point");
-}
+// pub fn point() {
+//     println!("Action: point");
+// }

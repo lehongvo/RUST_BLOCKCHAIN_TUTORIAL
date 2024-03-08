@@ -4915,7 +4915,6 @@
 //     /*todo!();
 //     unimplemented!();
 //      */
-
 //     assert_eq!(6, 5 + 3 + 2 + 1 )
 // }
 // =================================================================
@@ -4923,13 +4922,13 @@
 // =================================================================
 /// The function `add_one` in Rust takes an integer as input and returns that integer incremented by
 /// one.
-/// 
+///
 /// Arguments:
-/// 
+///
 /// * `x`: The parameter `x` is an `i32` type, which stands for a 32-bit signed integer.
-/// 
+///
 /// Returns:
-/// 
+///
 /// The function `add_one` returns the value of `x` incremented by 1.
 // pub fn add_one(x: i32) -> i32 {
 //     x + 1
@@ -4938,14 +4937,14 @@
 
 // =================================================================
 /// The function `add_two` in Rust takes an `i32` input and returns the input value incremented by 2.
-/// 
+///
 /// Arguments:
-/// 
+///
 /// * `x`: The parameter `x` in the `add_two` function is of type `i32`, which means it is a 32-bit
 /// signed integer.
-/// 
+///
 /// Returns:
-/// 
+///
 /// The function `add_two` returns the value of `x` incremented by 2.
 // pub fn add_two(x: i32) -> i32 {
 //     x + 2
@@ -4954,15 +4953,15 @@
 
 // =================================================================
 /// The function `div` in Rust performs integer division and handles divide-by-zero errors.
-/// 
+///
 /// Arguments:
-/// 
+///
 /// * `a`: i32 - a 32-bit signed integer
 /// * `b`: The parameter `b` represents the divisor in the division operation. It is used to divide the
 /// value of `a` in the `div` function.
-/// 
+///
 /// Returns:
-/// 
+///
 /// the result of dividing `a` by `b`, as long as `b` is not equal to 0. If `b` is 0, the function will
 /// panic with a "Divide-by-zero error" message.
 // pub fn div(a: i32, b: i32) -> i32 {
@@ -4977,14 +4976,14 @@
 // =================================================================
 /// The function `try_div` in Rust performs division of two integers and returns a `Result` with the
 /// result or an error message for divide-by-zero.
-/// 
+///
 /// Arguments:
-/// 
+///
 /// * `a`: i32
 /// * `b`: The parameter `b` is the divisor in the division operation.
-/// 
+///
 /// Returns:
-/// 
+///
 /// The function `try_div` returns a `Result` enum with either an `Ok` variant containing the result of
 /// the division `a / b` if `b` is not zero, or an `Err` variant containing a `String` with the message
 /// "Divide-by-zero" if `b` is zero.
@@ -5005,16 +5004,16 @@
 //              object="the lazy dog",
 //              subject="the quick brown fox",
 //              verb="jumps over");
-//     println!("{} of {:b} people know binary, the other half doesn't", 1, 2);  
-//     println!("{number:>width$}", number=1, width=6);   
+//     println!("{} of {:b} people know binary, the other half doesn't", 1, 2);
+//     println!("{number:>width$}", number=1, width=6);
 
-//     println!("{number:0>width$}", number=1, width=6);    
+//     println!("{number:0>width$}", number=1, width=6);
 //     println!("My name is {0}, {1} {0}", "Bond", "lele");
-    
+
 //     #[derive(Debug)]
 //     struct Structure(i32);
 //     println!("This struct `{:?}` won't print...", Structure(3));
-// }    
+// }
 // =================================================================
 
 // =================================================================
@@ -5030,7 +5029,7 @@
 // =================================================================
 // fn main() {
 //     /* Fill in the blanks to make it print:
-//     Hello world, I am 
+//     Hello world, I am
 //     Sunface!
 //     */
 //     println!("{value1} {value2} {value3}", value1="hello world, ", value2="I am", value3="Sunface");
@@ -5069,7 +5068,7 @@
 // fn main() {
 //     let person = Person { name:  "Sunface".to_string(), age: 18 };
 
-//     /* Make it output: 
+//     /* Make it output:
 //     Person {
 //         name: "Sunface",
 //         age: 18,
@@ -5096,8 +5095,7 @@
 //     }
 // }
 
-
-// fn main() {    
+// fn main() {
 //     // The problem with `derive` is there is no control over how
 //     // the results look. What if I want this to just show a `7`?
 
@@ -5132,7 +5130,7 @@
 //     let point = Point2D { x: 3.3, y: 7.2 };
 //     assert_eq!(format!("{}",point), "Display: 3.3 + 7.2i");
 //     assert_eq!(format!("{:?}",point), "Debug: Complex { real: 3.3, imag: 7.2 }");
-    
+
 //     println!("Success!");
 // }
 // =================================================================
@@ -5140,7 +5138,7 @@
 // =================================================================
 
 /* Make it work */
-// use std::fmt; 
+// use std::fmt;
 
 // struct List(Vec<i32>);
 
@@ -5175,81 +5173,527 @@
 
 // =================================================================
 /* Fill in the blanks */
+// fn main() {
+//     println!("{0}, this is {1}. {1}, this is {0}", "Alice", "Bob"); // => Alice, this is Bob. Bob, this is Alice
+//     let value = format!("{1}{0}",  1, 2);
+//     println!("Value is {value}");
+//     assert_eq!(format!("{1}{0}", 1, 2), "21");
+//     // assert_eq!(format!(__, 1, 2), "2112");
+//     // println!("Success!");
+// }
+// =================================================================
+
+// =================================================================
+// #[derive(Debug)]
+// struct Example<'a> {
+//     name: &'a str,
+// }
+
+// fn print_value<'b>(example: Example<'b>) {
+//     println!("Data is {:?}", example);
+// }
+
+// fn main() {
+//     {
+//         let string_data = String::from("Hello, Rust!");
+//         let example_instance = Example { name: &string_data };
+//     }
+
+//     print_value(example_instance);
+
+//     println!("Original string: {}", string_data);
+// }
+
+// =================================================================
+
+// =================================================================
+// /* Annotate the lifetime of `i` and `borrow2` */
+// // Lifetimes are annotated below with lines denoting the creation
+// // and destruction of each variable.
+// // `i` has the longest lifetime because its scope entirely encloses
+// // both `borrow1` and `borrow2`. The duration of `borrow1` compared
+// // to `borrow2` is irrelevant since they are disjoint.
+// fn main() {
+//     let i = 3;
+//     {
+//         let borrow1 = &i; // `borrow1` lifetime starts. ──┐
+//         //                                                │
+//         println!("borrow1: {}", borrow1); //              │
+//     } // `borrow1 ends. ──────────────────────────────────┘
+//     {
+//         let borrow2 = &i;
+
+//         println!("borrow2: {}", borrow2);
+//     }
+// }
+// =================================================================
+
+// =================================================================
+// fn main() {
+//     {
+//         let x = 5;
+
+//         let r = x;
+
+//         println!("r: {}", r);
+//         println!("r: {}", x);
+//     }
+// }
+// =================================================================
+
+// =================================================================
+ /* Annotate `r` and `x` as above, and explain why this code fails to compile, in the lifetime aspect. */
+
+/* Annotate `r` and `x` as above, and explain why this code fails to compile, in the lifetime aspect. */
+
+// fn main<'a>() {
+//     {
+//         let r: &'a i32;                // ---------+-- 'a
+//                               //          |
+//         {                     //          |
+//             let x = 5;        // -+-- 'b  |
+//             r = &x;           //  |       |
+//         }                     // -+       |
+//                               //          |
+//         println!("r: {}", r); //          |
+//     }                         // ---------+
+// }
+
+// =================================================================
+
+// =================================================================
+// fn print_one<'a>(x: &'a i32) {
+//     println!("`print_one`: x is {}", x);
+// }
+
+// fn add_one<'a>(x: &'a mut i32) {
+//     *x += 1;
+// }
+
+// fn print_multi<'a, 'b>(x: &'a i32, y: &'b i32) {
+//     println!("`print_multi`: x is {}, y is {}", x, y);
+// }
+// fn pass_x<'a, 'b>(x: &'a i32, _: &'b i32) -> &'a i32 { x }
+
+// fn main() {
+//     let x = 7;
+//     let y = 9;
+
+//     let z;
+//     {
+//         let invalid_ref = pass_x(&x, &y);
+//         z = invalid_ref; // invalid_ref trỏ đến vùng nhớ đã bị giải phóng khi ra khỏi phạm vi này.
+//     }
+
+//     print_one(z); // Lỗi: z trỏ đến vùng nhớ không hợp lệ.
+
+//     let mut t = 3;
+//     add_one(&mut t);
+//     print_one(&t);
+// }
+
+// =================================================================
+
+// =================================================================
+/* Make it work by adding proper lifetime annotation */
+// fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
+//     if x.len() > y.len() {
+//         x
+//     } else {
+//         y
+//     }
+// }
+
+// fn main() {
+//     let string1 = String::from("Hello");
+//     let mut result;
+//     {
+//         let string2 = String::from("Rust");
+//         result = longest(&string1, &string2);
+//         println!("The longest string is: {}", result);
+//     }
+//     // println!("The longest string is: {}", result);
+// }
+// =================================================================
+
+// =================================================================
+// `'a` must live longer than the function.
+// Here, `&String::from("foo")` would create a `String`, followed by a
+// reference. Then the data is dropped upon exiting the scope, leaving
+// a reference to invalid data to be returned.
+
+/* Fix the error in three ways  */
+// fn invalid_output<'a>() -> &'a str {
+//     "foo"
+// }
+
+// fn main() {
+//     invalid_output()
+// }
+// =================================================================
+
+// =================================================================
+// fn print_refs<'a, 'b>(x: &'a i32, y: &'b i32) {
+//     println!("x is {} and y is {}", x, y);
+// }
+
+// fn failed_borrow<'a>() {
+//     let _x = 12;
+
+//     let y: &'a i32 = &42;
+// }
+
+// fn main() {
+//     let (four, nine) = (4, 9);
+
+//     print_refs(&four, &nine);
+
+//     failed_borrow();
+// }
+// =================================================================
+
+// =================================================================
+
+// #[derive(Debug)]
+// struct Borrowed<'a>(&'a i32);
+
+// #[derive(Debug)]
+// struct NamedBorrowed<'a> {
+//     x: &'a i32,
+//     y: &'a i32,
+// }
+
+// #[derive(Debug)]
+// enum Either<'a> {
+//     Num(i32),
+//     Ref(&'a i32),
+// }
+
+// fn main() {
+//     let x = 18;
+//     let y = 15;
+
+//     let single = Borrowed(&x);
+//     let double = NamedBorrowed { x: &x, y: &y };
+//     let reference = Either::Ref(&x);
+//     let number    = Either::Num(y);
+
+//     println!("x is borrowed in {:?}", single);
+//     println!("x and y are borrowed in {:?}", double);
+//     println!("x is borrowed in {:?}", reference);
+//     println!("y is *not* borrowed in {:?}", number);
+// }
+// =================================================================
+
+// =================================================================
+/* Make it work */
+
+// #[derive(Debug)]
+// struct NoCopyType {}
+
+// #[derive(Debug)]
+// struct Example<'a, 'b> {
+//     a: &'a u32,
+//     b: &'b NoCopyType,
+// }
+
+// fn main() {
+//     let var_a = 35;
+//     let example: Example<'static, 'static>;
+
+//     {
+//         let var_b = NoCopyType {};
+
+//         // Sửa đổi lifetime của 'example' và 'var_b' để làm cho chúng khớp nhau
+//         example = Example { a: &var_a, b: &var_b }; // this line
+//     }
+
+//     println!("(Success!) {:?}", example);
+// }
+
+// =================================================================
+
+// =================================================================
+/* Make it work */
+// /// The above Rust code defines a struct `Example` with two fields `a` and `b`. The `a` field is a
+/// reference to an `u32` value, and the `b` field is a reference to a `NoCopyType` struct. However,
+/// the `NoCopyType` struct is commented out, so it is not being used in the code.
+// #[derive(Debug)]
+// struct NoCopyType {}
+
+// #[derive(Debug)]
+// struct Example<'a, 'b> {
+//     a: &'a u32,
+//     b: &'b NoCopyType,
+// }
+
+// fn main() {
+//     let var_a = 35;
+//     let var_b = NoCopyType {};
+
+//     let example: Example<'static, '_> = Example {
+//         a: &var_a,
+//         b: &var_b,
+//     };
+
+//     println!("(Success!) {:?}", example);
+// }
+
+// =================================================================
+
+// =================================================================
+/* Make it work */
+
+// #[derive(Debug)]
+// struct NoCopyType {}
+
+// #[derive(Debug)]
+// struct Example<'a, 'b> {
+//     a: &'a u32,
+//     b: &'b NoCopyType
+// }
+
+// fn main()
+// {
+//   /* 'a tied to fn-main stackframe */
+//   let var_a = 35;
+//   let var_b = NoCopyType {};
+
+//   let example: Example;
+
+//   {
+//     /* Lifetime 'b tied to new stackframe/scope */
+//     /* fixme */
+//     example = Example { a: &var_a, b: &var_b };
+//   }
+
+//   println!("(Success!) {:?}", example);
+// }
+// =================================================================
+
+// =================================================================
+
+// #[derive(Debug)]
+// struct NoCopyType {}
+
+// #[derive(Debug)]
+// #[allow(dead_code)]
+// struct Example<'a, 'b> {
+//     a: &'a u32,
+//     b: &'b NoCopyType
+// }
+
+// /* Fix function signature */
+// fn fix_me<'a>(foo: &'a Example) -> &'a NoCopyType
+// { foo.b }
+
+// fn main()
+// {
+//     let no_copy = NoCopyType {};
+//     let example = Example { a: &1, b: &no_copy };
+//     let value = fix_me(&example);
+//     println!("Value is {:?}", value);
+//     println!("Success!")
+// }
+// =================================================================
+
+// =================================================================
+// struct Owner(i32);
+
+// impl Owner {
+//     fn add_one<'a>(&'a mut self) { self.0 += 1; }
+//     fn print<'a>(&'a self) {
+//         println!("`print`: {}", self.0);
+//     }
+// }
+
+// fn main() {
+//     let mut owner = Owner(18);
+//     let value: i32 = 10; // line 1
+//     {
+//         let new_value = Owner(value);// line 2
+//     }
+
+//     owner.add_one();
+//     owner.print();
+// }
+// =================================================================
+
+// =================================================================
+/* Make it work by adding proper lifetime annotations */
+// struct ImportantExcerpt<'a> {
+//     part: &'a str,
+// }
+
+// impl<'a> ImportantExcerpt<'a> {
+//     fn level(&'a self) -> i32 {
+//         3
+//     }
+// }
+
+// fn main() {
+//     let value = "hello world";
+//     let importantExcerpt = ImportantExcerpt{part: &value};
+//     let level = importantExcerpt.level();
+//     println!("Value is {:?}", level);
+// }
+// =================================================================
+
+// =================================================================
+/* Remove all the lifetimes that can be elided */
+
+// fn input<'a>(x: &'a i32) {
+//     println!("`annotated_input`: {}", x);
+// }
+
+// fn pass<'a>(x: &'a i32) -> &'a i32 { x }
+
+// fn longest<'a, 'b>(x: &'a str, y: &'b str) -> &'a str {
+//     x
+// }
+
+// struct Owner(i32);
+
+// impl Owner {
+//     // Annotate lifetimes as in a standalone function.
+//     fn add_one<'a>(&'a mut self) { self.0 += 1; }
+//     fn print<'a>(&'a self) {
+//         println!("`print`: {}", self.0);
+//     }
+// }
+
+// struct Person<'a> {
+//     age: u8,
+//     name: &'a str,
+// }
+
+// enum Either<'a> {
+//     Num(i32),
+//     Ref(&'a i32),
+// }
+
+// fn main() {}
+// =================================================================
+
+// =================================================================
+// use std::fmt::Debug;
+
+// #[derive(Debug)]
+// struct Ref<'a, T: 'a>(&'a T);
+
+// fn print<T>(t: T) where T: Debug {
+//     println!("`print`: t is {:?}", t);
+// }
+
+// fn print_ref<'a, T>(t: &'a T) where
+//     T: Debug + 'a {
+//     println!("`print_ref`: t is {:?}", t);
+// }
+
+// fn main() {
+//     let x = 7;
+//     let ref_x = Ref(&x);
+
+//     print_ref(&ref_x);
+//     print(ref_x);
+// }
+// =================================================================
+
+// =================================================================
+// #[derive(Debug)]
+// struct DoubleRef<'a, T: 'a> {
+//     r: &'a T,
+//     s: &'a T
+// }
+// fn main() {
+//     let value = DoubleRef{ r: &1, s: &1};
+//     println!("Success! is value is {:?}", value);
+// }
+
+// =================================================================
+
+// =================================================================
+/* Adding trait bounds to make it work */
+// /* Adding trait bounds to make it work */
+// fn f<'a, 'b>(x: &'a i32, mut y: &'b i32) 
+// where 
+//     'a: 'b,
+// {
+//     y = x;
+//     let r: &'b &'a i32 = &&0;
+// }
+
+// fn main() {
+//     println!("Success!")
+// }
+// =================================================================
+
+// =================================================================
+/* Adding HRTB to make it work!*/
+// fn call_on_ref_zero<F>(f: F) where F: for<'a> Fn(&'a i32) {
+//     let zero = 0;
+//     f(&zero);
+// }
+
+// fn main() {
+//     println!("Success!");
+// }
+// =================================================================
+
+// =================================================================
+// fn main() {
+//     let mut s = String::from("hello");
+ 
+//      let r1 = &s;
+//      let r2 = &s;
+//      println!("{} and {}", r1, r2);
+ 
+//      let r3 = &mut s;
+//      println!("{}", r3);
+//  }
+// =================================================================
+
+// =================================================================
+// #[derive(Debug)]
+// struct Point {
+//     x: i32,
+//     y: i32,
+// }
+
+// impl Point {
+//     fn move_to(&mut self, x: i32, y: i32) {
+//         self.x = x;
+//         self.y = y;
+//     }
+// }
+
+// fn main() {
+//     let mut p = Point { x: 0, y: 0 };
+//     let r = &mut p;
+//     // Here comes the reborrow
+//     let rr: &Point = &*r;
+
+//     println!("{:?}", rr); // Reborrow ends here, NLL introduced
+
+//     // Reborrow is over, we can continue using `r` now
+//     r.move_to(10, 10);
+//     println!("{:?}", r);
+// }
+// =================================================================
+
+// =================================================================
+/* Make it work by reordering some code */
 fn main() {
-    println!("{0}, this is {1}. {1}, this is {0}", "Alice", "Bob"); // => Alice, this is Bob. Bob, this is Alice
-    let value = format!("{1}{0}",  1, 2);
-    println!("Value is {value}");
-    assert_eq!(format!("{1}{0}", 1, 2), "21");
-    // assert_eq!(format!(__, 1, 2), "2112");
-    // println!("Success!");
+    let mut data = 10;
+    let ref1 = &mut data;
+    let ref2 = &mut *ref1;
+    println!("{:?}", ref2); // Reborrow ends here, NLL introduced
+
+    *ref1 += 1;
+    // *ref2 += 2;
+
+    println!("{}", data);
 }
-
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
 // =================================================================
 
 // =================================================================
