@@ -4884,71 +4884,306 @@
 // =================================================================
 
 // =================================================================
-mod restaurants;
+// mod restaurants;
 
-use crate::restaurants::{
-    hosting::{add_to_waitlist, seat_at_table},
-    house::{
-        back_house::average_order,
-        front_house::{point, review},
-    },
-    serving::{complain, serve_order, take_order, take_payment},
-};
+// use crate::restaurants::{
+//     hosting::{add_to_waitlist, seat_at_table},
+//     house::{
+//         back_house::average_order,
+//         front_house::{point, review},
+//     },
+//     serving::{complain, serve_order, take_order, take_payment},
+// };
 
+// fn main() {
+//     add_to_waitlist();
+//     seat_at_table();
+//     take_order();
+//     take_payment();
+//     serve_order();
+//     complain();
+//     average_order();
+//     point();
+//     review();
+// }
+// =================================================================
+
+// =================================================================
+
+/* Make it work, only using comments! */
+// fn main() {
+//     /*todo!();
+//     unimplemented!();
+//      */
+
+//     assert_eq!(6, 5 + 3 + 2 + 1 )
+// }
+// =================================================================
+
+// =================================================================
+/// The function `add_one` in Rust takes an integer as input and returns that integer incremented by
+/// one.
+/// 
+/// Arguments:
+/// 
+/// * `x`: The parameter `x` is an `i32` type, which stands for a 32-bit signed integer.
+/// 
+/// Returns:
+/// 
+/// The function `add_one` returns the value of `x` incremented by 1.
+// pub fn add_one(x: i32) -> i32 {
+//     x + 1
+// }
+// =================================================================
+
+// =================================================================
+/// The function `add_two` in Rust takes an `i32` input and returns the input value incremented by 2.
+/// 
+/// Arguments:
+/// 
+/// * `x`: The parameter `x` in the `add_two` function is of type `i32`, which means it is a 32-bit
+/// signed integer.
+/// 
+/// Returns:
+/// 
+/// The function `add_two` returns the value of `x` incremented by 2.
+// pub fn add_two(x: i32) -> i32 {
+//     x + 2
+// }
+// =================================================================
+
+// =================================================================
+/// The function `div` in Rust performs integer division and handles divide-by-zero errors.
+/// 
+/// Arguments:
+/// 
+/// * `a`: i32 - a 32-bit signed integer
+/// * `b`: The parameter `b` represents the divisor in the division operation. It is used to divide the
+/// value of `a` in the `div` function.
+/// 
+/// Returns:
+/// 
+/// the result of dividing `a` by `b`, as long as `b` is not equal to 0. If `b` is 0, the function will
+/// panic with a "Divide-by-zero error" message.
+// pub fn div(a: i32, b: i32) -> i32 {
+//     if b == 0 {
+//         panic!("Divide-by-zero error");
+//     }
+
+//     a / b
+// }
+// =================================================================
+
+// =================================================================
+/// The function `try_div` in Rust performs division of two integers and returns a `Result` with the
+/// result or an error message for divide-by-zero.
+/// 
+/// Arguments:
+/// 
+/// * `a`: i32
+/// * `b`: The parameter `b` is the divisor in the division operation.
+/// 
+/// Returns:
+/// 
+/// The function `try_div` returns a `Result` enum with either an `Ok` variant containing the result of
+/// the division `a / b` if `b` is not zero, or an `Err` variant containing a `String` with the message
+/// "Divide-by-zero" if `b` is zero.
+// pub fn try_div(a: i32, b: i32) -> Result<i32, String> {
+//     if b == 0 {
+//         Err(String::from("Divide-by-zero"))
+//     } else {
+//         Ok(a / b)
+//     }
+// }
+// =================================================================
+
+// =================================================================
+// fn main() {
+//     println!("{} days", 31);
+//     println!("{0}, this is {1}. {1}, this is {0}", "Alice", "Bob");
+//     println!("{subject} {verb} {object}",
+//              object="the lazy dog",
+//              subject="the quick brown fox",
+//              verb="jumps over");
+//     println!("{} of {:b} people know binary, the other half doesn't", 1, 2);  
+//     println!("{number:>width$}", number=1, width=6);   
+
+//     println!("{number:0>width$}", number=1, width=6);    
+//     println!("My name is {0}, {1} {0}", "Bond", "lele");
+    
+//     #[derive(Debug)]
+//     struct Structure(i32);
+//     println!("This struct `{:?}` won't print...", Structure(3));
+// }    
+// =================================================================
+
+// =================================================================
+// fn main() {
+//     let s1 = "hello";
+//     /* Fill in the blank */
+//     let s = format!("{s1}, world!");
+//     assert_eq!(s, "hello, world!");
+//     println!("Success!");
+// }
+// =================================================================
+
+// =================================================================
+// fn main() {
+//     /* Fill in the blanks to make it print:
+//     Hello world, I am 
+//     Sunface!
+//     */
+//     println!("{value1} {value2} {value3}", value1="hello world, ", value2="I am", value3="Sunface");
+//  }
+// =================================================================
+
+// =================================================================
+// // This structure cannot be printed either with `fmt::Display` or
+// // with `fmt::Debug`.
+// struct UnPrintable(i32);
+
+// // To make this struct printable with `fmt::Debug`, we can derive the automatic implementations provided by Rust
+// #[derive(Debug)]
+// struct DebugPrintable(i32);
+// =================================================================
+
+// =================================================================
+// #[derive(Debug)]
+// struct Structure(i32);
+
+// fn main() {
+//     // Types in std and Rust have implemented the fmt::Debug trait
+//     println!("{} months in a year.", 12);
+
+//     println!("Now {:?} will print!", Structure(3));
+// }
+// =================================================================
+
+// =================================================================
+// #[derive(Debug)]
+// struct Person {
+//     name: String,
+//     age: u8
+// }
+
+// fn main() {
+//     let person = Person { name:  "Sunface".to_string(), age: 18 };
+
+//     /* Make it output: 
+//     Person {
+//         name: "Sunface",
+//         age: 18,
+//     }
+//     */
+//     println!("{:?}", person);
+// }
+// =================================================================
+
+// =================================================================
+
+// use std::fmt;
+
+// #[derive(Debug)]
+// struct Structure(i32);
+
+// #[derive(Debug)]
+// struct Deep(Structure);
+
+// impl fmt::Display for Deep{
+//     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+//         let return_value = write!(f, "Value is {:?}", self);
+//         return return_value;
+//     }
+// }
+
+
+// fn main() {    
+//     // The problem with `derive` is there is no control over how
+//     // the results look. What if I want this to just show a `7`?
+
+//     /* Make it print: Now 7 will print! */
+//     println!("Now {:?} will print!", Deep(Structure(7)));
+// }
+// =================================================================
+
+// =================================================================
+
+/* Make it work*/
+// use std::fmt;
+
+// struct Point2D {
+//     x: f64,
+//     y: f64,
+// }
+
+// impl fmt::Display for Point2D {
+//     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+//         write!(f, "Display: {} + {}i", self.x, self.y)
+//     }
+// }
+
+// impl fmt::Debug for Point2D {
+//     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+//         write!(f, "Debug: Complex {{ real: {}, imag: {} }}", self.x, self.y)
+//     }
+// }
+
+// fn main() {
+//     let point = Point2D { x: 3.3, y: 7.2 };
+//     assert_eq!(format!("{}",point), "Display: 3.3 + 7.2i");
+//     assert_eq!(format!("{:?}",point), "Debug: Complex { real: 3.3, imag: 7.2 }");
+    
+//     println!("Success!");
+// }
+// =================================================================
+
+// =================================================================
+
+/* Make it work */
+// use std::fmt; 
+
+// struct List(Vec<i32>);
+
+// impl fmt::Display for List {
+//     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+//         // Extract the value using tuple indexing,
+//         // and create a reference to `vec`.
+//         let vec = &self.0;
+
+//         write!(f, "[")?;
+
+//         // Iterate over `v` in `vec` while enumerating the iteration
+//         // count in `count`.
+//         for (count, v) in vec.iter().enumerate() {
+//             // For every element except the first, add a comma.
+//             // Use the ? operator to return on errors.
+//             if count != 0 { write!(f, ", ")?; }
+//             write!(f, "{}: {}", count, v)?;
+//         }
+
+//         // Close the opened bracket and return a fmt::Result value.
+//         write!(f, "]")
+//     }
+// }
+
+// fn main() {
+//     let v = List(vec![1, 2, 3]);
+//     assert_eq!(format!("{}",v), "[0: 1, 1: 2, 2: 3]");
+//     println!("Success!");
+// }
+// =================================================================
+
+// =================================================================
+/* Fill in the blanks */
 fn main() {
-    add_to_waitlist();
-    seat_at_table();
-    take_order();
-    take_payment();
-    serve_order();
-    complain();
-    average_order();
-    point();
-    review();
+    println!("{0}, this is {1}. {1}, this is {0}", "Alice", "Bob"); // => Alice, this is Bob. Bob, this is Alice
+    let value = format!("{1}{0}",  1, 2);
+    println!("Value is {value}");
+    assert_eq!(format!("{1}{0}", 1, 2), "21");
+    // assert_eq!(format!(__, 1, 2), "2112");
+    // println!("Success!");
 }
-// =================================================================
 
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-// =================================================================
 // =================================================================
 
 // =================================================================
