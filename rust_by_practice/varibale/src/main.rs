@@ -5683,63 +5683,351 @@
 
 // =================================================================
 /* Make it work by reordering some code */
-fn main() {
-    let mut data = 10;
-    let ref1 = &mut data;
-    let ref2 = &mut *ref1;
-    println!("{:?}", ref2); // Reborrow ends here, NLL introduced
+// fn main() {
+//     let mut data = 10;
+//     let ref1 = &mut data;
+//     let ref2 = &mut *ref1;
+//     println!("{:?}", ref2); // Reborrow ends here, NLL introduced
 
-    *ref1 += 1;
-    // *ref2 += 2;
+//     *ref1 += 1;
+//     // *ref2 += 2;
 
-    println!("{}", data);
+//     println!("{}", data);
+// }
+// =================================================================
+
+// =================================================================
+// fn add_funtion(value: i32) -> i32{
+//     let closure = |val| val + value;
+//     let value = closure(10);
+//     return value;
+    
+// }
+
+// fn main() {
+//     let value = add_funtion(100);
+//     println!("Value is {:?}", value);
+// }
+// =================================================================
+
+// =================================================================
+// fn main() {
+//     let value = 1;
+//     let closure = |val: i32| -> i32 {
+//         let value = val + value;
+//         return value;
+//     };
+//     let data = closure(11);
+//     println!("Value is: {:?}", data);
+// }
+// =================================================================
+
+// =================================================================
+// fn main() {
+//     fn function(i: i32) -> i32 { i + 1 }
+
+//     // 
+//     let closure_annotated = |i: i32| -> i32 { i + 1 };
+//     let closure_inferred  = |i     |          i + 1  ;
+
+//     let i = 1;
+//     // Call the function and closures.
+//     println!("function: {}", function(i));
+//     println!("closure_annotated: {}", closure_annotated(i));
+//     println!("closure_inferred: {}", closure_inferred(i));
+
+//     // A closure taking no arguments which returns an `i32`.
+//     // The return type is inferred.
+//     let one = || 1;
+//     println!("closure returning one: {}", one());
+
+// }
+// =================================================================
+
+// =================================================================
+// fn main() {
+//     let color = String::from("green");
+
+//     let print = || println!("`color`: {}", color.clone());
+
+//     print();
+//     print();
+
+//     // `color` can be borrowed immutably again, because the closure only holds
+//     // an immutable reference to `color`. 
+//     let _reborrow = color.clone();
+
+//     println!("{}", color);
+// }
+
+
+// =================================================================
+
+// =================================================================
+/* Make it work 
+- Dont use `_reborrow` and `_count_reborrowed`
+- Dont modify `assert_eq`
+*/
+// fn main() {
+//     let mut count = 0;
+
+//     let inc = |count: &mut i32| {
+//         *count += 1;
+//         println!("`count`: {}", count);
+//     };
+
+//     inc(&mut count);
+
+//     let _reborrow = &count.clone(); 
+//     println!("Value is {:?}", _reborrow);
+
+//     inc(&mut count);
+
+//     let _count_reborrowed = &mut count; 
+//     println!("_count_reborrowed is {:?}", _count_reborrowed);
+
+//     assert_eq!(count, 2);
+// }
+// =================================================================
+
+// =================================================================
+/* Make it work in two ways, none of them is to remove `take(movable)` away from the code
+*/
+/* Make it work in two ways, none of them is to remove `take(movable)` away from the code
+*/
+// fn main() {
+//     let movable = Box::new(3);
+
+//     let consume = || {
+//         let movable = std::mem::replace(&mut *movable, 0);
+//         println!("`movable`: {:?}", movable);
+//         take(movable);
+//     };
+
+//     consume();
+//     consume();
+// }
+
+// fn take<T>(_v: T) {}
+// =================================================================
+
+// =================================================================
+// fn main() {
+//     let example_closure = |x| x;
+
+//     let s = example_closure(String::from("hello"));
+
+//     /* Make it work, only change the following line */
+//     let n = example_closure(5.to_string());
+//     println!("Value is {:?}", n);
+// }
+// =================================================================
+
+// =================================================================
+// fn fn_once<F>(func: F)
+// where
+//     F: FnOnce(usize) -> bool + Clone,
+// {
+//     let cloned_func = func.clone();
+//     println!("{}", cloned_func(3));
+//     println!("{}", func(4));
+// }
+
+// fn main() {
+//     let x = vec![1, 2, 3];
+//     fn_once(|z| {z == 4});
+// }
+// =================================================================
+
+// =================================================================
+// fn main() {
+//     let mut s = String::new();
+
+//     let update_string = |str: &str| s.push_str(str);
+
+//     exec(update_string);
+
+//     println!("{:?}",s);
+// }
+
+// /* Fill in the blank */
+// fn exec<'a, F: FnMut(&'a str)>(mut f: F)  {
+//     f("hello")
+// }
+// =================================================================
+
+// =================================================================
+/* Fill in the blank */
+
+// A function which takes a closure as an argument and calls it.
+// <F> denotes that F is a "Generic type parameter"
+// fn apply<F>(f: F) where
+//     // The closure takes no input and returns nothing.
+//     F: FnOnce {
+
+//     f();
+// }
+
+// // A function which takes a closure and returns an `i32`.
+// fn apply_to_3<F>(f: F) -> i32 where
+//     // The closure takes an `i32` and returns an `i32`.
+//     F: Fn(i32) -> i32 {
+
+//     f(3)
+// }
+
+// fn main() {
+//     use std::mem;
+
+//     let greeting = "hello";
+//     // A non-copy type.
+//     // `to_owned` creates owned data from borrowed one
+//     let mut farewell = "goodbye".to_owned();
+
+//     // Capture 2 variables: `greeting` by reference and
+//     // `farewell` by value.
+//     let diary = || {
+//         // `greeting` is by reference: requires `Fn`.
+//         println!("I said {}.", greeting);
+
+//         // Mutation forces `farewell` to be captured by
+//         // mutable reference. Now requires `FnMut`.
+//         farewell.push_str("!!!");
+//         println!("Then I screamed {}.", farewell);
+//         println!("Now I can sleep. zzzzz");
+
+//         // Manually calling drop forces `farewell` to
+//         // be captured by value. Now requires `FnOnce`.
+//         mem::drop(farewell);
+//     };
+
+//     // Call the function which applies the closure.
+//     apply(diary);
+
+//     // `double` satisfies `apply_to_3`'s trait bound
+//     let double = |x| 2 * x;
+
+//     println!("3 doubled: {}", apply_to_3(double));
+// }
+// =================================================================
+
+// // =================================================================
+// fn main() {
+//     let s = String::new();
+
+//     let update_string = move || println!("{}",s);
+
+//     exec(update_string);
+// }
+
+// fn exec<F: FnMut()>(mut f: F)  {
+//     f()
+// }
+// =================================================================
+
+// =================================================================
+// fn main() {
+//     let mut s = String::new();
+
+//     let update_string = |str| -> String { s.push_str(str); s };
+
+//     exec(update_string);
+// }
+
+// fn exec<F: FnOnce(&str) -> String>(f: F) {
+//     let result = f("hello");
+//     println!("{}", result); // You can use the result as needed
+// }
+// =================================================================
+
+// =================================================================
+
+/* Implement `call_me` to make it work */
+// fn call_me<F: FnOnce()>(f: F) {
+//     f();
+// }
+
+// fn function() {
+//     println!("I'm a function!");
+// }
+
+// fn main() {
+//     let closure = || println!("I'm a closure!");
+
+//     call_me(closure);
+//     call_me(function);
+// }
+// =================================================================
+
+// =================================================================
+
+// fn create_fn() -> impl Fn(i32) -> i32 {
+//     let num = 5;
+//     move |x| x + num
+// }
+
+// fn main() {
+//     let fn_plain = create_fn();
+//     fn_plain(1);
+// }
+// =================================================================
+
+// =================================================================
+/* Fill in the blank and fix the error*/
+// fn factory(x:i32) -> impl Fn(i32) -> i32 {
+
+//     let num = 5;
+
+//     move |x| x + num
+// }
+// =================================================================
+
+// =================================================================
+struct Cacher<T,E>
+where
+    T: Fn(E) -> E,
+    E: Copy
+{
+    query: T,
+    value: Option<E>,
 }
-// =================================================================
 
-// =================================================================
-// =================================================================
+impl<T,E> Cacher<T,E>
+where
+    T: Fn(E) -> E,
+    E: Copy
+{
+    fn new(query: T) -> Cacher<T,E> {
+        Cacher {
+            query,
+            value: None,
+        }
+    }
 
-// =================================================================
-// =================================================================
+    fn value(&mut self, arg: E) -> E {
+        match self.value {
+            Some(v) => v,
+            None => {
+                let v = (self.query)(arg);
+                self.value = Some(v);
+                v
+            }
+        }
+    }
+}
+fn main() {
+  
+}
 
-// =================================================================
-// =================================================================
+#[test]
+fn call_with_different_values() {
+    let mut c = Cacher::new(|a| a);
 
-// =================================================================
-// =================================================================
-// =================================================================
-// =================================================================
+    let v1 = c.value(1);
+    let v2 = c.value(2);
 
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
+    assert_eq!(v2, 1);
+}
 // =================================================================
 
 // =================================================================
