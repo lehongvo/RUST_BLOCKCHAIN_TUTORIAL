@@ -6235,66 +6235,182 @@
 
 // =================================================================
 /* Fill in the blanks */
-#[derive(PartialEq, Debug)]
-struct Shoe {
-    size: u32,
-    style: String,
+// #[derive(PartialEq, Debug)]
+// struct Shoe {
+//     size: u32,
+//     style: String,
+// }
+
+// fn shoes_in_size(shoes: Vec<Shoe>, shoe_size: u32) -> Vec<Shoe> {
+//     let new_collection = shoes.into_iter().filter(|value| value.size == shoe_size).collect();
+//     return new_collection;
+// }
+
+// fn main() {
+//     let shoes = vec![
+//         Shoe {
+//             size: 10,
+//             style: String::from("sneaker"),
+//         },
+//         Shoe {
+//             size: 13,
+//             style: String::from("sandal"),
+//         },
+//         Shoe {
+//             size: 10,
+//             style: String::from("boot"),
+//         },
+//     ];
+
+//     let in_my_size = shoes_in_size(shoes, 10);
+
+//     assert_eq!(
+//         in_my_size,
+//         vec![
+//             Shoe {
+//                 size: 10,
+//                 style: String::from("sneaker")
+//             },
+//             Shoe {
+//                 size: 10,
+//                 style: String::from("boot")
+//             },
+//         ]
+//     );
+// }
+// =================================================================
+
+// =================================================================
+// use std::fmt;
+
+// /* Define the Wrapper type */
+// struct Wrapper(Vec<String>);
+
+// // Display is an external trait
+// impl fmt::Display for Wrapper {
+//     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+//         write!(f, "[{}]", self.0.join(", "))
+//     }
+// }
+
+// fn main() {
+//     // Vec is an external type, so you cannot implement Display trait on Vec type
+//     let w = format!("{}{}", "hello", "world");
+//     println!("w = {}", w);
+// }
+// =================================================================
+
+// =================================================================
+// #[derive(Debug)]
+// struct Meters(u32);
+
+// impl Meters {
+//     fn pow(&self, exp: u32) -> u32 {
+//         self.0.pow(exp)
+//     }
+// }
+
+// fn main() {
+//     let i: u32 = 2;
+//     assert_eq!(i.pow(2), 4);
+
+//     let n = Meters(i);
+//     println!("Value is {:?}", n);
+//     // The `pow` method is defined on `u32` type, we can't directly call it 
+//     assert_eq!(n.pow(2), 4);
+// }
+// =================================================================
+
+// =================================================================
+// struct MyInt(i32);
+
+// impl MyInt {
+//     fn pow(&self) -> i32 {
+//         self.0.pow(2)
+//     }
+// }
+// fn main() {
+//     let value = (2 as i32).pow(3);
+//     println!("Value is {:?}", value);
+// }
+// =================================================================
+
+// =================================================================
+/* Make it work */
+// #[derive(Debug, PartialEq, Eq, PartialOrd, Ord)]
+// struct Years(i64);
+
+// #[derive(Debug, PartialEq, Eq, PartialOrd, Ord)]
+// struct Days(i64);
+
+// impl Years {
+//     pub fn to_days(&self) -> Days {
+//         Days(self.0 * 365)
+//     }
+// }
+
+
+// impl Days {
+//     pub fn to_years(&self) -> Years {
+//         Years(self.0 / 365)
+//     }
+// }
+
+// // An age verification function that checks age in years, must be given a value of type Years.
+// fn old_enough(age: &Years) -> bool {
+//     age.0 >= 18
+// }
+
+// fn main() {
+//     let age = Years(5);
+//     let age_days = age.to_days();
+//     println!("Old enough {}", old_enough(&age));
+//     println!("Old enough {}", old_enough(&age_days.to_years()));
+// }
+// =================================================================
+
+// =================================================================
+// use std::ops::Add;
+// use std::fmt::{self, format};
+
+// struct Meters(u32);
+// impl fmt::Display for Meters {
+//     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+//         write!(f, "There are still {} meters left", self.0)
+//     }
+// }
+
+// impl Add for Meters {
+//     type Output = Self;
+
+//     fn add(self, other: Meters) -> Self {
+//         Self(self.0 + other.0)
+//     }
+// }
+// fn main() {
+//     let d = calculate_distance(Meters(10), Meters(20));
+//     assert_eq!(format!("{}",d), "There are still 30 meters left");
+// }
+
+// /* Implement calculate_distance  */
+// fn calculate_distance(a: Meters, b: Meters) -> Meters {
+//     a + b
+// }
+// =================================================================
+
+// =================================================================
+type Thunk = Box<dyn Fn() + Send + 'static>;
+
+let f: Thunk = Box::new(|| println!("hi"));
+
+fn takes_long_type(f: Thunk) {
+    // --snip--
 }
 
-fn shoes_in_size(shoes: Vec<Shoe>, shoe_size: u32) -> Vec<Shoe> {
-    let new_collection = shoes.into_iter().filter(|value| value.size == shoe_size).collect();
-    return new_collection;
+fn returns_long_type() -> Thunk {
+    // --snip--
 }
 
-fn main() {
-    let shoes = vec![
-        Shoe {
-            size: 10,
-            style: String::from("sneaker"),
-        },
-        Shoe {
-            size: 13,
-            style: String::from("sandal"),
-        },
-        Shoe {
-            size: 10,
-            style: String::from("boot"),
-        },
-    ];
-
-    let in_my_size = shoes_in_size(shoes, 10);
-
-    assert_eq!(
-        in_my_size,
-        vec![
-            Shoe {
-                size: 10,
-                style: String::from("sneaker")
-            },
-            Shoe {
-                size: 10,
-                style: String::from("boot")
-            },
-        ]
-    );
-}
-// =================================================================
-
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
-// =================================================================
-
-// =================================================================
 // =================================================================
 
 // =================================================================
