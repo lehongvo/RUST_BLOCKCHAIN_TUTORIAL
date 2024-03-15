@@ -60,7 +60,10 @@ const airDropSol = async () => {
             '4TxsVJKRRrfLowoKWjvT4As2TQDuAhWibXxZrQGQcqV9'
         )
         const connection = new Connection(rpc, 'confirmed')
-        ber
+        const fromAirDropSignature = await connection.requestAirdrop(
+            publicKey,
+            2 * LAMPORTS_PER_SOL
+        )
         const latestBlockHash = await connection.getLatestBlockhash()
         const tx = await connection.confirmTransaction({
             blockhash: latestBlockHash.blockhash,
