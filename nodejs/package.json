@@ -1,0 +1,16 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "Note: This guide comes courtesy of [Buildspace](https://buildspace.so). Do check them out if you get the chance.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@solana/spl-token": "^0.4.1",
+    "@solana/web3.js": "^1.91.1",
+    "dotenv": "^16.4.5"
+  }
+}
