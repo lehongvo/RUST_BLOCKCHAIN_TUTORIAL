@@ -33,11 +33,7 @@ const transferTokenOnSolana = async() => {
             contractAddressKey, 
             toAddressKey,
         );
-        console.log("payer", payer);
-        console.log("tokenAccountKey", tokenAccountKey);
-        console.log("tokenAccountKey", tokenAccountKey);
-        console.log("toTokenAccountKey", toTokenAccountKey.address);
-
+        
         const transferTx = await transfer(
             connection,
             payer,
