@@ -15,7 +15,7 @@ const airdropSol = async (publicAddress) => {
       const connection = new Connection(RPC, "confirmed");
       const airdropSol = await connection.requestAirdrop(
         currentAddress,
-        20 * LAMPORTS_PER_SOL
+        50 * LAMPORTS_PER_SOL
       );
       const balance = Number(await connection.getBalance(currentAddress)) / 1e9;
       console.log("Current balance is: ", balance);
@@ -32,4 +32,4 @@ const airdropSol = async (publicAddress) => {
   }
 };
 
-airdropSol("4TxsVJKRRrfLowoKWjvT4As2TQDuAhWibXxZrQGQcqV9");
+airdropSol("anzbSChAgPseEssCN6mZJiwfFF8iqTRQsTyBcuqkLo4");

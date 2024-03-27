@@ -28,14 +28,16 @@ const getSupply = async() => {
         const secretKeyArray = JSON.parse(secretKeyEnv);
         const secretKey = new Uint8Array(secretKeyArray);
         const keypair = Keypair.fromSecretKey(secretKey);
-        
-        const connection = new Connection(RPC, "confirmed");
-        const tokenPublicKey = new PublicKey(contractAddress);
-        const mintInfo = await getMint(
-            connection,
-            tokenPublicKey
-        )
-        console.log("mintInfo", Number(mintInfo.supply) / 1e9);
+
+        for (let index = 0; index < 1000; index++) {
+            const connection = new Connection(RPC, "confirmed");
+            const tokenPublicKey = new PublicKey(contractAddress);
+            const mintInfo = await getMint(
+                connection,
+                tokenPublicKey
+            )
+            console.log("mintInfo", Number(mintInfo.supply) / 1e9); 
+        }
     } catch (error) {
         console.error(error);
     }
